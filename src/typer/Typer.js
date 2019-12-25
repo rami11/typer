@@ -30,7 +30,7 @@ class Typer {
     let currentChar = this.textBlock.getCurrentChar();
     if (this.textBlock.isLastCharReached()) {
       // game over
-      document.write("Game Over!");
+      this.typeTextArea.setAttribute("hidden", true);
     } else {
       if (key === currentChar) {
         this.textBlock.colorCharSuccess();

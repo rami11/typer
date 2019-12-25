@@ -1,5 +1,5 @@
 .app {
-  background-color: #bbdefb; }
+  background-image: linear-gradient(#bbdefb, #e1f5fe); }
 
 .app #typer #text-block {
   color: white;
@@ -12,10 +12,10 @@
   border: 1px solid; }
 
 .app #typer #text-block .success {
-  background-color: #66bb6a; }
+  background-color: #4caf50; }
 
 .app #typer #text-block .failure {
-  background-color: #ef5350; }
+  background-color: #f44336; }
 
 .app #typer #type-section {
   text-align: center; }
