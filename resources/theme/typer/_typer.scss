@@ -2,7 +2,9 @@
 @import "../generic/button/button";
 
 $img-width: 30em;
-$text-block-bck-color: $blue-300;
+$text-area-font-size: 1.1em;
+$text-area-width: 75%;
+$text-block-bck-color: $grey-900;
 $text-block-font-size: 1.1em;
 $char-color-success: $green-500;
 $char-color-failure: $red-500;
@@ -20,11 +22,11 @@ $char-color-failure: $red-500;
       border: 1px solid;
 
       .success {
-        background-color: $char-color-success;
+        color: $char-color-success;
       }
 
       .failure {
-        background-color: $char-color-failure;
+        color: $char-color-failure;
       }
     }
 
@@ -32,7 +34,9 @@ $char-color-failure: $red-500;
       text-align: center;
 
       #text-area {
-        font-size: 1.5em;
+        width: $text-area-width;
+        font-family: Times;
+        font-size: $text-area-font-size;
       }
       #btn-reset {
         @include button;

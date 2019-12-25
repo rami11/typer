@@ -3,7 +3,7 @@
 
 .app #typer #text-block {
   color: white;
-  background-color: #64b5f6;
+  background-color: #212121;
   font-size: 1.1em;
   margin: 8px;
   padding: 8px;
@@ -12,24 +12,26 @@
   border: 1px solid; }
 
 .app #typer #text-block .success {
-  background-color: #4caf50; }
+  color: #4caf50; }
 
 .app #typer #text-block .failure {
-  background-color: #f44336; }
+  color: #f44336; }
 
 .app #typer #type-section {
   text-align: center; }
 
 .app #typer #type-section #text-area {
-  font-size: 1.5em; }
+  width: 75%;
+  font-family: Times;
+  font-size: 1.1em; }
 
 .app #typer #type-section #btn-reset {
   width: 10em;
   padding: 8px;
-  font-size: 1em;
+  font-size: 1.1em;
   cursor: pointer;
   border-radius: 2px;
-  font-family: sans-serif; }
+  font-family: Times; }
 
 .app #typer #img {
   text-align: center; }
