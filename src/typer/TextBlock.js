@@ -6,7 +6,12 @@ class TextBlock {
     this.self = document.querySelector("#text-block");
     this.charIndex = 0;
     this.text = text;
-    this.setText(text);
+
+    this._init();
+  }
+
+  _init() {
+    this.setText(this.text);
     this._underlineCurrentChar();
   }
 
@@ -21,17 +26,16 @@ class TextBlock {
     }
   }
 
-  // _colorChar(colorCode) {
-  //   let charSpan = this._getCurrentCharSpan();
-  //   charSpan.style.color = colorCode;
-  //   this.nextChar();
-  // }
-
   _colorChar(isSuccess) {
     let charSpan = this._getCurrentCharSpan();
-    charSpan.classList.add(isSuccess ? "success" : "failure");
+    if (charSpan) {
+      charSpan.classList.add(isSuccess ? "success" : "failure");
+      this.nextChar();
+    }
+  }
 
-    this.nextChar();
+  addKeyPressListener(keyPressEvent = () => {}) {
+    this.self.addEventListener("keypress", keyPressEvent);
   }
 
   setText(text) {
@@ -60,20 +64,16 @@ class TextBlock {
     this._underlineCurrentChar();
   }
 
-  // colorCharSuccess() {
-  //   this._colorChar(this.COLOR_SUCCESS);
-  // }
-
-  // colorCharFailure() {
-  //   this._colorChar(this.COLOR_FAILURE);
-  // }
-
   colorCharSuccess() {
     this._colorChar(true);
   }
 
   colorCharFailure() {
     this._colorChar(false);
+  }
+
+  disable() {
+    this.self.removeAttribute("tabindex");
   }
 }
 

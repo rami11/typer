@@ -15,15 +15,20 @@
       <div id="img">
         <img src="../resources/img/850px-Keyboard.png" alt="keyboard layout" />
       </div>
-      <div id="text-block"><!-- dynamic content --></div>
-      <div id="type-section">
-        <textarea id="text-area" rows="4" cols="50" autofocus> </textarea>
+      <div id="text-block" tabindex="0" autofocus><!-- dynamic content --></div>
+      <div id="bottom-section">
+        <button hidden id="btn-reset">
+          <i class="fa fa-refresh"></i> Reset
+        </button>
+      </div>
+      <!-- <div id="type-section">
+        <textarea hidden id="text-area" rows="4" cols="50"> </textarea>
         <div>
           <button hidden id="btn-reset">
             <i class="fa fa-refresh"></i> Reset
           </button>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <script src="main.js"></script>

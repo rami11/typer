@@ -26,18 +26,12 @@ $char-color-failure: $red-500;
       }
 
       .failure {
-        color: $char-color-failure;
+        background-color: $char-color-failure;
       }
     }
 
-    #type-section {
+    #bottom-section {
       text-align: center;
-
-      #text-area {
-        width: $text-area-width;
-        font-family: Times;
-        font-size: $text-area-font-size;
-      }
       #btn-reset {
         @include button;
       }

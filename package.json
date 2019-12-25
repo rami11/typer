@@ -1,7 +1,7 @@
 {
   "name": "typer",
   "version": "1.0.0",
-  "description": "",
+  "description": "A web app that helps practice touch typing.",
   "private": true,
   "dependencies": {
     "node-sass": "^4.13.0",
@@ -12,11 +12,12 @@
     "webpack-cli": "^3.3.10"
   },
   "scripts": {
+    "build": "npx webpack --mode=development",
     "test": "echo \"Error: no test specified\" && exit 1",
     "scss-compile": "node-sass -rw resources/theme/ -o resources/theme/",
     "watch": "npm run scss-compile"
   },
   "keywords": [],
-  "author": "",
+  "author": "rsn",
   "license": "ISC"
 }

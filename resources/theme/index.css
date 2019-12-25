@@ -15,20 +15,14 @@
   color: #4caf50; }
 
 .app #typer #text-block .failure {
-  color: #f44336; }
+  background-color: #f44336; }
 
-.app #typer #type-section {
+.app #typer #bottom-section {
   text-align: center; }
 
-.app #typer #type-section #text-area {
-  width: 75%;
-  font-family: Times;
-  font-size: 1.1em; }
-
-.app #typer #type-section #btn-reset {
+.app #typer #bottom-section #btn-reset {
   width: 10em;
-  padding: 8px;
-  font-size: 1.1em;
+  font-size: 1em;
   cursor: pointer;
   border-radius: 2px;
   font-family: Times; }

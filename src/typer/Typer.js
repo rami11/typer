@@ -15,7 +15,7 @@ class Typer {
       location.reload();
     });
 
-    this.typeTextArea.addEventListener("keyup", () => {
+    this.textBlock.addKeyPressListener(() => {
       this._onTextAreaValueChange();
     });
   }
@@ -36,8 +36,9 @@ class Typer {
 
     if (this.textBlock.isLastCharReached()) {
       // game over
-      this.typeTextArea.setAttribute("hidden", true);
+      this.textBlock.disable();
       this.resetButton.removeAttribute("hidden");
+      this.resetButton.focus();
     }
 
     if (key === currentChar) {

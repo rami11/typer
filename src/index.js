@@ -12,10 +12,7 @@ class Main {
     let app = document.querySelector("body");
     app.classList.add("app");
 
-    let text = this._generateText();
-    console.log("text", text);
-
-    new Typer(text);
+    new Typer(this._generateText());
   }
 
   _generateText() {
