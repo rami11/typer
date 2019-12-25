@@ -1,8 +1,9 @@
 @import "../generic/var/colors";
 @import "../generic/button/button";
 
-$img-width: 39em;
+$img-width: 30em;
 $text-block-bck-color: $blue-300;
+$text-block-font-size: 1.1em;
 $char-color-success: $green-500;
 $char-color-failure: $red-500;
 
@@ -11,7 +12,7 @@ $char-color-failure: $red-500;
     #text-block {
       color: white;
       background-color: $text-block-bck-color;
-      font-size: 2em;
+      font-size: $text-block-font-size;
       margin: 8px;
       padding: 8px;
       border-radius: 2px;
