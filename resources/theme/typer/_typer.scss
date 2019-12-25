@@ -1,5 +1,7 @@
-@import "../var/colors";
+@import "../generic/var/colors";
+@import "../generic/button/button";
 
+$img-width: 39em;
 $text-block-bck-color: $blue-300;
 $char-color-success: $green-500;
 $char-color-failure: $red-500;
@@ -27,15 +29,19 @@ $char-color-failure: $red-500;
 
     #type-section {
       text-align: center;
+
       #text-area {
         font-size: 1.5em;
+      }
+      #btn-reset {
+        @include button;
       }
     }
 
     #img {
       text-align: center;
       img {
-        width: 42em;
+        width: $img-width;
       }
     }
   }

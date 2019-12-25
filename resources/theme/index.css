@@ -23,8 +23,16 @@
 .app #typer #type-section #text-area {
   font-size: 1.5em; }
 
+.app #typer #type-section #btn-reset {
+  width: 10em;
+  padding: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 2px;
+  font-family: sans-serif; }
+
 .app #typer #img {
   text-align: center; }
 
 .app #typer #img img {
-  width: 42em; }
+  width: 39em; }

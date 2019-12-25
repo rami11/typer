@@ -5,11 +5,16 @@ class Typer {
     this.text = text;
     this.typeTextArea = document.querySelector("#text-area");
     this.textBlock = new TextBlock(text);
+    this.resetButton = document.querySelector("#btn-reset");
 
     this._init();
   }
 
   _init() {
+    this.resetButton.addEventListener("click", () => {
+      location.reload();
+    });
+
     this.typeTextArea.addEventListener("keyup", () => {
       this._onTextAreaValueChange();
     });
@@ -28,15 +33,17 @@ class Typer {
 
   _handleKeyPress(key) {
     let currentChar = this.textBlock.getCurrentChar();
+
     if (this.textBlock.isLastCharReached()) {
       // game over
       this.typeTextArea.setAttribute("hidden", true);
+      this.resetButton.removeAttribute("hidden");
+    }
+
+    if (key === currentChar) {
+      this.textBlock.colorCharSuccess();
     } else {
-      if (key === currentChar) {
-        this.textBlock.colorCharSuccess();
-      } else {
-        this.textBlock.colorCharFailure();
-      }
+      this.textBlock.colorCharFailure();
     }
   }
 }
