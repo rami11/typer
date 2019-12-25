@@ -1,0 +1,30 @@
+.app {
+  background-color: #bbdefb; }
+
+.app #typer #text-block {
+  color: white;
+  background-color: #64b5f6;
+  font-size: 2em;
+  margin: 8px;
+  padding: 8px;
+  border-radius: 2px;
+  text-align: center;
+  border: 1px solid; }
+
+.app #typer #text-block .success {
+  background-color: #66bb6a; }
+
+.app #typer #text-block .failure {
+  background-color: #ef5350; }
+
+.app #typer #type-section {
+  text-align: center; }
+
+.app #typer #type-section #text-area {
+  font-size: 1.5em; }
+
+.app #typer #img {
+  text-align: center; }
+
+.app #typer #img img {
+  width: 42em; }

@@ -1,0 +1,9 @@
+@import "var/colors";
+@import "typer/typer";
+
+$bck-color: $blue-100;
+
+.app {
+  background-color: $bck-color;
+  @include typer;
+}

@@ -1,0 +1,42 @@
+@import "../var/colors";
+
+$text-block-bck-color: $blue-300;
+$char-color-success: $green-400;
+$char-color-failure: $red-400;
+
+@mixin typer {
+  #typer {
+    #text-block {
+      color: white;
+      background-color: $text-block-bck-color;
+      font-size: 2em;
+      margin: 8px;
+      padding: 8px;
+      border-radius: 2px;
+      text-align: center;
+      border: 1px solid;
+
+      .success {
+        background-color: $char-color-success;
+      }
+
+      .failure {
+        background-color: $char-color-failure;
+      }
+    }
+
+    #type-section {
+      text-align: center;
+      #text-area {
+        font-size: 1.5em;
+      }
+    }
+
+    #img {
+      text-align: center;
+      img {
+        width: 42em;
+      }
+    }
+  }
+}
