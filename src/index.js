@@ -1,4 +1,5 @@
 import Typer from "./typer/Typer";
+import GenerateQuoteService from "./service/GenerateQuoteService";
 
 class Main {
   constructor() {
@@ -11,6 +12,14 @@ class Main {
     // Theme
     let app = document.querySelector("body");
     app.classList.add("app");
+
+    let footer = document.querySelector("footer");
+    let yearSpan = footer.querySelector("span");
+    yearSpan.innerHTML = new Date().getFullYear();
+
+    // let text = new GenerateQuoteService().exec().then(text => {
+    //   new Typer(text);
+    // });
 
     new Typer(this._generateText());
   }

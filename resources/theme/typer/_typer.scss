@@ -12,13 +12,13 @@ $char-color-failure: $red-500;
 @mixin typer {
   #typer {
     #text-block {
+      max-width: 600px;
       color: white;
       background-color: $text-block-bck-color;
       font-size: $text-block-font-size;
-      margin: 8px;
+      margin: 8px auto;
       padding: 8px;
       border-radius: 2px;
-      text-align: center;
       border: 1px solid;
 
       .success {

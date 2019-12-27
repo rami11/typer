@@ -1,4 +1,5 @@
 @import "generic/var/colors";
+@import "common/footer";
 @import "typer/typer";
 
 $bck-color-1: $blue-100;
@@ -7,4 +8,5 @@ $bck-color-2: $blue-50;
 .app {
   background-image: linear-gradient($bck-color-1, $bck-color-2);
   @include typer;
+  @include footer;
 }
