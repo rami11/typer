@@ -118,7 +118,7 @@ eval("__webpack_require__.r(__webpack_exports__);\nclass GenerateQuoteService {\
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nclass Summary {\n  constructor() {\n    /* errors */\n    this.errorSpan = document.querySelector(\"#error-block span\");\n    this.errorCount = 0;\n    this.errorSpan.innerHTML = this.errorCount;\n  }\n\n  increaseErrorCount() {\n    this.errorCount++;\n    this.errorSpan.innerHTML = this.errorCount;\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Summary);\n\n\n//# sourceURL=webpack:///./src/typer/Summary.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nclass Summary {\n  constructor() {\n    /* errors */\n    this.errorSpan = document.querySelector(\"#summary-block span\");\n    this.errorCount = 0;\n    this.errorSpan.innerHTML = this.errorCount;\n  }\n\n  increaseErrorCount() {\n    this.errorCount++;\n    this.errorSpan.innerHTML = this.errorCount;\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Summary);\n\n\n//# sourceURL=webpack:///./src/typer/Summary.js?");
 
 /***/ }),
 

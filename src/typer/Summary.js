@@ -1,7 +1,7 @@
 class Summary {
   constructor() {
     /* errors */
-    this.errorSpan = document.querySelector("#error-block span");
+    this.errorSpan = document.querySelector("#summary-block span");
     this.errorCount = 0;
     this.errorSpan.innerHTML = this.errorCount;
   }

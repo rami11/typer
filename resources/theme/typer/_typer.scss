@@ -1,13 +1,8 @@
 @import "../generic/var/colors";
 @import "../generic/button/button";
+@import "../generic/block/block";
 
 $img-width: 30em;
-$text-area-font-size: 1.1em;
-$text-area-width: 75%;
-$text-block-bck-color: $grey-900;
-$text-block-font-size: 1.1em;
-$char-color-success: $green-500;
-$char-color-failure: $red-500;
 
 @mixin typer {
   #typer {
@@ -15,6 +10,10 @@ $char-color-failure: $red-500;
       text-align: center;
       img {
         width: $img-width;
+      }
+
+      #summary-block {
+        @include block;
       }
     }
 
@@ -26,14 +25,7 @@ $char-color-failure: $red-500;
     }
 
     #text-block {
-      max-width: 600px;
-      color: white;
-      background-color: $text-block-bck-color;
-      font-size: $text-block-font-size;
-      margin: 8px auto;
-      padding: 8px;
-      border-radius: 2px;
-      border: 1px solid;
+      @include block;
 
       .success {
         color: $char-color-success;
