@@ -26,7 +26,6 @@ class Main {
 
   _generateText() {
     let i = Math.floor(Math.random() * Math.floor(this.TEXTS.length));
-    console.log(i);
     return this.TEXTS[i];
   }
 }

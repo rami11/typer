@@ -1,5 +1,17 @@
 .app {
   background-image: linear-gradient(#bbdefb, #e1f5fe); }
+  .app #typer #top-section {
+    text-align: center; }
+    .app #typer #top-section img {
+      width: 30em; }
+  .app #typer #bottom-section {
+    text-align: center; }
+    .app #typer #bottom-section #btn-reset {
+      width: 10em;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 2px;
+      font-family: Times; }
   .app #typer #text-block {
     max-width: 600px;
     color: white;
@@ -13,18 +25,6 @@
       color: #4caf50; }
     .app #typer #text-block .failure {
       background-color: #f44336; }
-  .app #typer #bottom-section {
-    text-align: center; }
-    .app #typer #bottom-section #btn-reset {
-      width: 10em;
-      font-size: 1em;
-      cursor: pointer;
-      border-radius: 2px;
-      font-family: Times; }
-  .app #typer #img {
-    text-align: center; }
-    .app #typer #img img {
-      width: 30em; }
   .app footer {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.7em;

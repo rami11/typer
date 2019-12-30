@@ -11,6 +11,20 @@ $char-color-failure: $red-500;
 
 @mixin typer {
   #typer {
+    #top-section {
+      text-align: center;
+      img {
+        width: $img-width;
+      }
+    }
+
+    #bottom-section {
+      text-align: center;
+      #btn-reset {
+        @include button;
+      }
+    }
+
     #text-block {
       max-width: 600px;
       color: white;
@@ -27,20 +41,6 @@ $char-color-failure: $red-500;
 
       .failure {
         background-color: $char-color-failure;
-      }
-    }
-
-    #bottom-section {
-      text-align: center;
-      #btn-reset {
-        @include button;
-      }
-    }
-
-    #img {
-      text-align: center;
-      img {
-        width: $img-width;
       }
     }
   }

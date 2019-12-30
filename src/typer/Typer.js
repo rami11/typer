@@ -1,4 +1,5 @@
 import TextBlock from "./TextBlock";
+import Summary from "./Summary";
 
 class Typer {
   constructor(text) {
@@ -6,6 +7,7 @@ class Typer {
     this.typeTextArea = document.querySelector("#text-area");
     this.textBlock = new TextBlock(text);
     this.resetButton = document.querySelector("#btn-reset");
+    this.summary = new Summary();
 
     this._init();
   }
@@ -22,7 +24,6 @@ class Typer {
 
   _onTextAreaValueChange() {
     let key = event.key;
-    console.log("Key pressed:", key);
 
     if (key === "Backspace") {
       console.log("backspace key pressed!");
@@ -45,6 +46,7 @@ class Typer {
       this.textBlock.colorCharSuccess();
     } else {
       this.textBlock.colorCharFailure();
+      this.summary.increaseErrorCount();
     }
   }
 }
