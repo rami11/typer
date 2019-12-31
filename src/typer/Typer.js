@@ -7,7 +7,7 @@ class Typer {
     this.typeTextArea = document.querySelector("#text-area");
     this.textBlock = new TextBlock(text);
     this.resetButton = document.querySelector("#btn-reset");
-    this.summary = new Summary();
+    this.summary = new Summary(this.textBlock);
 
     this._init();
   }
@@ -18,34 +18,28 @@ class Typer {
     });
 
     this.textBlock.addKeyPressListener(() => {
-      this._onTextAreaValueChange();
+      this._handleKeyPress();
     });
   }
 
-  _onTextAreaValueChange() {
+  _handleKeyPress() {
     let key = event.key;
 
-    if (key === "Backspace") {
-      console.log("backspace key pressed!");
-    } else {
-      this._handleKeyPress(key);
-    }
-  }
-
-  _handleKeyPress(key) {
     let currentChar = this.textBlock.getCurrentChar();
 
+    if (this.textBlock.isWordEndReached()) {
+      this.summary.updateSpeed();
+    }
     if (this.textBlock.isLastCharReached()) {
       // game over
       this.textBlock.disable();
       this.resetButton.removeAttribute("hidden");
       this.resetButton.focus();
     }
-
     if (key === currentChar) {
-      this.textBlock.colorCharSuccess();
+      this.textBlock.charPressSuccess();
     } else {
-      this.textBlock.colorCharFailure();
+      this.textBlock.charPressFailure();
       this.summary.increaseErrorCount();
     }
   }

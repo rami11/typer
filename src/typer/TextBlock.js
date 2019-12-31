@@ -1,10 +1,8 @@
 class TextBlock {
   constructor(text) {
-    this.COLOR_SUCCESS = "#a5d6a7";
-    this.COLOR_FAILURE = "#ef9a9a";
-
     this.self = document.querySelector("#text-block");
     this.charIndex = 0;
+    this.charCount = 0; // charcters successfully typed
     this.text = text;
 
     this._init();
@@ -34,8 +32,21 @@ class TextBlock {
     }
   }
 
+  isLastCharReached() {
+    return this.charIndex === this.text.length - 1;
+  }
+
+  isWordEndReached() {
+    let currentChar = this.getCurrentChar();
+    return currentChar === " " || this.isLastCharReached();
+  }
+
   addKeyPressListener(keyPressEvent = () => {}) {
     this.self.addEventListener("keypress", keyPressEvent);
+  }
+
+  getCharSuccessTypedCount() {
+    return this.charCount;
   }
 
   setText(text) {
@@ -53,10 +64,6 @@ class TextBlock {
     }
   }
 
-  isLastCharReached() {
-    return this.charIndex === this.text.length - 1;
-  }
-
   nextChar() {
     let charSpan = this._getCurrentCharSpan();
     charSpan.style.textDecoration = "none";
@@ -64,11 +71,12 @@ class TextBlock {
     this._underlineCurrentChar();
   }
 
-  colorCharSuccess() {
+  charPressSuccess() {
+    this.charCount++;
     this._colorChar(true);
   }
 
-  colorCharFailure() {
+  charPressFailure() {
     this._colorChar(false);
   }
 
@@ -78,9 +86,3 @@ class TextBlock {
 }
 
 export default TextBlock;
-
-// unColorChar() {
-//   let charSpan = this._getCurrentCharSpan();
-//   charSpan.style.color = "black";
-//   this.charIndex--;
-// }
