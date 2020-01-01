@@ -19,15 +19,16 @@ class LanguageChooser {
   }
 
   _updateComponent() {
+    let languageCode = I18n.getInstance().getLanguageCode();
     for (let option of this.languageChooser.options) {
-      if (option.value === I18n.getInstance().getLanguageCode()) {
+      if (option.value === languageCode) {
         option.setAttribute("selected", true);
       } else {
         option.removeAttribute("selected");
       }
     }
     let html = document.querySelector("html");
-    html.setAttribute("lang", this.languageCode);
+    html.setAttribute("lang", languageCode);
   }
 }
 
