@@ -5,13 +5,13 @@ import I18n from "./locale/I18n";
 class Main {
   constructor() {
     // Theme
-    this.attachTheme();
+    this._attachTheme();
 
-    // i18n
+    // I18n
     this.languageChooser = document.querySelector("#language-chooser select");
 
-    // footer
-    this.populateFooter();
+    // Footer
+    this._populateFooter();
 
     this._init();
   }
@@ -42,13 +42,13 @@ class Main {
     });
   }
 
-  attachTheme() {
+  _attachTheme() {
     this.THEME = "theme";
     let app = document.querySelector("body");
     app.classList.add(this.THEME);
   }
 
-  populateFooter() {
+  _populateFooter() {
     let footer = document.querySelector("footer");
     let yearSpan = footer.querySelector("span");
     yearSpan.innerHTML = new Date().getFullYear();

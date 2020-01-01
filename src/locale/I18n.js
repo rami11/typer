@@ -10,7 +10,7 @@ class I18n {
       fr: ["En francais", "C'est un autre texte."]
     };
 
-    this.lang = {
+    this.CAPTIONS = {
       en: {
         errors: "Errors",
         speed: "Speed",
@@ -35,7 +35,7 @@ class I18n {
   }
 
   caption(key) {
-    return this.lang[this.languageCode][key];
+    return this.CAPTIONS[this.languageCode][key];
   }
 
   getLanguageCode() {
