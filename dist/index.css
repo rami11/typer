@@ -1,10 +1,10 @@
-.app {
+.theme {
   background-image: linear-gradient(#bbdefb, #e1f5fe); }
-  .app #typer #top-section {
+  .theme #typer #top-section {
     text-align: center; }
-    .app #typer #top-section img {
+    .theme #typer #top-section img {
       width: 30em; }
-    .app #typer #top-section #summary-block {
+    .theme #typer #top-section #summary-block {
       max-width: 600px;
       color: white;
       background-color: #212121;
@@ -13,15 +13,15 @@
       padding: 8px;
       border-radius: 2px;
       border: 1px solid; }
-  .app #typer #bottom-section {
+  .theme #typer #bottom-section {
     text-align: center; }
-    .app #typer #bottom-section #btn-reset {
+    .theme #typer #bottom-section #btn-reset {
       width: 10em;
       font-size: 1em;
       cursor: pointer;
       border-radius: 2px;
       font-family: Times; }
-  .app #typer #text-block {
+  .theme #typer #text-block {
     max-width: 600px;
     color: white;
     background-color: #212121;
@@ -30,11 +30,11 @@
     padding: 8px;
     border-radius: 2px;
     border: 1px solid; }
-    .app #typer #text-block .success {
+    .theme #typer #text-block .success {
       color: #4caf50; }
-    .app #typer #text-block .failure {
+    .theme #typer #text-block .failure {
       background-color: #f44336; }
-  .app footer {
+  .theme footer {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.7em;
     position: absolute;
@@ -42,5 +42,5 @@
     right: 8px;
     text-align: right; }
     @media (max-height: 300px) {
-      .app footer {
+      .theme footer {
         display: none; } }

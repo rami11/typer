@@ -1,11 +1,16 @@
 import TextBlock from "./TextBlock";
 import Summary from "./Summary";
+import I18n from "../locale/I18n";
 
 class Typer {
   constructor(text) {
     this.text = text;
     this.typeTextArea = document.querySelector("#text-area");
     this.textBlock = new TextBlock(text);
+
+    /* reset button */
+    let resetLabel = document.querySelector("#reset-label");
+    resetLabel.innerHTML = I18n.getInstance().caption("reset");
     this.resetButton = document.querySelector("#btn-reset");
     this.summary = new Summary(this.textBlock);
 

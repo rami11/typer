@@ -1,4 +1,4 @@
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,11 +12,23 @@
     <title>Typer</title>
   </head>
   <body>
+    <header>
+      <div id="language-chooser">
+        <i class="fa fa-language"></i>
+        <select>
+          <option value="en">En</option>
+          <option value="fr">Fr</option>
+        </select>
+      </div>
+    </header>
+
     <main>
       <div id="typer">
         <div id="top-section">
           <div id="summary-block">
-            Errors: <span id="error-count"><!-- error count --></span>, Speed:
+            <span id="errors-label"><!-- errors --></span>:
+            <span id="error-count"><!-- error count --></span>,
+            <span id="speed-label"><!-- speed --></span>:
             <span id="speed"><!-- cpm --></span>
           </div>
           <img
@@ -30,7 +42,8 @@
         </div>
         <div id="bottom-section">
           <button hidden id="btn-reset">
-            <i class="fa fa-refresh"></i> Reset
+            <i class="fa fa-refresh"></i>
+            <span id="reset-label">Reset</span>
           </button>
         </div>
       </div>
