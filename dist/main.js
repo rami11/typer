@@ -154,7 +154,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _com
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _strings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./strings */ \"./src/locale/strings.js\");\n/* harmony import */ var _texts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./texts */ \"./src/locale/texts.js\");\n/* harmony import */ var _util_variables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util/variables */ \"./src/util/variables.js\");\n// import SharedPref from \"../util/SharedPref\";\n\n\n\n\nclass I18n {\n  constructor() {\n    this.languageCode = \"en\";\n    let urlParams = new URLSearchParams(window.location.search);\n    let lang = urlParams.get(\"lang\");\n    if (lang) {\n      this.languageCode = lang;\n    }\n    console.log(\"language code:\", this.languageCode);\n  }\n\n  static getInstance() {\n    if (!this.i18n) {\n      this.i18n = new I18n();\n    }\n    return this.i18n;\n  }\n\n  translate(key) {\n    return _strings__WEBPACK_IMPORTED_MODULE_0__[\"STRS\"][this.languageCode][key];\n  }\n\n  setLanguageCode(languageCode) {\n    this.languageCode = languageCode;\n  }\n\n  getLanguageCode() {\n    return this.languageCode;\n  }\n\n  generateText() {\n    let i = Math.floor(\n      Math.random() * Math.floor(_texts__WEBPACK_IMPORTED_MODULE_1__[\"TEXTS\"][this.languageCode].length)\n    );\n    return _texts__WEBPACK_IMPORTED_MODULE_1__[\"TEXTS\"][this.languageCode][i];\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (I18n);\n\n\n//# sourceURL=webpack:///./src/locale/I18n.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _strings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./strings */ \"./src/locale/strings.js\");\n/* harmony import */ var _texts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./texts */ \"./src/locale/texts.js\");\n\n\n\nclass I18n {\n  constructor() {\n    this.languageCode = \"en\";\n    let urlParams = new URLSearchParams(window.location.search);\n    let lang = urlParams.get(\"lang\");\n    if (lang) {\n      this.languageCode = lang;\n    }\n  }\n\n  static getInstance() {\n    if (!this.i18n) {\n      this.i18n = new I18n();\n    }\n    return this.i18n;\n  }\n\n  translate(key) {\n    return _strings__WEBPACK_IMPORTED_MODULE_0__[\"STRS\"][this.languageCode][key];\n  }\n\n  setLanguageCode(languageCode) {\n    this.languageCode = languageCode;\n  }\n\n  getLanguageCode() {\n    return this.languageCode;\n  }\n\n  generateText() {\n    let i = Math.floor(\n      Math.random() * Math.floor(_texts__WEBPACK_IMPORTED_MODULE_1__[\"TEXTS\"][this.languageCode].length)\n    );\n    return _texts__WEBPACK_IMPORTED_MODULE_1__[\"TEXTS\"][this.languageCode][i];\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (I18n);\n\n\n//# sourceURL=webpack:///./src/locale/I18n.js?");
 
 /***/ }),
 
@@ -191,17 +191,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\nclass GenerateQuoteService {\n  async exec() {\n    const URL = \"http://quotes.rest/qod.json?category=inspire\";\n    const response = await fetch(URL);\n    console.log(\"response:\", response);\n\n    const json = await response.json();\n\n    console.log(\"json:\", json);\n    let text = json.contents.quotes[0].quote;\n    console.log(\"text:\", text);\n\n    return text;\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (GenerateQuoteService);\n\n\n//# sourceURL=webpack:///./src/service/GenerateQuoteService.js?");
-
-/***/ }),
-
-/***/ "./src/util/variables.js":
-/*!*******************************!*\
-  !*** ./src/util/variables.js ***!
-  \*******************************/
-/*! exports provided: languageCode */
-/***/ (function(module, exports) {
-
-eval("throw new Error(\"Module build failed: Error: ENOENT: no such file or directory, open '/Users/rsn/projects/javascript/vanilla/fun/typer/src/util/variables.js'\");\n\n//# sourceURL=webpack:///./src/util/variables.js?");
 
 /***/ })
 

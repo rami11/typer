@@ -1,7 +1,5 @@
-// import SharedPref from "../util/SharedPref";
 import { STRS } from "./strings";
 import { TEXTS } from "./texts";
-import { languageCode } from "../util/variables";
 
 class I18n {
   constructor() {
@@ -11,7 +9,6 @@ class I18n {
     if (lang) {
       this.languageCode = lang;
     }
-    console.log("language code:", this.languageCode);
   }
 
   static getInstance() {
