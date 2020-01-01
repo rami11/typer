@@ -1,26 +1,17 @@
-import SharedPref from "../util/SharedPref";
+// import SharedPref from "../util/SharedPref";
 import { STRS } from "./strings";
 import { TEXTS } from "./texts";
+import { languageCode } from "../util/variables";
 
 class I18n {
   constructor() {
-    let sharedPref = new SharedPref();
-    this.languageCode = sharedPref.getLanguageCode();
-  }
-
-  generateText() {
-    let i = Math.floor(
-      Math.random() * Math.floor(TEXTS[this.languageCode].length)
-    );
-    return TEXTS[this.languageCode][i];
-  }
-
-  caption(key) {
-    return STRS[this.languageCode][key];
-  }
-
-  getLanguageCode() {
-    return this.languageCode;
+    this.languageCode = "en";
+    let urlParams = new URLSearchParams(window.location.search);
+    let lang = urlParams.get("lang");
+    if (lang) {
+      this.languageCode = lang;
+    }
+    console.log("language code:", this.languageCode);
   }
 
   static getInstance() {
@@ -28,6 +19,25 @@ class I18n {
       this.i18n = new I18n();
     }
     return this.i18n;
+  }
+
+  translate(key) {
+    return STRS[this.languageCode][key];
+  }
+
+  setLanguageCode(languageCode) {
+    this.languageCode = languageCode;
+  }
+
+  getLanguageCode() {
+    return this.languageCode;
+  }
+
+  generateText() {
+    let i = Math.floor(
+      Math.random() * Math.floor(TEXTS[this.languageCode].length)
+    );
+    return TEXTS[this.languageCode][i];
   }
 }
 

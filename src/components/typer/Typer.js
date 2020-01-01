@@ -1,6 +1,6 @@
 import TextBlock from "./TextBlock";
 import Summary from "./Summary";
-import I18n from "../locale/I18n";
+import I18n from "../../locale/I18n";
 
 class Typer {
   constructor(text) {
@@ -10,7 +10,7 @@ class Typer {
 
     /* reset button */
     let resetLabel = document.querySelector("#reset-label");
-    resetLabel.innerHTML = I18n.getInstance().caption("reset");
+    resetLabel.innerHTML = I18n.getInstance().translate("reset");
     this.resetButton = document.querySelector("#btn-reset");
     this.summary = new Summary(this.textBlock);
 

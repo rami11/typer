@@ -86,6 +86,54 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/components/locale/LanguageChooser.js":
+/*!**************************************************!*\
+  !*** ./src/components/locale/LanguageChooser.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _locale_I18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../locale/I18n */ \"./src/locale/I18n.js\");\n\n\nclass LanguageChooser {\n  constructor() {\n    this.languageChooser = document.querySelector(\"#language-chooser select\");\n    this.form = document.querySelector(\"#form-lang\");\n\n    this._init();\n  }\n\n  _init() {\n    this._updateComponent();\n\n    this.languageChooser.addEventListener(\"change\", () => {\n      let languageCode = event.target.selectedOptions[0].value;\n      _locale_I18n__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getInstance().setLanguageCode(languageCode);\n      this.form.submit();\n    });\n  }\n\n  _updateComponent() {\n    for (let option of this.languageChooser.options) {\n      if (option.value === _locale_I18n__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getInstance().getLanguageCode()) {\n        option.setAttribute(\"selected\", true);\n      } else {\n        option.removeAttribute(\"selected\");\n      }\n    }\n    let html = document.querySelector(\"html\");\n    html.setAttribute(\"lang\", this.languageCode);\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (LanguageChooser);\n\n\n//# sourceURL=webpack:///./src/components/locale/LanguageChooser.js?");
+
+/***/ }),
+
+/***/ "./src/components/typer/Summary.js":
+/*!*****************************************!*\
+  !*** ./src/components/typer/Summary.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _locale_I18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../locale/I18n */ \"./src/locale/I18n.js\");\n\n\nclass Summary {\n  constructor(textBlock) {\n    this.textBlock = textBlock;\n\n    /* errors */\n    let errorLabel = document.querySelector(\"#errors-label\");\n    errorLabel.innerHTML = _locale_I18n__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getInstance().translate(\"errors\");\n    this.errorSpan = document.querySelector(\"#error-count\");\n    this.errorCount = 0;\n    this.errorSpan.innerHTML = this.errorCount;\n\n    /* speed */\n    let speedLabel = document.querySelector(\"#speed-label\");\n    speedLabel.innerHTML = _locale_I18n__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getInstance().translate(\"speed\");\n    this.speedSpan = document.querySelector(\"#speed\");\n    this.speedSpan.innerHTML = 0;\n    this.initTime = this._timeNow();\n  }\n\n  _timeNow() {\n    let timeNow = Date.now();\n    return timeNow;\n  }\n\n  _calcSpeed() {\n    let charCount = this.textBlock.getCharSuccessTypedCount();\n    let intervalSec = (this._timeNow() - this.initTime) / 1000;\n    let speed = Math.ceil((charCount * 60) / intervalSec);\n\n    return speed;\n  }\n\n  updateSpeed() {\n    this.speedSpan.innerHTML = this._calcSpeed();\n  }\n\n  increaseErrorCount() {\n    this.errorCount++;\n    this.errorSpan.innerHTML = this.errorCount;\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Summary);\n\n\n//# sourceURL=webpack:///./src/components/typer/Summary.js?");
+
+/***/ }),
+
+/***/ "./src/components/typer/TextBlock.js":
+/*!*******************************************!*\
+  !*** ./src/components/typer/TextBlock.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nclass TextBlock {\n  constructor(text) {\n    this.self = document.querySelector(\"#text-block\");\n    this.charIndex = 0;\n    this.charCount = 0; // charcters successfully typed\n    this.text = text;\n\n    this._init();\n  }\n\n  _init() {\n    this.setText(this.text);\n    this._underlineCurrentChar();\n  }\n\n  _getCurrentCharSpan() {\n    return document.querySelector(`#char-${this.charIndex}`);\n  }\n\n  _underlineCurrentChar() {\n    let charSpan = this._getCurrentCharSpan();\n    if (charSpan) {\n      charSpan.style.textDecoration = \"underline\";\n    }\n  }\n\n  _colorChar(isSuccess) {\n    let charSpan = this._getCurrentCharSpan();\n    if (charSpan) {\n      charSpan.classList.add(isSuccess ? \"success\" : \"failure\");\n      this.nextChar();\n    }\n  }\n\n  isLastCharReached() {\n    return this.charIndex === this.text.length - 1;\n  }\n\n  isWordEndReached() {\n    let currentChar = this.getCurrentChar();\n    return currentChar === \" \" || this.isLastCharReached();\n  }\n\n  addKeyPressListener(keyPressEvent = () => {}) {\n    this.self.addEventListener(\"keypress\", keyPressEvent);\n  }\n\n  getCharSuccessTypedCount() {\n    return this.charCount;\n  }\n\n  setText(text) {\n    let result = \"\";\n    for (let i in text) {\n      result += '<span id=\"char-' + i + '\">' + text[i] + \"</span>\";\n    }\n    this.self.innerHTML = result;\n  }\n\n  getCurrentChar() {\n    let charSpan = this._getCurrentCharSpan();\n    if (charSpan) {\n      return charSpan.innerHTML;\n    }\n  }\n\n  nextChar() {\n    let charSpan = this._getCurrentCharSpan();\n    charSpan.style.textDecoration = \"none\";\n    this.charIndex++;\n    this._underlineCurrentChar();\n  }\n\n  charPressSuccess() {\n    this.charCount++;\n    this._colorChar(true);\n  }\n\n  charPressFailure() {\n    this._colorChar(false);\n  }\n\n  disable() {\n    this.self.removeAttribute(\"tabindex\");\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (TextBlock);\n\n\n//# sourceURL=webpack:///./src/components/typer/TextBlock.js?");
+
+/***/ }),
+
+/***/ "./src/components/typer/Typer.js":
+/*!***************************************!*\
+  !*** ./src/components/typer/Typer.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _TextBlock__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TextBlock */ \"./src/components/typer/TextBlock.js\");\n/* harmony import */ var _Summary__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Summary */ \"./src/components/typer/Summary.js\");\n/* harmony import */ var _locale_I18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../locale/I18n */ \"./src/locale/I18n.js\");\n\n\n\n\nclass Typer {\n  constructor(text) {\n    this.text = text;\n    this.typeTextArea = document.querySelector(\"#text-area\");\n    this.textBlock = new _TextBlock__WEBPACK_IMPORTED_MODULE_0__[\"default\"](text);\n\n    /* reset button */\n    let resetLabel = document.querySelector(\"#reset-label\");\n    resetLabel.innerHTML = _locale_I18n__WEBPACK_IMPORTED_MODULE_2__[\"default\"].getInstance().translate(\"reset\");\n    this.resetButton = document.querySelector(\"#btn-reset\");\n    this.summary = new _Summary__WEBPACK_IMPORTED_MODULE_1__[\"default\"](this.textBlock);\n\n    this._init();\n  }\n\n  _init() {\n    this.resetButton.addEventListener(\"click\", () => {\n      location.reload();\n    });\n\n    this.textBlock.addKeyPressListener(() => {\n      this._handleKeyPress();\n    });\n  }\n\n  _handleKeyPress() {\n    let key = event.key;\n\n    let currentChar = this.textBlock.getCurrentChar();\n\n    if (this.textBlock.isWordEndReached()) {\n      this.summary.updateSpeed();\n    }\n    if (this.textBlock.isLastCharReached()) {\n      // game over\n      this.textBlock.disable();\n      this.resetButton.removeAttribute(\"hidden\");\n      this.resetButton.focus();\n    }\n    if (key === currentChar) {\n      this.textBlock.charPressSuccess();\n    } else {\n      this.textBlock.charPressFailure();\n      this.summary.increaseErrorCount();\n    }\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Typer);\n\n\n//# sourceURL=webpack:///./src/components/typer/Typer.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -94,7 +142,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _typer_Typer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./typer/Typer */ \"./src/typer/Typer.js\");\n/* harmony import */ var _service_GenerateQuoteService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./service/GenerateQuoteService */ \"./src/service/GenerateQuoteService.js\");\n/* harmony import */ var _locale_I18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./locale/I18n */ \"./src/locale/I18n.js\");\n\n\n\n\nclass Main {\n  constructor() {\n    // Theme\n    this._attachTheme();\n\n    // I18n\n    this.languageChooser = document.querySelector(\"#language-chooser select\");\n\n    // Footer\n    this._populateFooter();\n\n    this._init();\n  }\n\n  _init() {\n    new _typer_Typer__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_locale_I18n__WEBPACK_IMPORTED_MODULE_2__[\"default\"].getInstance().generateText());\n\n    let languageCode = _locale_I18n__WEBPACK_IMPORTED_MODULE_2__[\"default\"].getInstance().getLanguageCode();\n    console.log(\"in init language code:\", languageCode);\n\n    for (let option of this.languageChooser.options) {\n      if (option.value === languageCode) {\n        option.setAttribute(\"selected\", true);\n      } else {\n        option.removeAttribute(\"selected\");\n      }\n    }\n    let html = document.querySelector(\"html\");\n    html.setAttribute(\"lang\", this.language);\n\n    this.languageChooser.addEventListener(\"change\", () => {\n      let locale = event.target.selectedOptions[0].value;\n      let html = document.querySelector(\"html\");\n      html.setAttribute(\"lang\", locale);\n\n      location.reload();\n      console.log(\"changed!\", locale);\n    });\n  }\n\n  _attachTheme() {\n    this.THEME = \"theme\";\n    let app = document.querySelector(\"body\");\n    app.classList.add(this.THEME);\n  }\n\n  _populateFooter() {\n    let footer = document.querySelector(\"footer\");\n    let yearSpan = footer.querySelector(\"span\");\n    yearSpan.innerHTML = new Date().getFullYear();\n  }\n}\n\nwindow.onload = () => {\n  new Main();\n};\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_typer_Typer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/typer/Typer */ \"./src/components/typer/Typer.js\");\n/* harmony import */ var _components_locale_LanguageChooser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/locale/LanguageChooser */ \"./src/components/locale/LanguageChooser.js\");\n/* harmony import */ var _locale_I18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./locale/I18n */ \"./src/locale/I18n.js\");\n/* harmony import */ var _service_GenerateQuoteService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./service/GenerateQuoteService */ \"./src/service/GenerateQuoteService.js\");\n\n\n\n\n\n\nclass Main {\n  constructor() {\n    // Theme\n    this._attachTheme();\n\n    // Footer\n    this._populateFooter();\n\n    this._init();\n  }\n\n  _init() {\n    new _components_typer_Typer__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_locale_I18n__WEBPACK_IMPORTED_MODULE_2__[\"default\"].getInstance().generateText());\n    new _components_locale_LanguageChooser__WEBPACK_IMPORTED_MODULE_1__[\"default\"]();\n  }\n\n  _attachTheme() {\n    this.THEME = \"theme\";\n    let app = document.querySelector(\"body\");\n    app.classList.add(this.THEME);\n  }\n\n  _populateFooter() {\n    let footer = document.querySelector(\"footer\");\n    let yearSpan = footer.querySelector(\"span\");\n    yearSpan.innerHTML = new Date().getFullYear();\n  }\n}\n\nwindow.onload = () => {\n  new Main();\n};\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -106,7 +154,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _typ
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _util_SharedPref__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/SharedPref */ \"./src/util/SharedPref.js\");\n/* harmony import */ var _strings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./strings */ \"./src/locale/strings.js\");\n/* harmony import */ var _texts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./texts */ \"./src/locale/texts.js\");\n\n\n\n\nclass I18n {\n  constructor() {\n    let sharedPref = new _util_SharedPref__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\n    this.languageCode = sharedPref.getLanguageCode();\n  }\n\n  generateText() {\n    let i = Math.floor(\n      Math.random() * Math.floor(_texts__WEBPACK_IMPORTED_MODULE_2__[\"TEXTS\"][this.languageCode].length)\n    );\n    return _texts__WEBPACK_IMPORTED_MODULE_2__[\"TEXTS\"][this.languageCode][i];\n  }\n\n  caption(key) {\n    return _strings__WEBPACK_IMPORTED_MODULE_1__[\"STRS\"][this.languageCode][key];\n  }\n\n  getLanguageCode() {\n    return this.languageCode;\n  }\n\n  static getInstance() {\n    if (!this.i18n) {\n      this.i18n = new I18n();\n    }\n    return this.i18n;\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (I18n);\n\n\n//# sourceURL=webpack:///./src/locale/I18n.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _strings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./strings */ \"./src/locale/strings.js\");\n/* harmony import */ var _texts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./texts */ \"./src/locale/texts.js\");\n/* harmony import */ var _util_variables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util/variables */ \"./src/util/variables.js\");\n// import SharedPref from \"../util/SharedPref\";\n\n\n\n\nclass I18n {\n  constructor() {\n    this.languageCode = \"en\";\n    let urlParams = new URLSearchParams(window.location.search);\n    let lang = urlParams.get(\"lang\");\n    if (lang) {\n      this.languageCode = lang;\n    }\n    console.log(\"language code:\", this.languageCode);\n  }\n\n  static getInstance() {\n    if (!this.i18n) {\n      this.i18n = new I18n();\n    }\n    return this.i18n;\n  }\n\n  translate(key) {\n    return _strings__WEBPACK_IMPORTED_MODULE_0__[\"STRS\"][this.languageCode][key];\n  }\n\n  setLanguageCode(languageCode) {\n    this.languageCode = languageCode;\n  }\n\n  getLanguageCode() {\n    return this.languageCode;\n  }\n\n  generateText() {\n    let i = Math.floor(\n      Math.random() * Math.floor(_texts__WEBPACK_IMPORTED_MODULE_1__[\"TEXTS\"][this.languageCode].length)\n    );\n    return _texts__WEBPACK_IMPORTED_MODULE_1__[\"TEXTS\"][this.languageCode][i];\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (I18n);\n\n\n//# sourceURL=webpack:///./src/locale/I18n.js?");
 
 /***/ }),
 
@@ -146,51 +194,14 @@ eval("__webpack_require__.r(__webpack_exports__);\nclass GenerateQuoteService {\
 
 /***/ }),
 
-/***/ "./src/typer/Summary.js":
-/*!******************************!*\
-  !*** ./src/typer/Summary.js ***!
-  \******************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "./src/util/variables.js":
+/*!*******************************!*\
+  !*** ./src/util/variables.js ***!
+  \*******************************/
+/*! exports provided: languageCode */
+/***/ (function(module, exports) {
 
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _locale_I18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../locale/I18n */ \"./src/locale/I18n.js\");\n\n\nclass Summary {\n  constructor(textBlock) {\n    this.textBlock = textBlock;\n\n    /* errors */\n    let errorLabel = document.querySelector(\"#errors-label\");\n    errorLabel.innerHTML = _locale_I18n__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getInstance().caption(\"errors\");\n    this.errorSpan = document.querySelector(\"#error-count\");\n    this.errorCount = 0;\n    this.errorSpan.innerHTML = this.errorCount;\n\n    /* speed */\n    let speedLabel = document.querySelector(\"#speed-label\");\n    speedLabel.innerHTML = _locale_I18n__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getInstance().caption(\"speed\");\n    this.speedSpan = document.querySelector(\"#speed\");\n    this.speedSpan.innerHTML = 0;\n    this.initTime = this._timeNow();\n  }\n\n  _timeNow() {\n    let timeNow = Date.now();\n    return timeNow;\n  }\n\n  _calcSpeed() {\n    let charCount = this.textBlock.getCharSuccessTypedCount();\n    let intervalSec = (this._timeNow() - this.initTime) / 1000;\n    let speed = Math.ceil((charCount * 60) / intervalSec);\n\n    return speed;\n  }\n\n  updateSpeed() {\n    this.speedSpan.innerHTML = this._calcSpeed();\n  }\n\n  increaseErrorCount() {\n    this.errorCount++;\n    this.errorSpan.innerHTML = this.errorCount;\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Summary);\n\n\n//# sourceURL=webpack:///./src/typer/Summary.js?");
-
-/***/ }),
-
-/***/ "./src/typer/TextBlock.js":
-/*!********************************!*\
-  !*** ./src/typer/TextBlock.js ***!
-  \********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nclass TextBlock {\n  constructor(text) {\n    this.self = document.querySelector(\"#text-block\");\n    this.charIndex = 0;\n    this.charCount = 0; // charcters successfully typed\n    this.text = text;\n\n    this._init();\n  }\n\n  _init() {\n    this.setText(this.text);\n    this._underlineCurrentChar();\n  }\n\n  _getCurrentCharSpan() {\n    return document.querySelector(`#char-${this.charIndex}`);\n  }\n\n  _underlineCurrentChar() {\n    let charSpan = this._getCurrentCharSpan();\n    if (charSpan) {\n      charSpan.style.textDecoration = \"underline\";\n    }\n  }\n\n  _colorChar(isSuccess) {\n    let charSpan = this._getCurrentCharSpan();\n    if (charSpan) {\n      charSpan.classList.add(isSuccess ? \"success\" : \"failure\");\n      this.nextChar();\n    }\n  }\n\n  isLastCharReached() {\n    return this.charIndex === this.text.length - 1;\n  }\n\n  isWordEndReached() {\n    let currentChar = this.getCurrentChar();\n    return currentChar === \" \" || this.isLastCharReached();\n  }\n\n  addKeyPressListener(keyPressEvent = () => {}) {\n    this.self.addEventListener(\"keypress\", keyPressEvent);\n  }\n\n  getCharSuccessTypedCount() {\n    return this.charCount;\n  }\n\n  setText(text) {\n    let result = \"\";\n    for (let i in text) {\n      result += '<span id=\"char-' + i + '\">' + text[i] + \"</span>\";\n    }\n    this.self.innerHTML = result;\n  }\n\n  getCurrentChar() {\n    let charSpan = this._getCurrentCharSpan();\n    if (charSpan) {\n      return charSpan.innerHTML;\n    }\n  }\n\n  nextChar() {\n    let charSpan = this._getCurrentCharSpan();\n    charSpan.style.textDecoration = \"none\";\n    this.charIndex++;\n    this._underlineCurrentChar();\n  }\n\n  charPressSuccess() {\n    this.charCount++;\n    this._colorChar(true);\n  }\n\n  charPressFailure() {\n    this._colorChar(false);\n  }\n\n  disable() {\n    this.self.removeAttribute(\"tabindex\");\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (TextBlock);\n\n\n//# sourceURL=webpack:///./src/typer/TextBlock.js?");
-
-/***/ }),
-
-/***/ "./src/typer/Typer.js":
-/*!****************************!*\
-  !*** ./src/typer/Typer.js ***!
-  \****************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _TextBlock__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TextBlock */ \"./src/typer/TextBlock.js\");\n/* harmony import */ var _Summary__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Summary */ \"./src/typer/Summary.js\");\n/* harmony import */ var _locale_I18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../locale/I18n */ \"./src/locale/I18n.js\");\n\n\n\n\nclass Typer {\n  constructor(text) {\n    this.text = text;\n    this.typeTextArea = document.querySelector(\"#text-area\");\n    this.textBlock = new _TextBlock__WEBPACK_IMPORTED_MODULE_0__[\"default\"](text);\n\n    /* reset button */\n    let resetLabel = document.querySelector(\"#reset-label\");\n    resetLabel.innerHTML = _locale_I18n__WEBPACK_IMPORTED_MODULE_2__[\"default\"].getInstance().caption(\"reset\");\n    this.resetButton = document.querySelector(\"#btn-reset\");\n    this.summary = new _Summary__WEBPACK_IMPORTED_MODULE_1__[\"default\"](this.textBlock);\n\n    this._init();\n  }\n\n  _init() {\n    this.resetButton.addEventListener(\"click\", () => {\n      location.reload();\n    });\n\n    this.textBlock.addKeyPressListener(() => {\n      this._handleKeyPress();\n    });\n  }\n\n  _handleKeyPress() {\n    let key = event.key;\n\n    let currentChar = this.textBlock.getCurrentChar();\n\n    if (this.textBlock.isWordEndReached()) {\n      this.summary.updateSpeed();\n    }\n    if (this.textBlock.isLastCharReached()) {\n      // game over\n      this.textBlock.disable();\n      this.resetButton.removeAttribute(\"hidden\");\n      this.resetButton.focus();\n    }\n    if (key === currentChar) {\n      this.textBlock.charPressSuccess();\n    } else {\n      this.textBlock.charPressFailure();\n      this.summary.increaseErrorCount();\n    }\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Typer);\n\n\n//# sourceURL=webpack:///./src/typer/Typer.js?");
-
-/***/ }),
-
-/***/ "./src/util/SharedPref.js":
-/*!********************************!*\
-  !*** ./src/util/SharedPref.js ***!
-  \********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nclass SharedPref {\n  constructor() {\n    this.SHARED_PREF_FILE_PATH = \"../.shared_pref.json\";\n    this.sharedPref = \"\";\n    this._readSharedPrefFile();\n  }\n\n  _readSharedPrefFile() {\n    var rawFile = new XMLHttpRequest();\n    rawFile.open(\"GET\", this.SHARED_PREF_FILE_PATH, false);\n    rawFile.onreadystatechange = () => {\n      if (rawFile.readyState === 4) {\n        if (rawFile.status === 200 || rawFile.status == 0) {\n          this.sharedPref = rawFile.responseText;\n        }\n      }\n    };\n    rawFile.send();\n  }\n\n  getLanguageCode() {\n    return JSON.parse(this.sharedPref).language;\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (SharedPref);\n\n\n//# sourceURL=webpack:///./src/util/SharedPref.js?");
+eval("throw new Error(\"Module build failed: Error: ENOENT: no such file or directory, open '/Users/rsn/projects/javascript/vanilla/fun/typer/src/util/variables.js'\");\n\n//# sourceURL=webpack:///./src/util/variables.js?");
 
 /***/ })
 

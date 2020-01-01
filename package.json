@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A web app that helps practice touch typing.",
   "private": true,
+  "dependencies": {
+    "nedb": "^1.8.0"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "node-sass": "^4.13.0",

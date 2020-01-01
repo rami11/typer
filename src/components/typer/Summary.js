@@ -1,4 +1,4 @@
-import I18n from "../locale/I18n";
+import I18n from "../../locale/I18n";
 
 class Summary {
   constructor(textBlock) {
@@ -6,14 +6,14 @@ class Summary {
 
     /* errors */
     let errorLabel = document.querySelector("#errors-label");
-    errorLabel.innerHTML = I18n.getInstance().caption("errors");
+    errorLabel.innerHTML = I18n.getInstance().translate("errors");
     this.errorSpan = document.querySelector("#error-count");
     this.errorCount = 0;
     this.errorSpan.innerHTML = this.errorCount;
 
     /* speed */
     let speedLabel = document.querySelector("#speed-label");
-    speedLabel.innerHTML = I18n.getInstance().caption("speed");
+    speedLabel.innerHTML = I18n.getInstance().translate("speed");
     this.speedSpan = document.querySelector("#speed");
     this.speedSpan.innerHTML = 0;
     this.initTime = this._timeNow();
