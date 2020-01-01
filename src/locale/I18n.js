@@ -1,41 +1,22 @@
 import SharedPref from "../util/SharedPref";
+import { STRS } from "./strings";
+import { TEXTS } from "./texts";
 
 class I18n {
   constructor() {
     let sharedPref = new SharedPref();
     this.languageCode = sharedPref.getLanguageCode();
-
-    this.TEXTS = {
-      en: ["Short text.", "Here is another text in english."],
-      fr: ["En francais", "C'est un autre texte."]
-    };
-
-    this.CAPTIONS = {
-      en: {
-        errors: "Errors",
-        speed: "Speed",
-        reset: "Reset"
-      },
-      fr: {
-        errors: "Erreurs",
-        speed: "Vitesse",
-        reset: "Réinitialiser"
-      }
-    };
   }
 
   generateText() {
     let i = Math.floor(
-      Math.random() * Math.floor(this.TEXTS[this.languageCode].length)
+      Math.random() * Math.floor(TEXTS[this.languageCode].length)
     );
-    let text = this.TEXTS[this.languageCode][i];
-    console.log("i:", i, "text:", text);
-
-    return text;
+    return TEXTS[this.languageCode][i];
   }
 
   caption(key) {
-    return this.CAPTIONS[this.languageCode][key];
+    return STRS[this.languageCode][key];
   }
 
   getLanguageCode() {

@@ -106,7 +106,31 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _typ
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _util_SharedPref__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/SharedPref */ \"./src/util/SharedPref.js\");\n\n\nclass I18n {\n  constructor() {\n    let sharedPref = new _util_SharedPref__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\n    this.languageCode = sharedPref.getLanguageCode();\n\n    this.TEXTS = {\n      en: [\"Short text.\", \"Here is another text in english.\"],\n      fr: [\"En francais\", \"C'est un autre texte.\"]\n    };\n\n    this.CAPTIONS = {\n      en: {\n        errors: \"Errors\",\n        speed: \"Speed\",\n        reset: \"Reset\"\n      },\n      fr: {\n        errors: \"Erreurs\",\n        speed: \"Vitesse\",\n        reset: \"Réinitialiser\"\n      }\n    };\n  }\n\n  generateText() {\n    let i = Math.floor(\n      Math.random() * Math.floor(this.TEXTS[this.languageCode].length)\n    );\n    let text = this.TEXTS[this.languageCode][i];\n    console.log(\"i:\", i, \"text:\", text);\n\n    return text;\n  }\n\n  caption(key) {\n    return this.CAPTIONS[this.languageCode][key];\n  }\n\n  getLanguageCode() {\n    return this.languageCode;\n  }\n\n  static getInstance() {\n    if (!this.i18n) {\n      this.i18n = new I18n();\n    }\n    return this.i18n;\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (I18n);\n\n\n//# sourceURL=webpack:///./src/locale/I18n.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _util_SharedPref__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/SharedPref */ \"./src/util/SharedPref.js\");\n/* harmony import */ var _strings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./strings */ \"./src/locale/strings.js\");\n/* harmony import */ var _texts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./texts */ \"./src/locale/texts.js\");\n\n\n\n\nclass I18n {\n  constructor() {\n    let sharedPref = new _util_SharedPref__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\n    this.languageCode = sharedPref.getLanguageCode();\n  }\n\n  generateText() {\n    let i = Math.floor(\n      Math.random() * Math.floor(_texts__WEBPACK_IMPORTED_MODULE_2__[\"TEXTS\"][this.languageCode].length)\n    );\n    return _texts__WEBPACK_IMPORTED_MODULE_2__[\"TEXTS\"][this.languageCode][i];\n  }\n\n  caption(key) {\n    return _strings__WEBPACK_IMPORTED_MODULE_1__[\"STRS\"][this.languageCode][key];\n  }\n\n  getLanguageCode() {\n    return this.languageCode;\n  }\n\n  static getInstance() {\n    if (!this.i18n) {\n      this.i18n = new I18n();\n    }\n    return this.i18n;\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (I18n);\n\n\n//# sourceURL=webpack:///./src/locale/I18n.js?");
+
+/***/ }),
+
+/***/ "./src/locale/strings.js":
+/*!*******************************!*\
+  !*** ./src/locale/strings.js ***!
+  \*******************************/
+/*! exports provided: STRS */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"STRS\", function() { return STRS; });\nconst STRS = {\n  en: {\n    errors: \"Errors\",\n    speed: \"Speed\",\n    reset: \"Reset\"\n  },\n  fr: {\n    errors: \"Erreurs\",\n    speed: \"Vitesse\",\n    reset: \"Réinitialiser\"\n  }\n};\n\n\n//# sourceURL=webpack:///./src/locale/strings.js?");
+
+/***/ }),
+
+/***/ "./src/locale/texts.js":
+/*!*****************************!*\
+  !*** ./src/locale/texts.js ***!
+  \*****************************/
+/*! exports provided: TEXTS */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"TEXTS\", function() { return TEXTS; });\nconst TEXTS = {\n  en: [\"Short text.\", \"Here is another text in english.\"],\n  fr: [\"Un texte francais.\", \"C'est un autre texte.\"]\n};\n\n\n//# sourceURL=webpack:///./src/locale/texts.js?");
 
 /***/ }),
 
