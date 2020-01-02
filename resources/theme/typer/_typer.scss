@@ -8,8 +8,13 @@ $img-width: 31em;
   #typer {
     #top-section {
       text-align: center;
-      img {
-        width: $img-width;
+
+      #image-section {
+        max-width: 40em;
+        margin: 0 auto;
+        img {
+          width: 100%;
+        }
       }
 
       #summary-block {
