@@ -1,4 +1,6 @@
 @import "generic/var/colors";
+@import "common/common";
+@import "common/header";
 @import "common/footer";
 @import "typer/typer";
 
@@ -7,6 +9,8 @@ $bck-color-2: $blue-50;
 
 .theme {
   background-image: linear-gradient($bck-color-1, $bck-color-2);
+  @include common;
   @include typer;
+  @include header;
   @include footer;
 }

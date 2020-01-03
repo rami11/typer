@@ -3,6 +3,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="google-signin-client_id"
+      content="YOUR_CLIENT_ID.apps.googleusercontent.com"
+    />
     <!-- css -->
     <link rel="stylesheet" href="index.css" />
     <link
@@ -11,55 +15,64 @@
     />
     <title>Typer</title>
   </head>
-  <body>
-    <header>
-      <div id="language-chooser">
-        <form id="form-lang" method="get">
-          <i class="fa fa-language"></i>
-          <select name="lang">
-            <option value="en">En</option>
-            <option value="fr">Fr</option>
-          </select>
-        </form>
-      </div>
-    </header>
+  <body class="theme">
+    <div id="spinner" class="text-center fa-3x">
+      <i class="fa fa-refresh fa-spin"></i>
+    </div>
+    <div id="content" hidden>
+      <header>
+        <div id="language-chooser">
+          <form id="form-lang" method="get">
+            <i class="fa fa-language"></i>
+            <select name="lang">
+              <option value="en">En</option>
+              <option value="fr">Fr</option>
+            </select>
+          </form>
+        </div>
+        <div class="right">
+          <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        </div>
+      </header>
 
-    <main>
-      <div id="typer">
-        <div id="top-section">
-          <div id="summary-block">
-            <span id="errors-label"><!-- errors --></span>:
-            <span id="error-count"><!-- error count --></span>,
-            <span id="speed-label"><!-- speed --></span>:
-            <span id="speed"><!-- cpm --></span>
+      <main>
+        <div id="typer">
+          <div id="top-section">
+            <div id="summary-block">
+              <span id="errors-label"><!-- errors --></span>:
+              <span id="error-count"><!-- error count --></span>,
+              <span id="speed-label"><!-- speed --></span>:
+              <span id="speed"><!-- cpm --></span>
+            </div>
+            <div id="image-section">
+              <img
+                src="../resources/img/850px-Keyboard.png"
+                alt="keyboard layout"
+              />
+            </div>
           </div>
-          <div id="image-section">
-            <img
-              src="../resources/img/850px-Keyboard.png"
-              alt="keyboard layout"
-            />
+
+          <div id="text-block" tabindex="0" autofocus>
+            <!-- dynamic content -->
+          </div>
+          <div id="bottom-section">
+            <button hidden id="btn-reset">
+              <i class="fa fa-refresh"></i>
+              <span id="reset-label"><!-- dynamic --></span>
+            </button>
           </div>
         </div>
+      </main>
 
-        <div id="text-block" tabindex="0" autofocus>
-          <!-- dynamic content -->
+      <footer>
+        <div>
+          Rami Serapian © <span><!-- year --></span>
         </div>
-        <div id="bottom-section">
-          <button hidden id="btn-reset">
-            <i class="fa fa-refresh"></i>
-            <span id="reset-label">Reset</span>
-          </button>
-        </div>
-      </div>
-    </main>
-
-    <footer>
-      <div>
-        Rami Serapian © <span><!-- year --></span>
-      </div>
-    </footer>
+      </footer>
+    </div>
 
     <!-- js -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="main.js"></script>
   </body>
 </html>

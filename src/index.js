@@ -6,8 +6,8 @@ import GenerateQuoteService from "./service/GenerateQuoteService";
 
 class Main {
   constructor() {
-    // Theme
-    this._attachTheme();
+    this.spinner = document.querySelector("#spinner");
+    this.content = document.querySelector("#content");
 
     // Footer
     this._populateFooter();
@@ -18,12 +18,12 @@ class Main {
   _init() {
     new Typer(I18n.getInstance().generateText());
     new LanguageChooser();
+    this._onContentLoaded();
   }
 
-  _attachTheme() {
-    this.THEME = "theme";
-    let app = document.querySelector("body");
-    app.classList.add(this.THEME);
+  _onContentLoaded() {
+    this.spinner.setAttribute("hidden", true);
+    this.content.removeAttribute("hidden");
   }
 
   _populateFooter() {
@@ -34,5 +34,7 @@ class Main {
 }
 
 window.onload = () => {
+  console.log("before main");
   new Main();
+  console.log("after main");
 };

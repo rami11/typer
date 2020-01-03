@@ -1,5 +1,15 @@
 .theme {
   background-image: linear-gradient(#bbdefb, #e1f5fe); }
+  .theme .right {
+    justify-self: end; }
+  .theme .left {
+    justify-self: start; }
+  .theme .text-center {
+    text-align: center; }
+  .theme .spinner {
+    text-align: center; }
+    .theme .spinner i {
+      max-width: 200px; }
   .theme #typer #top-section {
     text-align: center; }
     .theme #typer #top-section #image-section {
@@ -37,6 +47,9 @@
       color: #4caf50; }
     .theme #typer #text-block .failure {
       background-color: #f44336; }
+  .theme header {
+    display: grid;
+    grid-template-areas: "a a"; }
   .theme footer {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.7em;

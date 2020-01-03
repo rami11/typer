@@ -1,0 +1,20 @@
+@mixin common {
+  .right {
+    justify-self: end;
+  }
+
+  .left {
+    justify-self: start;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .spinner {
+    text-align: center;
+    i {
+      max-width: 200px;
+    }
+  }
+}
