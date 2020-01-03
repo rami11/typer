@@ -6,22 +6,21 @@ import GenerateQuoteService from "./service/GenerateQuoteService";
 
 class Main {
   constructor() {
-    this.spinner = document.querySelector("#spinner");
-    this.content = document.querySelector("#content");
-
-    // Footer
-    this._populateFooter();
-
     this._init();
   }
 
   _init() {
+    this._showContent();
     new Typer(I18n.getInstance().generateText());
     new LanguageChooser();
-    this._onContentLoaded();
+
+    // Footer
+    this._populateFooter();
   }
 
-  _onContentLoaded() {
+  _showContent() {
+    this.spinner = document.querySelector("#spinner");
+    this.content = document.querySelector("#content");
     this.spinner.setAttribute("hidden", true);
     this.content.removeAttribute("hidden");
   }
@@ -34,7 +33,5 @@ class Main {
 }
 
 window.onload = () => {
-  console.log("before main");
   new Main();
-  console.log("after main");
 };

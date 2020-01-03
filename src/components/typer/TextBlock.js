@@ -9,6 +9,7 @@ class TextBlock {
   }
 
   _init() {
+    this.self.focus();
     this.setText(this.text);
     this._underlineCurrentChar();
   }
