@@ -31,9 +31,7 @@ class I18n {
   }
 
   generateText() {
-    let i = Math.floor(
-      Math.random() * Math.floor(TEXTS[this.languageCode].length)
-    );
+    let i = Math.floor(Math.random() * TEXTS[this.languageCode].length);
     return TEXTS[this.languageCode][i];
   }
 }
