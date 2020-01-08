@@ -25,7 +25,7 @@ class Summary {
   }
 
   _calcSpeed() {
-    let charCount = this.textBlock.getCharSuccessTypedCount();
+    let charCount = this.textBlock.charCount;
     let intervalSec = (this._timeNow() - this.initTime) / 1000;
     let speed = Math.ceil((charCount * 60) / intervalSec);
 

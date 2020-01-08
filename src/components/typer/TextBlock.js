@@ -2,7 +2,7 @@ class TextBlock {
   constructor(text) {
     this.self = document.querySelector("#text-block");
     this.charIndex = 0;
-    this.charCount = 0; // charcters successfully typed
+    this._charCount = 0; // charcters successfully typed
     this.text = text;
 
     this._init();
@@ -46,8 +46,8 @@ class TextBlock {
     this.self.addEventListener("keypress", keyPressEvent);
   }
 
-  getCharSuccessTypedCount() {
-    return this.charCount;
+  get charCount() {
+    return this._charCount;
   }
 
   setText(text) {
@@ -73,7 +73,7 @@ class TextBlock {
   }
 
   charPressSuccess() {
-    this.charCount++;
+    this._charCount++;
     this._colorChar(true);
   }
 
