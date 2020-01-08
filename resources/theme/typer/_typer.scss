@@ -3,6 +3,8 @@
 @import "../generic/block/block";
 
 $img-width: 31em;
+$char-color-success: lightgreen;
+$char-color-failure: $red-500;
 
 @mixin typer {
   #typer {
@@ -18,6 +20,7 @@ $img-width: 31em;
       }
 
       #summary-block {
+        display: flex;
         @include block;
       }
     }

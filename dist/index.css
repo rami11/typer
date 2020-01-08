@@ -10,6 +10,12 @@
     text-align: center; }
     .theme .spinner i {
       max-width: 200px; }
+  .theme .small-block {
+    background-color: darkcyan;
+    margin: 0 2px;
+    border: 0.5px solid;
+    border-radius: 2px;
+    padding: 3px; }
   .theme #typer #top-section {
     text-align: center; }
     .theme #typer #top-section #image-section {
@@ -18,6 +24,7 @@
       .theme #typer #top-section #image-section img {
         width: 100%; }
     .theme #typer #top-section #summary-block {
+      display: flex;
       max-width: 600px;
       color: white;
       background-color: #212121;
@@ -44,7 +51,7 @@
     border-radius: 2px;
     border: 1px solid; }
     .theme #typer #text-block .success {
-      color: #4caf50; }
+      color: lightgreen; }
     .theme #typer #text-block .failure {
       background-color: #f44336; }
   .theme header {

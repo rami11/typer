@@ -33,14 +33,18 @@
         <div id="typer">
           <div id="top-section">
             <div id="summary-block">
-              (<span id="speed-label"><!-- speed --></span>:
-              <span id="speed"><!-- cpm --></span> CPM) (<span id="errors-label"
-                ><!-- errors --></span
-              >: <span id="error-count"><!-- error count --></span>)
-              <span hidden id="accuracy">
-                (<span id="accuracy-label"><!-- accuracy --></span>:
-                <span id="accuracy-value"><!-- accuracy percentage --></span>%)
-              </span>
+              <div class="small-block">
+                <span id="speed-label"><!-- speed --></span>:
+                <span id="speed"><!-- cpm --></span> CPM
+              </div>
+              <div class="small-block">
+                <span id="errors-label"><!-- errors --></span>:
+                <span id="error-count"><!-- error count --></span>
+              </div>
+              <div hidden id="accuracy" class="small-block">
+                <span id="accuracy-label"><!-- accuracy --></span>:
+                <span id="accuracy-value"><!-- accuracy percentage --></span>%
+              </div>
             </div>
             <div id="image-section">
               <img
