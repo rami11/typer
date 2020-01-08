@@ -40,6 +40,8 @@ class Typer {
       this.textBlock.disable();
       this.resetButton.removeAttribute("hidden");
       this.resetButton.focus();
+
+      this.summary.showAccuracyPercentage();
     }
     if (key === currentChar) {
       this.textBlock.charPressSuccess();

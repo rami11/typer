@@ -50,6 +50,10 @@ class TextBlock {
     return this._charCount;
   }
 
+  get textLength() {
+    return this.text.length;
+  }
+
   setText(text) {
     let result = "";
     for (let i in text) {

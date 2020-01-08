@@ -11,6 +11,13 @@ class Summary {
     this.errorCount = 0;
     this.errorSpan.innerHTML = this.errorCount;
 
+    /* accuracy */
+    let accuracyLabel = document.querySelector("#accuracy-label");
+    accuracyLabel.innerHTML = I18n.getInstance().translate("accuracy");
+    this.accuracySpan = document.querySelector("#accuracy-value");
+    this.accuracy = 100;
+    this.accuracySpan.innerHTML = this.accuracy;
+
     /* speed */
     let speedLabel = document.querySelector("#speed-label");
     speedLabel.innerHTML = I18n.getInstance().translate("speed");
@@ -39,6 +46,16 @@ class Summary {
   increaseErrorCount() {
     this.errorCount++;
     this.errorSpan.innerHTML = this.errorCount;
+  }
+
+  showAccuracyPercentage() {
+    document.querySelector("#accuracy").removeAttribute("hidden");
+
+    let textLength = this.textBlock.textLength;
+    let charCount = this.textBlock.charCount;
+    this.accuracy = Math.round((charCount / textLength) * 100);
+
+    this.accuracySpan.innerHTML = this.accuracy;
   }
 }
 
