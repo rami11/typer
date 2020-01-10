@@ -16,14 +16,14 @@
     border: 0.5px solid;
     border-radius: 2px;
     padding: 3px; }
-  .theme #typer #top-section {
+  .theme #typer {
     text-align: center; }
-    .theme #typer #top-section #image-section {
+    .theme #typer #image-section {
       max-width: 40em;
       margin: 0 auto; }
-      .theme #typer #top-section #image-section img {
+      .theme #typer #image-section img {
         width: 100%; }
-    .theme #typer #top-section #summary-block {
+    .theme #typer #summary-block {
       display: flex;
       max-width: 600px;
       color: white;
@@ -33,27 +33,27 @@
       padding: 8px;
       border-radius: 2px;
       border: 1px solid; }
-  .theme #typer #bottom-section {
-    text-align: center; }
-    .theme #typer #bottom-section #btn-reset {
-      width: 10em;
-      font-size: 1em;
-      cursor: pointer;
+    .theme #typer #bottom-section {
+      text-align: center; }
+      .theme #typer #bottom-section #btn-reset {
+        width: 10em;
+        font-size: 1em;
+        cursor: pointer;
+        border-radius: 2px;
+        font-family: Times; }
+    .theme #typer #text-block {
+      max-width: 600px;
+      color: white;
+      background-color: #212121;
+      font-size: 1.1em;
+      margin: 8px auto;
+      padding: 8px;
       border-radius: 2px;
-      font-family: Times; }
-  .theme #typer #text-block {
-    max-width: 600px;
-    color: white;
-    background-color: #212121;
-    font-size: 1.1em;
-    margin: 8px auto;
-    padding: 8px;
-    border-radius: 2px;
-    border: 1px solid; }
-    .theme #typer #text-block .success {
-      color: lightgreen; }
-    .theme #typer #text-block .failure {
-      background-color: #f44336; }
+      border: 1px solid; }
+      .theme #typer #text-block .success {
+        color: lightgreen; }
+      .theme #typer #text-block .failure {
+        background-color: #f44336; }
   .theme header {
     display: grid;
     grid-template-areas: "a a"; }

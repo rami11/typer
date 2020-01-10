@@ -8,21 +8,19 @@ $char-color-failure: $red-500;
 
 @mixin typer {
   #typer {
-    #top-section {
-      text-align: center;
+    text-align: center;
 
-      #image-section {
-        max-width: 40em;
-        margin: 0 auto;
-        img {
-          width: 100%;
-        }
+    #image-section {
+      max-width: 40em;
+      margin: 0 auto;
+      img {
+        width: 100%;
       }
+    }
 
-      #summary-block {
-        display: flex;
-        @include block;
-      }
+    #summary-block {
+      display: flex;
+      @include block;
     }
 
     #bottom-section {
