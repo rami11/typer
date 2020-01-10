@@ -1,6 +1,5 @@
 import Typer from "./components/typer/Typer";
 import LanguageChooser from "./components/locale/LanguageChooser";
-import I18n from "./locale/I18n";
 
 import GenerateTextService from "./service/GenerateTextService";
 
