@@ -31,16 +31,12 @@ class Summary {
     return timeNow;
   }
 
-  _calcSpeed() {
-    let charCount = this.textBlock.charCount;
-    let intervalSec = (this._timeNow() - this.initTime) / 1000;
-    let speed = Math.ceil((charCount * 60) / intervalSec);
-
-    return speed;
-  }
-
   updateSpeed() {
-    this.speedSpan.innerHTML = this._calcSpeed();
+    let charSuccessCount = this.textBlock.charSuccessCount;
+    let intervalSec = (this._timeNow() - this.initTime) / 1000;
+    let speed = Math.ceil((charSuccessCount * 60) / intervalSec);
+
+    this.speedSpan.innerHTML = speed;
   }
 
   increaseErrorCount() {
@@ -49,7 +45,7 @@ class Summary {
   }
 
   updateAccuracyPercentage() {
-    let charSuccessCount = this.textBlock.charCount;
+    let charSuccessCount = this.textBlock.charSuccessCount;
     let charTypedCount = this.textBlock.charTypedCount;
     this.accuracy = Math.round((charSuccessCount / charTypedCount) * 100);
 
