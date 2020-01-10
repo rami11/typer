@@ -10,15 +10,15 @@ class GenerateTextService {
     }
   }
 
-  async exec(callback) {
+  async exec() {
     const url = `${this.baseUrl}/text/random/${this.languageCode}`;
-    try {
-      let response = await fetch(url);
-      let text = await response.text();
+    let response = await fetch(url);
 
-      callback(text);
-    } catch (error) {
-      console.error(error);
+    if (response.ok) {
+      let text = await response.text();
+      return text;
+    } else {
+      throw `${response.status}: ${response.statusText}`;
     }
   }
 }

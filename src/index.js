@@ -12,14 +12,19 @@ class Main {
   }
 
   _init() {
-    this.service.exec(text => {
-      this._showContent();
-      new Typer(text);
-      new LanguageChooser();
+    this.service
+      .exec()
+      .then(text => {
+        this._showContent();
+        new Typer(text);
+        new LanguageChooser();
 
-      // Footer
-      this._populateFooter();
-    });
+        // Footer
+        this._populateFooter();
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 
   _showContent() {
