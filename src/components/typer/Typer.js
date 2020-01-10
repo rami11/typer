@@ -34,14 +34,13 @@ class Typer {
 
     if (this.textBlock.isWordEndReached()) {
       this.summary.updateSpeed();
+      this.summary.updateAccuracyPercentage();
     }
     if (this.textBlock.isLastCharReached()) {
       // game over
       this.textBlock.disable();
       this.resetButton.removeAttribute("hidden");
       this.resetButton.focus();
-
-      this.summary.showAccuracyPercentage();
     }
     if (key === currentChar) {
       this.textBlock.charPressSuccess();

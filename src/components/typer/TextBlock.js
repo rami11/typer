@@ -3,6 +3,7 @@ class TextBlock {
     this.self = document.querySelector("#text-block");
     this.charIndex = 0;
     this._charCount = 0; // charcters successfully typed
+    this._charTypedCount = 0;
     this.text = text;
 
     this._init();
@@ -56,6 +57,10 @@ class TextBlock {
     return this._charCount;
   }
 
+  get charTypedCount() {
+    return this._charTypedCount;
+  }
+
   get textLength() {
     return this.text.length;
   }
@@ -84,10 +89,12 @@ class TextBlock {
 
   charPressSuccess() {
     this._charCount++;
+    this._charTypedCount++;
     this._colorChar(true);
   }
 
   charPressFailure() {
+    this._charTypedCount++;
     this._colorChar(false);
   }
 

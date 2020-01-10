@@ -48,12 +48,10 @@ class Summary {
     this.errorSpan.innerHTML = this.errorCount;
   }
 
-  showAccuracyPercentage() {
-    document.querySelector("#accuracy").removeAttribute("hidden");
-
-    let textLength = this.textBlock.textLength;
-    let charCount = this.textBlock.charCount;
-    this.accuracy = Math.round((charCount / textLength) * 100);
+  updateAccuracyPercentage() {
+    let charSuccessCount = this.textBlock.charCount;
+    let charTypedCount = this.textBlock.charTypedCount;
+    this.accuracy = Math.round((charSuccessCount / charTypedCount) * 100);
 
     this.accuracySpan.innerHTML = this.accuracy;
   }
