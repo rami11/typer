@@ -13,12 +13,6 @@ class TextBlock {
     this.self.focus();
     this.setText(this.text);
     this._underlineCurrentChar();
-
-    this.self.addEventListener("click", () => {
-      console.log("event", event);
-
-      this.self.focus();
-    });
   }
 
   _getCurrentCharSpan() {
