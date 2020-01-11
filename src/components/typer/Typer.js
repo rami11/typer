@@ -24,6 +24,7 @@ class Typer {
 
     this.textBlock.addKeyPressListener(() => {
       this._handleKeyPress();
+      this.summary.updateAccuracyPercentage();
     });
   }
 
@@ -31,10 +32,10 @@ class Typer {
     let key = event.key;
 
     let currentChar = this.textBlock.getCurrentChar();
+    console.log("current char:", currentChar);
 
     if (this.textBlock.isWordEndReached()) {
       this.summary.updateSpeed();
-      this.summary.updateAccuracyPercentage();
     }
     if (this.textBlock.isLastCharReached()) {
       // game over
