@@ -1,14 +1,15 @@
-class TextBlock {
+export class TextBlock {
   constructor(presenter) {
-    this.self = document.querySelector("#text-block");
-    this._text = presenter.text;
+    this._self = document.querySelector("#text-block");
 
+    this._text = presenter.text;
     this._charIndex = 0;
+
     this._init();
   }
 
   _init() {
-    this.self.focus();
+    this._self.focus();
     this._populateContent(this._text);
     this._underlineCurrentChar();
   }
@@ -18,7 +19,7 @@ class TextBlock {
     for (let i in text) {
       result += '<span id="char-' + i + '">' + text[i] + "</span>";
     }
-    this.self.innerHTML = result;
+    document.querySelector("#text").innerHTML = result;
   }
 
   _underlineCurrentChar() {
@@ -40,7 +41,7 @@ class TextBlock {
   }
 
   addKeyPressListener(keyPressEvent = () => {}) {
-    this.self.addEventListener("keypress", keyPressEvent);
+    this._self.addEventListener("keypress", keyPressEvent);
   }
 
   nextChar(isSuccess) {
@@ -61,9 +62,11 @@ class TextBlock {
     return this._text[this._charIndex];
   }
 
+  focus() {
+    this._self.focus();
+  }
+
   disable() {
-    this.self.removeAttribute("tabindex");
+    this._self.removeAttribute("tabindex");
   }
 }
-
-export default TextBlock;

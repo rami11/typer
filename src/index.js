@@ -1,7 +1,7 @@
-import Typer from "./components/typer/Typer";
-import LanguageChooser from "./components/locale/LanguageChooser";
+import { Typer } from "./components/typer/Typer";
+import { LanguageChooser } from "./components/locale/LanguageChooser";
 
-import GenerateTextService from "./service/GenerateTextService";
+import { GenerateTextService } from "./service/GenerateTextService";
 
 class Main {
   constructor() {

@@ -1,4 +1,4 @@
-class GenerateTextService {
+export class GenerateTextService {
   constructor() {
     this.baseUrl = "http://localhost:5000";
 
@@ -22,5 +22,3 @@ class GenerateTextService {
     }
   }
 }
-
-export default GenerateTextService;

@@ -1,6 +1,6 @@
-import I18n from "../../locale/I18n";
+import { I18n } from "../../locale/I18n";
 
-class Summary {
+export class Summary {
   constructor(presenter) {
     this._presenter = presenter;
 
@@ -35,5 +35,3 @@ class Summary {
     this._speedSpan.innerHTML = speed;
   }
 }
-
-export default Summary;

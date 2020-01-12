@@ -1,6 +1,6 @@
-import I18n from "../../locale/I18n";
+import { I18n } from "../../locale/I18n";
 
-class LanguageChooser {
+export class LanguageChooser {
   constructor() {
     this.languageChooser = document.querySelector("#language-chooser select");
     this.form = document.querySelector("#form-lang");
@@ -31,5 +31,3 @@ class LanguageChooser {
     html.setAttribute("lang", languageCode);
   }
 }
-
-export default LanguageChooser;

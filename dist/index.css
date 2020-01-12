@@ -50,9 +50,9 @@
       padding: 8px;
       border-radius: 2px;
       border: 1px solid; }
-      .theme #typer #text-block .success {
+      .theme #typer #text-block #text .success {
         color: lightgreen; }
-      .theme #typer #text-block .failure {
+      .theme #typer #text-block #text .failure {
         background-color: #f44336; }
   .theme header {
     display: grid;

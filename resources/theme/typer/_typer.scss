@@ -33,12 +33,14 @@ $char-color-failure: $red-500;
     #text-block {
       @include block;
 
-      .success {
-        color: $char-color-success;
-      }
+      #text {
+        .success {
+          color: $char-color-success;
+        }
 
-      .failure {
-        background-color: $char-color-failure;
+        .failure {
+          background-color: $char-color-failure;
+        }
       }
     }
   }

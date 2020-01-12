@@ -1,10 +1,11 @@
-import TextBlock from "./TextBlock";
-import Summary from "./Summary";
-import I18n from "../../locale/I18n";
-import TyperPresenter from "./TyperPresenter";
+import { TextBlock } from "./TextBlock";
+import { Summary } from "./Summary";
+import { I18n } from "../../locale/I18n";
+import { TyperPresenter } from "./TyperPresenter";
 
-class Typer {
+export class Typer {
   constructor(text) {
+    this._self = document.querySelector("#typer");
     this._presenter = new TyperPresenter(this, text);
 
     this._textBlock = new TextBlock(this._presenter);
@@ -19,6 +20,10 @@ class Typer {
   }
 
   _init() {
+    this._self.addEventListener("click", () => {
+      this._textBlock.focus();
+    });
+
     this._resetButton.addEventListener("click", () => {
       location.reload();
     });
@@ -61,5 +66,3 @@ class Typer {
     this._summary.updateAccuracySpan(accuracy);
   }
 }
-
-export default Typer;

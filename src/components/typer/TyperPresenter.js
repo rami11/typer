@@ -1,4 +1,4 @@
-class TyperPresenter {
+export class TyperPresenter {
   constructor(typer, text) {
     this._typer = typer;
     this._text = text;
@@ -52,5 +52,3 @@ class TyperPresenter {
     this._typer.updateAccuracySpan(accuracy);
   }
 }
-
-export default TyperPresenter;

@@ -1,7 +1,7 @@
 import { STRS } from "./strings";
 import { TEXTS } from "./texts";
 
-class I18n {
+export class I18n {
   constructor() {
     this.languageCode = "en";
     let urlParams = new URLSearchParams(window.location.search);
@@ -35,5 +35,3 @@ class I18n {
     return TEXTS[this.languageCode][i];
   }
 }
-
-export default I18n;
