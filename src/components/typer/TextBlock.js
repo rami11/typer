@@ -1,65 +1,19 @@
 class TextBlock {
-  constructor(text) {
+  constructor(presenter) {
     this.self = document.querySelector("#text-block");
-    this.charIndex = 0;
-    this._charSuccessCount = 0;
-    this._charTypedCount = 0;
-    this.text = text;
+    this._text = presenter.text;
 
+    this._charIndex = 0;
     this._init();
   }
 
   _init() {
     this.self.focus();
-    this.setText(this.text);
+    this._populateContent(this._text);
     this._underlineCurrentChar();
   }
 
-  _getCurrentCharSpan() {
-    return document.querySelector(`#char-${this.charIndex}`);
-  }
-
-  _underlineCurrentChar() {
-    let charSpan = this._getCurrentCharSpan();
-    if (charSpan) {
-      charSpan.style.textDecoration = "underline";
-    }
-  }
-
-  _colorChar(isSuccess) {
-    let charSpan = this._getCurrentCharSpan();
-    if (charSpan) {
-      charSpan.classList.add(isSuccess ? "success" : "failure");
-      this.nextChar();
-    }
-  }
-
-  isLastCharReached() {
-    return this.charIndex === this.text.length - 1;
-  }
-
-  isWordEndReached() {
-    let currentChar = this.getCurrentChar();
-    return currentChar === " " || this.isLastCharReached();
-  }
-
-  addKeyPressListener(keyPressEvent = () => {}) {
-    this.self.addEventListener("keypress", keyPressEvent);
-  }
-
-  get charSuccessCount() {
-    return this._charSuccessCount;
-  }
-
-  get charTypedCount() {
-    return this._charTypedCount;
-  }
-
-  get textLength() {
-    return this.text.length;
-  }
-
-  setText(text) {
+  _populateContent(text) {
     let result = "";
     for (let i in text) {
       result += '<span id="char-' + i + '">' + text[i] + "</span>";
@@ -67,29 +21,44 @@ class TextBlock {
     this.self.innerHTML = result;
   }
 
-  getCurrentChar() {
-    let charSpan = this._getCurrentCharSpan();
+  _underlineCurrentChar() {
+    let charSpan = document.querySelector(`#char-${this._charIndex}`);
+
     if (charSpan) {
-      return charSpan.innerHTML;
+      charSpan.style.textDecoration = "underline";
     }
   }
 
-  nextChar() {
+  _getCurrentCharSpan() {
+    return document.querySelector(`#char-${this._charIndex}`);
+  }
+
+  _colorCurrentChar(isSuccess) {
     let charSpan = this._getCurrentCharSpan();
+    charSpan.classList.add(isSuccess ? "success" : "failure");
     charSpan.style.textDecoration = "none";
-    this.charIndex++;
+  }
+
+  addKeyPressListener(keyPressEvent = () => {}) {
+    this.self.addEventListener("keypress", keyPressEvent);
+  }
+
+  nextChar(isSuccess) {
+    this._colorCurrentChar(isSuccess);
+    this._charIndex++;
     this._underlineCurrentChar();
   }
 
-  charPressSuccess() {
-    this._charSuccessCount++;
-    this._charTypedCount++;
-    this._colorChar(true);
+  isTextEndReached() {
+    return this._charIndex >= this._text.length;
   }
 
-  charPressFailure() {
-    this._charTypedCount++;
-    this._colorChar(false);
+  isWordEndReached() {
+    return this._text[this._charIndex] === " " || this.isTextEndReached();
+  }
+
+  getCurrentChar() {
+    return this._text[this._charIndex];
   }
 
   disable() {

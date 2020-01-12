@@ -1,54 +1,64 @@
 import TextBlock from "./TextBlock";
 import Summary from "./Summary";
 import I18n from "../../locale/I18n";
+import TyperPresenter from "./TyperPresenter";
 
 class Typer {
   constructor(text) {
-    this.text = text;
-    this.typeTextArea = document.querySelector("#text-area");
-    this.textBlock = new TextBlock(text);
+    this._presenter = new TyperPresenter(this, text);
+
+    this._textBlock = new TextBlock(this._presenter);
+    this._summary = new Summary(this._presenter);
 
     /* reset button */
     let resetLabel = document.querySelector("#reset-label");
     resetLabel.innerHTML = I18n.getInstance().translate("reset");
-    this.resetButton = document.querySelector("#btn-reset");
-    this.summary = new Summary(this.textBlock);
+    this._resetButton = document.querySelector("#btn-reset");
 
     this._init();
   }
 
   _init() {
-    this.resetButton.addEventListener("click", () => {
+    this._resetButton.addEventListener("click", () => {
       location.reload();
     });
 
-    this.textBlock.addKeyPressListener(() => {
-      this._handleKeyPress();
-      this.summary.updateAccuracyPercentage();
+    this._textBlock.addKeyPressListener(() => {
+      let keyPressed = event.key;
+      let currentChar = this._textBlock.getCurrentChar();
+
+      if (keyPressed === currentChar) {
+        this._presenter.charPressSuccess();
+      } else {
+        this._presenter.charPressFailure();
+      }
     });
   }
 
-  _handleKeyPress() {
-    let key = event.key;
+  nextChar(isSuccess) {
+    this._textBlock.nextChar(isSuccess);
+    this._presenter.updateAccuracyPercentage();
 
-    let currentChar = this.textBlock.getCurrentChar();
-    console.log("current char:", currentChar);
+    if (this._textBlock.isWordEndReached()) {
+      this._presenter.updateSpeed();
+    }
+    if (this._textBlock.isTextEndReached()) {
+      this._textBlock.disable();
+      this._resetButton.removeAttribute("hidden");
+      this._resetButton.focus();
+    }
+  }
 
-    if (this.textBlock.isWordEndReached()) {
-      this.summary.updateSpeed();
-    }
-    if (this.textBlock.isLastCharReached()) {
-      // game over
-      this.textBlock.disable();
-      this.resetButton.removeAttribute("hidden");
-      this.resetButton.focus();
-    }
-    if (key === currentChar) {
-      this.textBlock.charPressSuccess();
-    } else {
-      this.textBlock.charPressFailure();
-      this.summary.increaseErrorCount();
-    }
+  updateErrorSpan(errorCount) {
+    this._summary.updateErrorSpan(errorCount);
+  }
+
+  updateSpeedSpan(speed) {
+    this._summary.updateSpeedSpan(speed);
+  }
+
+  updateAccuracySpan(accuracy) {
+    this._summary.updateAccuracySpan(accuracy);
   }
 }
 
