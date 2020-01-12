@@ -17,7 +17,7 @@
   "scripts": {
     "build": "npx webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "scss-compile": "node-sass -rw resources/theme/ -o dist/"
+    "scss-compile": "node-sass -rw theme/ -o dist/"
   },
   "keywords": [],
   "author": "rsn",
