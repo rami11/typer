@@ -12,8 +12,6 @@ class Main {
   }
 
   _init() {
-    this._loadTheme();
-
     this.service
       .exec()
       .then(text => {
@@ -27,10 +25,6 @@ class Main {
       .catch(error => {
         console.error(error);
       });
-  }
-
-  _loadTheme() {
-    document.body.classList.add("theme");
   }
 
   _showContent() {
