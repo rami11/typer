@@ -15,11 +15,19 @@ export class TextBlock {
   }
 
   _populateContent(text) {
+    let quote = text.quote;
+
     let result = "";
-    for (let i in text) {
-      result += '<span id="char-' + i + '">' + text[i] + "</span>";
+    for (let i in quote) {
+      result += '<span id="char-' + i + '">' + quote[i] + "</span>";
     }
-    document.querySelector("#text").innerHTML = result;
+    document.querySelector("#quote").innerHTML = result;
+
+    //todo add source in a new span
+    let source = text.source;
+    if (source && source.length > 0) {
+      document.querySelector("#source").innerHTML = ` - ${text.source}`;
+    }
   }
 
   _underlineCurrentChar() {
@@ -51,15 +59,15 @@ export class TextBlock {
   }
 
   isTextEndReached() {
-    return this._charIndex >= this._text.length;
+    return this._charIndex >= this._text.quote.length;
   }
 
   isWordEndReached() {
-    return this._text[this._charIndex] === " " || this.isTextEndReached();
+    return this._text.quote[this._charIndex] === " " || this.isTextEndReached();
   }
 
   getCurrentChar() {
-    return this._text[this._charIndex];
+    return this._text.quote[this._charIndex];
   }
 
   focus() {

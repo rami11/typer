@@ -15,7 +15,9 @@ export class GenerateTextService {
     let response = await fetch(url);
 
     if (response.ok) {
-      let text = await response.text();
+      let text = await response.json();
+      console.log("text", text);
+
       return text;
     } else {
       throw `${response.status}: ${response.statusText}`;

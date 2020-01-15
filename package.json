@@ -15,7 +15,7 @@
     "webpack-dev-server": "^3.10.1"
   },
   "scripts": {
-    "build": "npx webpack",
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
     "scss-compile": "node-sass -rw theme/ -o dist/"
   },
