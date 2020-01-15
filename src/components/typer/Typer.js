@@ -2,6 +2,7 @@ import { TextBlock } from "./TextBlock";
 import { Summary } from "./Summary";
 import { I18n } from "../../locale/I18n";
 import { TyperPresenter } from "./TyperPresenter";
+import keyboardImg from "../../../resources/img/keyboard.png";
 
 export class Typer {
   constructor(text) {
@@ -10,6 +11,10 @@ export class Typer {
 
     this._textBlock = new TextBlock(this._presenter);
     this._summary = new Summary(this._presenter);
+
+    /* img */
+    let image = document.querySelector("#image");
+    image.src = keyboardImg;
 
     /* reset button */
     let resetLabel = document.querySelector("#reset-label");

@@ -23,10 +23,9 @@ export class TextBlock {
     }
     document.querySelector("#quote").innerHTML = result;
 
-    //todo add source in a new span
     let source = text.source;
     if (source && source.length > 0) {
-      document.querySelector("#source").innerHTML = ` - ${text.source}`;
+      document.querySelector("#source").innerHTML = text.source;
     }
   }
 

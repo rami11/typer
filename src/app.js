@@ -2,6 +2,7 @@ import { Typer } from "./components/typer/Typer";
 import { LanguageChooser } from "./components/locale/LanguageChooser";
 
 import { GenerateTextService } from "./service/GenerateTextService";
+import "../resources/theme/styles.css";
 
 class Main {
   constructor() {
@@ -11,6 +12,8 @@ class Main {
   }
 
   _init() {
+    this._loadTheme();
+
     this.service
       .exec()
       .then(text => {
@@ -24,6 +27,10 @@ class Main {
       .catch(error => {
         console.error(error);
       });
+  }
+
+  _loadTheme() {
+    document.body.classList.add("theme");
   }
 
   _showContent() {

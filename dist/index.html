@@ -4,15 +4,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <!-- css -->
-    <link rel="stylesheet" href="index.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <title>Typer</title>
   </head>
-  <body class="theme">
+  <body>
     <div id="spinner" class="text-center fa-3x">
       <i class="fa fa-refresh fa-spin"></i>
     </div>
@@ -47,15 +45,12 @@
           </div>
 
           <div id="image-section">
-            <img src="keyboard.png" alt="keyboard layout" />
+            <img id="image" alt="keyboard layout" />
           </div>
 
           <div tabindex="0" id="text-block">
-            “
-            <span id="quote">
-              <!-- quote -->
-            </span>
-            ”
+            “<span id="quote"><!-- quote --></span>”
+            <span> - </span>
             <span id="source"><!-- source --></span>
           </div>
           <div id="bottom-section">

@@ -16,8 +16,6 @@ export class GenerateTextService {
 
     if (response.ok) {
       let text = await response.json();
-      console.log("text", text);
-
       return text;
     } else {
       throw `${response.status}: ${response.statusText}`;
