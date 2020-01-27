@@ -44,16 +44,16 @@ window.onload = () => {
   new Main();
 
   // // socket.io
-  // const socket = io("http://localhost:5000");
+  const socket = io("http://localhost:5000");
 
-  // socket.on("message", connected_sockets => {
-  //   let lis = "<h4>Connected sockets:</h4>";
-  //   for (let socketId in connected_sockets) {
-  //     if (socketId !== socket.id) {
-  //       lis += `<li>${socketId}</li>`;
-  //     }
-  //   }
-  //   const ol = document.querySelector("#list");
-  //   ol.innerHTML = lis;
-  // });
+  socket.on("message", connected_sockets => {
+    let lis = "<h4>Connected sockets:</h4>";
+    for (let socketId in connected_sockets) {
+      if (socketId !== socket.id) {
+        lis += `<li>${socketId}</li>`;
+      }
+    }
+    const ol = document.querySelector("#list");
+    ol.innerHTML = lis;
+  });
 };
