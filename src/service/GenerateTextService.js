@@ -1,8 +1,8 @@
 export class GenerateTextService {
   constructor() {
     this.baseUrl = "http://localhost:5000";
-
     this.languageCode = "en";
+
     let urlParams = new URLSearchParams(window.location.search);
     let lang = urlParams.get("lang");
     if (lang) {

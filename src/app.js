@@ -1,22 +1,11 @@
-import { Typer } from "./components/typer/Typer";
-import { LanguageChooser } from "./components/locale/LanguageChooser";
-
+import { Typer } from "./ui/typer/Typer";
+import { LanguageChooser } from "./ui/locale/LanguageChooser";
 import { GenerateTextService } from "./service/GenerateTextService";
-import "../resources/theme/styles.css";
-
-// __/\\\\\\\\\\\\\\\__/\\\________/\\\__/\\\\\\\\\\\\\____/\\\\\\\\\\\\\\\____/\\\\\\\\\_____
-//  _\///////\\\/////__\///\\\____/\\\/__\/\\\/////////\\\_\/\\\///////////___/\\\///////\\\___
-//   _______\/\\\_________\///\\\/\\\/____\/\\\_______\/\\\_\/\\\_____________\/\\\_____\/\\\___
-//    _______\/\\\___________\///\\\/______\/\\\\\\\\\\\\\/__\/\\\\\\\\\\\_____\/\\\\\\\\\\\/____
-//     _______\/\\\_____________\/\\\_______\/\\\/////////____\/\\\///////______\/\\\//////\\\____
-//      _______\/\\\_____________\/\\\_______\/\\\_____________\/\\\_____________\/\\\____\//\\\___
-//       _______\/\\\_____________\/\\\_______\/\\\_____________\/\\\_____________\/\\\_____\//\\\__
-//        _______\/\\\_____________\/\\\_______\/\\\_____________\/\\\\\\\\\\\\\\\_\/\\\______\//\\\_
-//         _______\///______________\///________\///______________\///////////////__\///________\///__
 
 class Main {
   constructor() {
     this.service = new GenerateTextService();
+    this.typer;
 
     this._init();
   }
@@ -26,7 +15,7 @@ class Main {
       .exec()
       .then(text => {
         this._showContent();
-        new Typer(text);
+        this.typer = new Typer(text);
         new LanguageChooser();
 
         // Footer
@@ -53,4 +42,18 @@ class Main {
 
 window.onload = () => {
   new Main();
+
+  // // socket.io
+  // const socket = io("http://localhost:5000");
+
+  // socket.on("message", connected_sockets => {
+  //   let lis = "<h4>Connected sockets:</h4>";
+  //   for (let socketId in connected_sockets) {
+  //     if (socketId !== socket.id) {
+  //       lis += `<li>${socketId}</li>`;
+  //     }
+  //   }
+  //   const ol = document.querySelector("#list");
+  //   ol.innerHTML = lis;
+  // });
 };

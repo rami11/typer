@@ -2,7 +2,7 @@ import { TextBlock } from "./TextBlock";
 import { Summary } from "./Summary";
 import { I18n } from "../../locale/I18n";
 import { TyperPresenter } from "./TyperPresenter";
-import keyboardImg from "../../../resources/img/keyboard.png";
+import keyboardImg from "../../resources/img/keyboard.png";
 
 export class Typer {
   constructor(text) {
@@ -36,6 +36,9 @@ export class Typer {
     this._textBlock.addKeyPressListener(() => {
       let keyPressed = event.key;
       let currentChar = this._textBlock.getCurrentChar();
+
+      // console.log("Emitting key pressed!", event.key);
+      // socket.emit("key pressed", event.key);
 
       if (keyPressed === currentChar) {
         this._presenter.charPressSuccess();
