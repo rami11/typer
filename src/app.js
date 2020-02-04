@@ -1,6 +1,6 @@
-import { Typer } from "./ui/typer/Typer";
-import { LanguageChooser } from "./ui/locale/LanguageChooser";
-import { GenerateTextService } from "./service/GenerateTextService";
+import {Typer} from './ui/typer/Typer';
+import {LanguageChooser} from './ui/locale/LanguageChooser';
+import {GenerateTextService} from './service/GenerateTextService';
 
 class Main {
   constructor() {
@@ -27,15 +27,15 @@ class Main {
   }
 
   _showContent() {
-    this.spinner = document.querySelector("#spinner");
-    this.content = document.querySelector("#content");
-    this.spinner.setAttribute("hidden", true);
-    this.content.removeAttribute("hidden");
+    this.spinner = document.querySelector('#spinner');
+    this.content = document.querySelector('#content');
+    this.spinner.setAttribute('hidden', true);
+    this.content.removeAttribute('hidden');
   }
 
   _populateFooter() {
-    let footer = document.querySelector("footer");
-    let yearSpan = footer.querySelector("span");
+    let footer = document.querySelector('footer');
+    let yearSpan = footer.querySelector('span');
     yearSpan.innerHTML = new Date().getFullYear();
   }
 }
@@ -43,17 +43,17 @@ class Main {
 window.onload = () => {
   new Main();
 
-  // // socket.io
-  const socket = io("http://localhost:5000");
+  // socket.io
+  const socket = io('http://localhost:5000');
 
-  socket.on("message", connected_sockets => {
-    let lis = "<h4>Connected sockets:</h4>";
+  socket.on('message', connected_sockets => {
+    let lis = '<h4>Connected sockets:</h4>';
     for (let socketId in connected_sockets) {
       if (socketId !== socket.id) {
         lis += `<li>${socketId}</li>`;
       }
     }
-    const ol = document.querySelector("#list");
+    const ol = document.querySelector('#list');
     ol.innerHTML = lis;
   });
 };

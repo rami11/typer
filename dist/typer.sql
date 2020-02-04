@@ -66,54 +66,6 @@ LOCK TABLES `texts` WRITE;
 INSERT INTO `texts` VALUES (1,'The unexamined life is not worth living','Socrates','en'),(3,'Whereof one cannot speak, thereof one must be silent','Ludwig Wittgenstein','en'),(4,'Entities should not be multiplied unnecessarily','William of Ockham','en'),(5,'He who thinks great thoughts, often makes great errors','Martin Heidegger','en'),(6,'We live in the best of all possible worlds','Gottfried Wilhelm Leibniz','en'),(7,'What is rational is actual and what is actual is rational','G. W. F. Hegel','en'),(8,'God is dead! He remains dead! And we have killed him.','Friedrich Nietzsche','en'),(9,'There is but one truly serious philosophical problem, and that is suicide','Albert Camus','en'),(10,'Dans la vie on ne fait pas ce que l\'on veut mais on est responsable de ce que l\'on est.','Jean-Paul Sartre','fr'),(11,'On passe une moitié de sa vie à attendre ceux qu\'on aimera et l\'autre moitié à quitter ceux qu\'on aime.','Victor Hugo','fr'),(12,'Pour critiquer les gens il faut les connaître, et pour les connaître, il faut les aimer.','Coluche','fr'),(13,'Un seul être vous manque et tout est dépeuplé.','Lamartine','fr'),(14,'Aimer, ce n\'est pas se regarder l\'un l\'autre, c\'est regarder ensemble dans la même direction.','Antoine De Saint-Exupéry','fr'),(15,'Il ne faut avoir aucun regret pour le passé, aucun remords pour le présent, et une confiance inébranlable pour l\'avenir.','Jean Jaurès','fr');
 /*!40000 ALTER TABLE `texts` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `texts_en`
---
-
-DROP TABLE IF EXISTS `texts_en`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `texts_en` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `text` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `texts_en`
---
-
-LOCK TABLES `texts_en` WRITE;
-/*!40000 ALTER TABLE `texts_en` DISABLE KEYS */;
-INSERT INTO `texts_en` VALUES (13,'Hi there'),(14,'rmiesmfiom esrmsor fmsero semf sdmofgmf sdowmer smdgl welrmsd flweg sdmf eslfmdss dmf sdfmlsfmdlamfdlasfmsdlfmmm');
-/*!40000 ALTER TABLE `texts_en` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `texts_fr`
---
-
-DROP TABLE IF EXISTS `texts_fr`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `texts_fr` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `text` varchar(75) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `texts_fr`
---
-
-LOCK TABLES `texts_fr` WRITE;
-/*!40000 ALTER TABLE `texts_fr` DISABLE KEYS */;
-INSERT INTO `texts_fr` VALUES (2,'Dans une grande âme tout est grand.'),(3,'Chacun voit midi à sa porte.'),(4,'Je pense, donc je suis.'),(5,'On ne change pas une équipe qui gagne.'),(9,'Chassez le naturel, il revient au galop.'),(10,'Il vaut mieux prévenir que guérir.'),(13,'Un homme seul est toujours en mauvaise compagnie.'),(14,'A vaincre sans peril, on triomphe sans gloire.');
-/*!40000 ALTER TABLE `texts_fr` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -124,4 +76,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-14 21:27:11
+-- Dump completed on 2020-01-26 20:35:24
