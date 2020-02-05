@@ -17,7 +17,7 @@
   },
   "scripts": {
     "build": "webpack-dev-server --open",
-    "build:prod": "webpack -p",
+    "build.prod": "webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1",
     "scss-compile": "node-sass -rw src/resources/theme/ -o dist/"
   },
