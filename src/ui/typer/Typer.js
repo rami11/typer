@@ -1,44 +1,63 @@
 import { TextBlock } from "./TextBlock";
 import { Summary } from "./Summary";
-import { I18n } from "../../locale/I18n";
 import { TyperPresenter } from "./TyperPresenter";
 import keyboardImg from "../../resources/img/keyboard.png";
+import { I18n } from "../../locale/I18n";
 
-export class Typer {
+import { Div } from "../core/Div";
+import { Button } from "../core/Button";
+import { Image } from "../core/Image";
+
+export class Typer extends Div {
   constructor(text) {
-    this._self = document.querySelector("#typer");
+    super("typer");
     this._presenter = new TyperPresenter(this, text);
 
     this._textBlock = new TextBlock(this._presenter);
     this._summary = new Summary(this._presenter);
 
-    /* img */
-    let image = document.querySelector("#image");
-    image.src = keyboardImg;
-
-    /* reset button */
-    let resetLabel = document.querySelector("#reset-label");
-    resetLabel.innerHTML = I18n.getInstance().translate("reset");
-    this._resetButton = document.querySelector("#btn-reset");
-
     this._init();
   }
 
+  _buildImageSection() {
+    let imageSection = new Div("image-section");
+    let image = new Image("image");
+    image.setSrc(keyboardImg);
+    imageSection.add(image);
+    return imageSection;
+  }
+
+  _buildBottomSection() {
+    let bottomSection = new Div("bottom-section");
+    this._resetButton = new Button("btn-reset");
+    this._resetButton.setVisible(false);
+    this._resetButton.setText(
+      `<i class="fa fa-refresh"></i> ${I18n.getInstance().translate("reset")}`
+    );
+    bottomSection.add(this._resetButton);
+    return bottomSection;
+  }
+
   _init() {
-    this._self.addEventListener("click", () => {
+    let imageSection = this._buildImageSection();
+    let bottomSection = this._buildBottomSection();
+
+    this.add(this._summary);
+    this.add(imageSection);
+    this.add(this._textBlock);
+    this.add(bottomSection);
+
+    this.addListener("click", () => {
       this._textBlock.focus();
     });
 
-    this._resetButton.addEventListener("click", () => {
+    this._resetButton.addListener("click", () => {
       location.reload();
     });
 
     this._textBlock.addKeyPressListener(() => {
       let keyPressed = event.key;
       let currentChar = this._textBlock.getCurrentChar();
-
-      // console.log("Emitting key pressed!", event.key);
-      // socket.emit("key pressed", event.key);
 
       if (keyPressed === currentChar) {
         this._presenter.charPressSuccess();
@@ -57,7 +76,7 @@ export class Typer {
     }
     if (this._textBlock.isTextEndReached()) {
       this._textBlock.disable();
-      this._resetButton.removeAttribute("hidden");
+      this._resetButton.setVisible(true);
       this._resetButton.focus();
     }
   }
@@ -72,5 +91,9 @@ export class Typer {
 
   updateAccuracySpan(accuracy) {
     this._summary.updateAccuracySpan(accuracy);
+  }
+
+  focus() {
+    this._textBlock.focus();
   }
 }

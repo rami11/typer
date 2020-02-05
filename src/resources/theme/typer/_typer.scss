@@ -41,6 +41,10 @@ $char-color-failure: $red-500;
         .failure {
           background-color: $char-color-failure;
         }
+
+        .underline {
+          text-decoration: underline;
+        }
       }
     }
   }

@@ -1,7 +1,11 @@
-export class TextBlock {
-  constructor(presenter) {
-    this._self = document.querySelector("#text-block");
+import { Div } from "../core/Div";
+import { Span } from "../core/Span";
 
+export class TextBlock extends Div {
+  constructor(presenter) {
+    super("text-block");
+
+    this._textSpans = [];
     this._text = presenter.text;
     this._charIndex = 0;
 
@@ -9,46 +13,49 @@ export class TextBlock {
   }
 
   _init() {
-    this._self.focus();
     this._populateContent(this._text);
     this._underlineCurrentChar();
+    this.focus();
   }
 
   _populateContent(text) {
     let quote = text.quote;
 
-    let result = "";
+    this.add(new Span("", "“"));
+    let quoteSpan = new Span("quote");
     for (let i in quote) {
-      result += '<span id="char-' + i + '">' + quote[i] + "</span>";
+      let span = new Span(`char-${i}`, quote[i]);
+      quoteSpan.add(span);
+      this._textSpans.push(span);
     }
-    document.querySelector("#quote").innerHTML = result;
+    this.add(quoteSpan);
+    this.add(new Span("", "” - "));
 
     let source = text.source;
     if (source && source.length > 0) {
-      document.querySelector("#source").innerHTML = text.source;
+      this.add(new Span("source", source));
     }
   }
 
   _underlineCurrentChar() {
-    let charSpan = document.querySelector(`#char-${this._charIndex}`);
-
+    let charSpan = this._textSpans[this._charIndex];
     if (charSpan) {
-      charSpan.style.textDecoration = "underline";
+      charSpan.addClassName("underline");
     }
   }
 
   _getCurrentCharSpan() {
-    return document.querySelector(`#char-${this._charIndex}`);
+    return this._textSpans[this._charIndex];
   }
 
   _colorCurrentChar(isSuccess) {
     let charSpan = this._getCurrentCharSpan();
-    charSpan.classList.add(isSuccess ? "success" : "failure");
-    charSpan.style.textDecoration = "none";
+    charSpan.addClassName(isSuccess ? "success" : "failure");
+    charSpan.removeClassName("underline");
   }
 
   addKeyPressListener(keyPressEvent = () => {}) {
-    this._self.addEventListener("keypress", keyPressEvent);
+    this.addListener("keypress", keyPressEvent);
   }
 
   nextChar(isSuccess) {
@@ -67,10 +74,6 @@ export class TextBlock {
 
   getCurrentChar() {
     return this._text.quote[this._charIndex];
-  }
-
-  focus() {
-    this._self.focus();
   }
 
   disable() {

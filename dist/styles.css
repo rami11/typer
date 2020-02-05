@@ -54,6 +54,8 @@
         color: lightgreen; }
       .theme #typer #text-block #quote .failure {
         background-color: #f44336; }
+      .theme #typer #text-block #quote .underline {
+        text-decoration: underline; }
   .theme header {
     display: grid;
     grid-template-areas: "a a"; }
