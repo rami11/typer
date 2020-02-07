@@ -1,0 +1,8 @@
+@mixin progress-bar {
+  background-color: firebrick;
+  height: 10px;
+}
+
+.progress-bar {
+  @include progress-bar;
+}
