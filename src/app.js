@@ -1,11 +1,13 @@
 import { Typer } from "./ui/typer/Typer";
 import { LanguageChooser } from "./ui/locale/LanguageChooser";
 import { GenerateTextService } from "./service/GenerateTextService";
+import { Div } from "./ui/core/Div";
+import { Span } from "./ui/core/Span";
 
 class Main {
   constructor() {
     this.service = new GenerateTextService();
-    this.typer;
+    this._typer;
 
     this._init();
   }
@@ -15,15 +17,44 @@ class Main {
       .exec()
       .then(text => {
         this._showContent();
-        this.typer = new Typer(text);
+        this._typer = new Typer(text);
         new LanguageChooser();
 
         let main = document.querySelector("main");
-        main.appendChild(this.typer._self);
-        this.typer.focus();
+        main.appendChild(this._typer._self);
+        this._typer.focus();
 
         // Footer
         this._populateFooter();
+
+        // socket.io
+        const socket = io("http://localhost:5000");
+
+        socket.on("connect", () => {
+          console.log("I'm connected", socket.id);
+        });
+
+        socket.on("message", connected_sockets => {
+          let div = new Div();
+          div.addClassName("block");
+          let ccDiv = new Div("");
+          ccDiv.add(new Span("", "Connected Clients"));
+          ccDiv.addClassName("cyan-block");
+          div.add(ccDiv);
+
+          for (let socketId in connected_sockets) {
+            if (socketId !== socket.id) {
+              let socketBlock = new Div();
+              socketBlock.addClassName("golden-block");
+              socketBlock.add(new Span("", socketId));
+              div.add(socketBlock);
+            }
+          }
+
+          let csDiv = document.querySelector("#connected-sockets");
+          csDiv.innerHTML = "";
+          csDiv.appendChild(div._self);
+        });
       })
       .catch(error => {
         console.error(error);
@@ -45,19 +76,5 @@ class Main {
 }
 
 window.onload = () => {
-  new Main();
-
-  // socket.io
-  // const socket = io('http://localhost:5000');
-
-  // socket.on('message', connected_sockets => {
-  //   let lis = '<h4>Connected sockets:</h4>';
-  //   for (let socketId in connected_sockets) {
-  //     if (socketId !== socket.id) {
-  //       lis += `<li>${socketId}</li>`;
-  //     }
-  //   }
-  //   const ol = document.querySelector('#list');
-  //   ol.innerHTML = lis;
-  // });
+  let main = new Main();
 };

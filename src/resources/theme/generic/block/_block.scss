@@ -11,3 +11,7 @@ $font-size: 1.1em;
   border-radius: 2px;
   border: 1px solid;
 }
+
+.block {
+  @include block;
+}

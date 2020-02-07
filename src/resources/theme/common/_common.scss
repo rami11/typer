@@ -25,4 +25,21 @@
     border-radius: 2px;
     padding: 3px;
   }
+
+  .cyan-block {
+    // border-radius: 2px;
+    // border: 0.5px solid;
+    @include block;
+    background-color: darkcyan;
+    margin: 4px 2px;
+    padding: 3px;
+  }
+
+  .golden-block {
+    background-color: goldenrod;
+    margin: 4px 2px;
+    border: 0.5px solid;
+    border-radius: 2px;
+    padding: 3px;
+  }
 }
