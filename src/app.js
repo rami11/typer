@@ -22,7 +22,6 @@ class Main {
 
         let main = document.querySelector("main");
         main.appendChild(this._typer._self);
-        main.appendChild(new ProgressBar()._self);
         this._typer.focus();
 
         // Footer

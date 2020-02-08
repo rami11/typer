@@ -1,8 +1,19 @@
-@mixin progress-bar {
+@mixin progress {
   background-color: firebrick;
-  height: 10px;
+  transition: 300ms linear;
+  height: 8px;
+  width: 0%;
+}
+
+@mixin progress-bar {
+  background-color: #fff;
+  border: 1px solid;
+  margin: 2px;
 }
 
 .progress-bar {
   @include progress-bar;
+  .progress {
+    @include progress;
+  }
 }

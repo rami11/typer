@@ -1,6 +1,12 @@
 .progress-bar {
-  background-color: firebrick;
-  height: 10px; }
+  background-color: #fff;
+  border: 1px solid;
+  margin: 2px; }
+  .progress-bar .progress {
+    background-color: firebrick;
+    transition: 300ms linear;
+    height: 8px;
+    width: 0%; }
 
 .block {
   max-width: 600px;

@@ -7,12 +7,14 @@ import { I18n } from "../../locale/I18n";
 import { Div } from "../core/Div";
 import { Button } from "../core/Button";
 import { Image } from "../core/Image";
+import { ProgressBar } from "../util/ProgressBar";
 
 export class Typer extends Div {
   constructor(text) {
     super("typer");
     this._presenter = new TyperPresenter(this, text);
 
+    this._progressBar = new ProgressBar();
     this._textBlock = new TextBlock(this._presenter);
     this._summary = new Summary(this._presenter);
 
@@ -44,6 +46,7 @@ export class Typer extends Div {
 
     this.add(this._summary);
     this.add(imageSection);
+    this.add(this._progressBar);
     this.add(this._textBlock);
     this.add(bottomSection);
 
@@ -91,6 +94,11 @@ export class Typer extends Div {
 
   updateAccuracySpan(accuracy) {
     this._summary.updateAccuracySpan(accuracy);
+  }
+
+  updateProgressBar(value) {
+    // this._summary.updateProgressBar(value);
+    this._progressBar.setValue(value);
   }
 
   focus() {

@@ -7,10 +7,19 @@ export class TyperPresenter {
     this._charSuccessCount = 0;
     this._charTypedCount = 0;
     this._initTime = this._timeNow();
+    this._completePercent = 0;
   }
 
   get text() {
     return this._text;
+  }
+
+  /**
+   * @param {number} value
+   */
+  set completePercent(value) {
+    this._completePercent = value;
+    this._typer.updateProgressBar(value);
   }
 
   _timeNow() {
@@ -19,7 +28,12 @@ export class TyperPresenter {
   }
 
   _nextChar(isSuccess) {
+    this._charTypedCount++;
     this._typer.nextChar(isSuccess);
+
+    this.completePercent = Math.ceil(
+      (this._charTypedCount * 100) / this.text.quote.length
+    );
   }
 
   _increaseErrorCount() {
@@ -28,12 +42,10 @@ export class TyperPresenter {
 
   charPressSuccess() {
     this._charSuccessCount++;
-    this._charTypedCount++;
     this._nextChar(true);
   }
 
   charPressFailure() {
-    this._charTypedCount++;
     this._increaseErrorCount();
     this._nextChar(false);
   }
