@@ -29,10 +29,9 @@ export class SocketIO {
           div.add(socketBlock);
         }
       }
-
-      let csDiv = document.querySelector("#connected-sockets");
-      csDiv.innerHTML = "";
-      csDiv.appendChild(div._self);
+      let ccSection = document.querySelector("#connected-sockets");
+      ccSection.innerHTML = "";
+      ccSection.appendChild(div._self);
     });
   }
 }

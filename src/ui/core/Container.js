@@ -8,4 +8,8 @@ export class Container extends Component {
   add(component) {
     this._self.appendChild(component._self);
   }
+
+  clear() {
+    this._self.innerHTML = "";
+  }
 }
