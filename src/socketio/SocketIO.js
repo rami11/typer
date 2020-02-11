@@ -19,7 +19,6 @@ export class SocketIO {
       let div = new Div();
       div.addClassName("block");
 
-      console.log(connected_sockets);
       for (let socketId in connected_sockets) {
         let socketBlock = new Div();
         socketBlock.addClassName("golden-block");
@@ -38,10 +37,6 @@ export class SocketIO {
     });
 
     this._socket.on("progress", obj => {
-      console.log(obj.socketId, obj.completePercent);
-      console.log(this._progressBarDict);
-
-      // this._completePercent = obj.completePercent;
       let progressBar = this._progressBarDict[obj.socketId];
       progressBar.setValue(obj.completePercent);
     });
