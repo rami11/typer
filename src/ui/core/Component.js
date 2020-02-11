@@ -32,4 +32,8 @@ export class Component {
       this._self.setAttribute("hidden", true);
     }
   }
+
+  setVisibleKeepSpace(isVisible) {
+    this._self.style.visibility = isVisible ? "visible" : "hidden";
+  }
 }

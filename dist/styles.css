@@ -1,7 +1,8 @@
 .progress-bar {
   background-color: #fff;
   border: 1px solid;
-  margin: 2px; }
+  border-radius: 2px;
+  margin: 2px 0; }
   .progress-bar .progress {
     background-color: firebrick;
     transition: 300ms linear;

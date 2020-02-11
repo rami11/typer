@@ -10,11 +10,11 @@ import { Image } from "../core/Image";
 import { ProgressBar } from "../util/ProgressBar";
 
 export class Typer extends Div {
-  constructor(text) {
+  constructor(socket, text) {
     super("typer");
-    this._presenter = new TyperPresenter(this, text);
+    this._presenter = new TyperPresenter(socket, text, this);
 
-    this._progressBar = new ProgressBar();
+    this._socket = socket;
     this._textBlock = new TextBlock(this._presenter);
     this._summary = new Summary(this._presenter);
 
@@ -32,7 +32,7 @@ export class Typer extends Div {
   _buildBottomSection() {
     let bottomSection = new Div("bottom-section");
     this._resetButton = new Button("btn-reset");
-    this._resetButton.setVisible(false);
+    this._resetButton.setVisibleKeepSpace(false);
     this._resetButton.setText(
       `<i class="fa fa-refresh"></i> ${I18n.getInstance().translate("reset")}`
     );
@@ -46,7 +46,7 @@ export class Typer extends Div {
 
     this.add(this._summary);
     this.add(imageSection);
-    this.add(this._progressBar);
+    // this.add(this._progressBar);
     this.add(this._textBlock);
     this.add(bottomSection);
 
@@ -79,7 +79,7 @@ export class Typer extends Div {
     }
     if (this._textBlock.isTextEndReached()) {
       this._textBlock.disable();
-      this._resetButton.setVisible(true);
+      this._resetButton.setVisibleKeepSpace(true);
       this._resetButton.focus();
     }
   }
@@ -96,12 +96,11 @@ export class Typer extends Div {
     this._summary.updateAccuracySpan(accuracy);
   }
 
-  updateProgressBar(value) {
-    // this._summary.updateProgressBar(value);
-    this._progressBar.setValue(value);
-  }
-
   focus() {
     this._textBlock.focus();
+  }
+
+  broadcast(completePercent) {
+    this._socket.emit("progress", completePercent);
   }
 }

@@ -2,12 +2,12 @@ import { Typer } from "./ui/typer/Typer";
 import { LanguageChooser } from "./ui/locale/LanguageChooser";
 import { GenerateTextService } from "./service/GenerateTextService";
 import { SocketIO } from "./socketio/SocketIO";
-import { ProgressBar } from "./ui/util/ProgressBar";
 
 class Main {
-  constructor() {
+  constructor(socket) {
     this.service = new GenerateTextService();
     this._typer;
+    this._socket = socket;
 
     this._init();
   }
@@ -17,7 +17,7 @@ class Main {
       .exec()
       .then(text => {
         this._showContent();
-        this._typer = new Typer(text);
+        this._typer = new Typer(this._socket, text);
         new LanguageChooser();
 
         let main = document.querySelector("main");
@@ -47,6 +47,7 @@ class Main {
 }
 
 window.onload = () => {
-  new Main();
-  new SocketIO();
+  const socket = io("http://localhost:5000");
+  new Main(socket);
+  new SocketIO(socket);
 };

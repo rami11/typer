@@ -1,5 +1,6 @@
 export class TyperPresenter {
-  constructor(typer, text) {
+  constructor(socket, text, typer) {
+    this._socket = socket;
     this._typer = typer;
     this._text = text;
 
@@ -19,7 +20,7 @@ export class TyperPresenter {
    */
   set completePercent(value) {
     this._completePercent = value;
-    this._typer.updateProgressBar(value);
+    this._typer.broadcast(value);
   }
 
   _timeNow() {

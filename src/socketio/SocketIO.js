@@ -1,10 +1,12 @@
 import { Div } from "../ui/core/Div";
 import { Span } from "../ui/core/Span";
+import { ProgressBar } from "../ui/util/ProgressBar";
 
 export class SocketIO {
-  constructor() {
-    // socket.io
-    this._socket = io("http://localhost:5000");
+  constructor(socket) {
+    this._socket = socket;
+    this._progressBarDict = {};
+    // this._completePercent = 0;
     this._init();
   }
 
@@ -16,22 +18,32 @@ export class SocketIO {
     this._socket.on("message", connected_sockets => {
       let div = new Div();
       div.addClassName("block");
-      let ccDiv = new Div("");
-      ccDiv.add(new Span("", "Connected Clients"));
-      ccDiv.addClassName("cyan-block");
-      div.add(ccDiv);
 
+      console.log(connected_sockets);
       for (let socketId in connected_sockets) {
-        if (socketId !== this._socket.id) {
-          let socketBlock = new Div();
-          socketBlock.addClassName("golden-block");
-          socketBlock.add(new Span("", socketId));
-          div.add(socketBlock);
-        }
+        let socketBlock = new Div();
+        socketBlock.addClassName("golden-block");
+        socketBlock.add(
+          new Span("", socketId === this._socket.id ? "Me" : socketId)
+        );
+        let progressBar = new ProgressBar();
+        // progressBar.setValue(this._completePercent);
+        this._progressBarDict[socketId] = progressBar;
+        socketBlock.add(progressBar);
+        div.add(socketBlock);
       }
       let ccSection = document.querySelector("#connected-sockets");
       ccSection.innerHTML = "";
       ccSection.appendChild(div._self);
+    });
+
+    this._socket.on("progress", obj => {
+      console.log(obj.socketId, obj.completePercent);
+      console.log(this._progressBarDict);
+
+      // this._completePercent = obj.completePercent;
+      let progressBar = this._progressBarDict[obj.socketId];
+      progressBar.setValue(obj.completePercent);
     });
   }
 }
