@@ -95,6 +95,21 @@
         background-color: #f44336; }
       .theme #typer #text-block #quote .underline {
         text-decoration: underline; }
+  .theme .typer-progress-indicator {
+    height: 9px;
+    background-color: #fff;
+    border: 0.5px solid #000;
+    border-radius: 2px; }
+    .theme .typer-progress-indicator .progress {
+      transition: 300ms linear;
+      height: 8px;
+      display: inline-block;
+      position: relative;
+      left: 0.5px; }
+    .theme .typer-progress-indicator .success {
+      background-color: olive; }
+    .theme .typer-progress-indicator .failure {
+      background-color: firebrick; }
   .theme header {
     display: grid;
     grid-template-areas: "a a"; }

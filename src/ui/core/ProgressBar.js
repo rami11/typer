@@ -1,4 +1,4 @@
-import { Div } from "../core/Div";
+import { Div } from "./Div";
 
 export class ProgressBar extends Div {
   constructor() {
@@ -11,6 +11,10 @@ export class ProgressBar extends Div {
     this.addClassName("progress-bar");
     this._progress.addClassName("progress");
     this.add(this._progress);
+  }
+
+  setProgressColor(color) {
+    this._progress._self.style.backgroundColor = color;
   }
 
   setValue(value) {

@@ -48,4 +48,27 @@ $char-color-failure: $red-500;
       }
     }
   }
+
+  .typer-progress-indicator {
+    height: 9px;
+    background-color: #fff;
+    border: 0.5px solid #000;
+    border-radius: 2px;
+
+    .progress {
+      transition: 300ms linear;
+      height: 8px;
+      display: inline-block;
+      position: relative;
+      left: 0.5px;
+    }
+
+    .success {
+      background-color: olive;
+    }
+
+    .failure {
+      background-color: firebrick;
+    }
+  }
 }

@@ -27,8 +27,6 @@
   }
 
   .cyan-block {
-    // border-radius: 2px;
-    // border: 0.5px solid;
     @include block;
     background-color: darkcyan;
     margin: 4px 2px;

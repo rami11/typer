@@ -8,6 +8,14 @@ export class Component {
     this._self.id = id;
   }
 
+  setWidth(width) {
+    this._self.style.width = width;
+  }
+
+  setHeight(height) {
+    this._self.style.height = height;
+  }
+
   addListener(type, event = () => {}) {
     this._self.addEventListener(type, event);
   }

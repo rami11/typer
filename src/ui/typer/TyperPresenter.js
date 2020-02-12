@@ -18,10 +18,10 @@ export class TyperPresenter {
   /**
    * @param {number} value
    */
-  set completePercent(value) {
-    this._completePercent = value;
-    this._typer.broadcast(value);
-  }
+  // set completePercent(value) {
+  //   this._completePercent = value;
+  //   this._typer.broadcast(value);
+  // }
 
   _timeNow() {
     let timeNow = Date.now();
@@ -32,9 +32,11 @@ export class TyperPresenter {
     this._charTypedCount++;
     this._typer.nextChar(isSuccess);
 
-    this.completePercent = Math.ceil(
+    let completePercent = Math.ceil(
       (this._charTypedCount * 100) / this.text.quote.length
     );
+    let progressValue = { completePercent, isSuccess };
+    this._typer.broadcast(progressValue);
   }
 
   _increaseErrorCount() {

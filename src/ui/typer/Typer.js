@@ -7,7 +7,6 @@ import { I18n } from "../../locale/I18n";
 import { Div } from "../core/Div";
 import { Button } from "../core/Button";
 import { Image } from "../core/Image";
-import { ProgressBar } from "../util/ProgressBar";
 
 export class Typer extends Div {
   constructor(socket, text) {
@@ -100,7 +99,7 @@ export class Typer extends Div {
     this._textBlock.focus();
   }
 
-  broadcast(completePercent) {
-    this._socket.emit("progress", completePercent);
+  broadcast(progressValue) {
+    this._socket.emit("progress", progressValue);
   }
 }

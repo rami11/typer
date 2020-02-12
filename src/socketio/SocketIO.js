@@ -1,6 +1,6 @@
 import { Div } from "../ui/core/Div";
 import { Span } from "../ui/core/Span";
-import { ProgressBar } from "../ui/util/ProgressBar";
+import { TyperProgressIndicator } from "../ui/typer/TyperProgressIndicator";
 
 export class SocketIO {
   constructor(socket) {
@@ -25,8 +25,7 @@ export class SocketIO {
         socketBlock.add(
           new Span("", socketId === this._socket.id ? "Me" : socketId)
         );
-        let progressBar = new ProgressBar();
-        // progressBar.setValue(this._completePercent);
+        let progressBar = new TyperProgressIndicator();
         this._progressBarDict[socketId] = progressBar;
         socketBlock.add(progressBar);
         div.add(socketBlock);
@@ -38,7 +37,11 @@ export class SocketIO {
 
     this._socket.on("progress", obj => {
       let progressBar = this._progressBarDict[obj.socketId];
-      progressBar.setValue(obj.completePercent);
+
+      progressBar.setValue(
+        obj.progressValue.completePercent,
+        obj.progressValue.isSuccess
+      );
     });
   }
 }
