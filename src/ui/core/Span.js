@@ -4,7 +4,7 @@ export class Span extends Container {
   constructor(text = "") {
     super("span");
 
-    this._self.innerHTML = text;
+    this.text = text;
   }
 
   set text(text) {
@@ -16,6 +16,6 @@ export class Span extends Container {
   }
 
   setText(text) {
-    this._self.innerHTML = text;
+    this.text = text;
   }
 }
