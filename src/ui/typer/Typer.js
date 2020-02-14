@@ -10,7 +10,8 @@ import { Image } from "../core/Image";
 
 export class Typer extends Div {
   constructor(socket, text) {
-    super("typer");
+    super();
+    this.setId("typer");
     this._presenter = new TyperPresenter(socket, text, this);
 
     this._socket = socket;
@@ -21,16 +22,20 @@ export class Typer extends Div {
   }
 
   _buildImageSection() {
-    let imageSection = new Div("image-section");
-    let image = new Image("image");
+    let imageSection = new Div();
+    imageSection.setId("image-section");
+    let image = new Image();
+    image.setId("image");
     image.setSrc(keyboardImg);
     imageSection.add(image);
     return imageSection;
   }
 
   _buildBottomSection() {
-    let bottomSection = new Div("bottom-section");
-    this._resetButton = new Button("btn-reset");
+    let bottomSection = new Div();
+    bottomSection.setId("bottom-section");
+    this._resetButton = new Button();
+    this._resetButton.setId("btn-reset");
     this._resetButton.setVisibleKeepSpace(false);
     this._resetButton.setText(
       `<i class="fa fa-refresh"></i> ${I18n.getInstance().translate("reset")}`

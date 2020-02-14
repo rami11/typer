@@ -1,9 +1,18 @@
 import { Container } from "./Container";
 
 export class Span extends Container {
-  constructor(id = "", text = "") {
-    super("span", id);
-    this.setText(text);
+  constructor(text = "") {
+    super("span");
+
+    this._self.innerHTML = text;
+  }
+
+  set text(text) {
+    this._self.innerHTML = text;
+  }
+
+  get text() {
+    return this._text;
   }
 
   setText(text) {

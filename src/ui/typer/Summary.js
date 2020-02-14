@@ -4,7 +4,8 @@ import { Div } from "../core/Div";
 
 export class Summary extends Div {
   constructor(presenter) {
-    super("summary-block");
+    super();
+    this.setId("summary-block");
     this._presenter = presenter;
 
     this._init();
@@ -24,10 +25,12 @@ export class Summary extends Div {
     let smallBlock = new Div();
     smallBlock.addClassName("small-block");
 
-    let errorLabel = new Span("errors-label");
+    let errorLabel = new Span();
+    errorLabel.setId("errors_label");
     errorLabel.setText(`${I18n.getInstance().translate("errors")} `);
 
-    this._errorSpan = new Span("error-count");
+    this._errorSpan = new Span();
+    this._errorSpan.setId("error-count");
     this._errorSpan.setText(0);
 
     smallBlock.add(errorLabel);
@@ -36,15 +39,18 @@ export class Summary extends Div {
   }
 
   _buildAccuracyBlock() {
-    let smallblock = new Div("accuracy");
+    let smallblock = new Div();
+    smallblock.setId("accuracy");
     smallblock.addClassName("small-block");
 
-    let accuracyLabel = new Span("accuracy-label");
+    let accuracyLabel = new Span();
+    accuracyLabel.setId("accuracy-label");
     accuracyLabel.setText(`${I18n.getInstance().translate("accuracy")} `);
 
-    this._accuracySpan = new Span("accuracy-value");
+    this._accuracySpan = new Span();
+    this._accuracySpan.setId("accuracy-value");
     this._accuracySpan.setText(100);
-    let unitSpan = new Span("", "%");
+    let unitSpan = new Span("%");
 
     smallblock.add(accuracyLabel);
     smallblock.add(this._accuracySpan);
@@ -53,15 +59,18 @@ export class Summary extends Div {
   }
 
   _buildSpeedBlock() {
-    let smallblock = new Div("speed-block");
+    let smallblock = new Div();
+    smallblock.setId("speed-block");
     smallblock.addClassName("small-block");
 
-    let label = new Span("speed-label");
+    let label = new Span();
+    label.setId("speed-label");
     label.setText(`${I18n.getInstance().translate("speed")} `);
 
-    this._speedSpan = new Span("speed");
+    this._speedSpan = new Span();
+    this._speedSpan.setId("speed");
     this._speedSpan.setText(0);
-    let unitSpan = new Span("", " CPM");
+    let unitSpan = new Span(" CPM");
 
     smallblock.add(label);
     smallblock.add(this._speedSpan);

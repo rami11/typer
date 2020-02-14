@@ -1,8 +1,8 @@
 import { Component } from "./Component";
 
 export class Image extends Component {
-  constructor(id) {
-    super("img", id);
+  constructor() {
+    super("img");
   }
 
   setSrc(src) {

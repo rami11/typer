@@ -22,7 +22,7 @@ export class SocketIO {
         let socketBlock = new Div();
         socketBlock.addClassName("golden-block");
         socketBlock.add(
-          new Span("", socketId === this._socket.id ? "Me" : socketId)
+          new Span(socketId === this._socket.id ? "Me" : socketId)
         );
         let progressBar = new TyperProgressIndicator();
         this._progressBarDict[socketId] = progressBar;

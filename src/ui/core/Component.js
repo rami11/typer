@@ -1,7 +1,6 @@
 export class Component {
-  constructor(type = "div", id = "") {
+  constructor(type = "div") {
     this._self = document.createElement(type);
-    this._self.id = id;
   }
 
   setId(id) {

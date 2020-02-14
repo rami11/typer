@@ -1,8 +1,8 @@
 import { Component } from "./Component";
 
 export class Container extends Component {
-  constructor(type = "div", id) {
-    super(type, id);
+  constructor(type = "div") {
+    super(type);
   }
 
   add() {

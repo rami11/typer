@@ -3,7 +3,8 @@ import { Span } from "../core/Span";
 
 export class TextBlock extends Div {
   constructor(presenter) {
-    super("text-block");
+    super();
+    this.setId("text-block");
 
     this._textSpans = [];
     this._text = presenter.text;
@@ -21,19 +22,21 @@ export class TextBlock extends Div {
   _populateContent(text) {
     let quote = text.quote;
 
-    this.add(new Span("", "“"));
-    let quoteSpan = new Span("quote");
+    this.add(new Span("“"));
+    let quoteSpan = new Span();
+    quoteSpan.setId("quote");
     for (let i in quote) {
-      let span = new Span(`char-${i}`, quote[i]);
+      let span = new Span(quote[i]);
+      span.setId(`char-${i}`);
       quoteSpan.add(span);
       this._textSpans.push(span);
     }
     this.add(quoteSpan);
-    this.add(new Span("", "” - "));
+    this.add(new Span("” - "));
 
     let source = text.source;
     if (source && source.length > 0) {
-      this.add(new Span("source", source));
+      this.add(new Span(source));
     }
   }
 
