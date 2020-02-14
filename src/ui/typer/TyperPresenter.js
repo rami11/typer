@@ -8,20 +8,11 @@ export class TyperPresenter {
     this._charSuccessCount = 0;
     this._charTypedCount = 0;
     this._initTime = this._timeNow();
-    this._completePercent = 0;
   }
 
   get text() {
     return this._text;
   }
-
-  /**
-   * @param {number} value
-   */
-  // set completePercent(value) {
-  //   this._completePercent = value;
-  //   this._typer.broadcast(value);
-  // }
 
   _timeNow() {
     let timeNow = Date.now();

@@ -6,13 +6,12 @@ export class SocketIO {
   constructor(socket) {
     this._socket = socket;
     this._progressBarDict = {};
-    // this._completePercent = 0;
     this._init();
   }
 
   _init() {
     this._socket.on("connect", () => {
-      console.log("I'm connected", this._socket.id);
+      console.log("I'm connected:", this._socket.id);
     });
 
     this._socket.on("message", connected_sockets => {
@@ -28,6 +27,7 @@ export class SocketIO {
         let progressBar = new TyperProgressIndicator();
         this._progressBarDict[socketId] = progressBar;
         socketBlock.add(progressBar);
+
         div.add(socketBlock);
       }
       let ccSection = document.querySelector("#connected-sockets");

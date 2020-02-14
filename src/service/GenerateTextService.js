@@ -1,17 +1,17 @@
 export class GenerateTextService {
   constructor() {
-    this.baseUrl = "http://localhost:5000";
-    this.languageCode = "en";
+    this._baseUrl = "http://localhost:5000";
+    this._languageCode = "en";
 
     let urlParams = new URLSearchParams(window.location.search);
     let lang = urlParams.get("lang");
     if (lang) {
-      this.languageCode = lang;
+      this._languageCode = lang;
     }
   }
 
   async exec() {
-    const url = `${this.baseUrl}/text/random/${this.languageCode}`;
+    const url = `${this._baseUrl}/text/random/${this._languageCode}`;
     let response = await fetch(url);
 
     if (response.ok) {

@@ -25,7 +25,7 @@ class Main {
         this._typer.focus();
 
         // Footer
-        this._populateFooter();
+        // this._populateFooter();
       })
       .catch(error => {
         console.error(error);
