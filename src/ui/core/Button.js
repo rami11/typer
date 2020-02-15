@@ -1,8 +1,8 @@
 import { Container } from "./Container";
 
 export class Button extends Container {
-  constructor(id = "") {
-    super("button", id);
+  constructor() {
+    super("button");
   }
 
   setText(text) {

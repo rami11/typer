@@ -1,0 +1,10 @@
+@mixin toolbar {
+  .toolbar {
+    background-color: white;
+    border-bottom: 0.5px solid white;
+    height: 20px;
+    opacity: 0.75;
+    padding: 8px;
+    margin: 0;
+  }
+}

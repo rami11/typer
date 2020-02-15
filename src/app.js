@@ -2,6 +2,7 @@ import { Typer } from "./ui/typer/Typer";
 import { LanguageChooser } from "./ui/locale/LanguageChooser";
 import { GenerateTextService } from "./service/GenerateTextService";
 import { SocketIO } from "./socketio/SocketIO";
+import { ToolBar } from "./ui/core/ToolBar";
 
 class Main {
   constructor(socket) {
@@ -18,10 +19,13 @@ class Main {
       .then(text => {
         this._showContent();
         this._typer = new Typer(this._socket, text);
-        new LanguageChooser();
 
+        let toolbar = this._buildToolBar();
+        let header = document.querySelector("header");
+        header.appendChild(toolbar._self);
         let main = document.querySelector("main");
         main.appendChild(this._typer._self);
+
         this._typer.focus();
 
         // Footer
@@ -30,6 +34,12 @@ class Main {
       .catch(error => {
         console.error(error);
       });
+  }
+
+  _buildToolBar() {
+    let toolbar = new ToolBar();
+    toolbar.add(new LanguageChooser());
+    return toolbar;
   }
 
   _showContent() {
