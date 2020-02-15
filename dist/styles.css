@@ -108,7 +108,8 @@ body {
       height: 8px;
       display: inline-block;
       position: relative;
-      left: 0.5px; }
+      left: 0.5px;
+      top: 0.5px; }
     .theme .typer-progress-indicator .success {
       background-color: olive; }
     .theme .typer-progress-indicator .failure {
