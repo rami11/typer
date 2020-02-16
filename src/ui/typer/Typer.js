@@ -12,6 +12,8 @@ export class Typer extends Div {
   constructor(socket, text) {
     super();
     this.setId("typer");
+    this.setSpacing(true);
+    this.setAlignment("middle-center");
     this._presenter = new TyperPresenter(socket, text, this);
 
     this._socket = socket;

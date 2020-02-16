@@ -1,10 +1,19 @@
 export class Component {
   constructor(type = "div") {
     this._self = document.createElement(type);
+    this.setPadding(false);
   }
 
   setId(id) {
     this._self.id = id;
+  }
+
+  setPadding(isSet) {
+    if (isSet) {
+      this.addClassName("has-padding");
+    } else {
+      this.removeClassName("has-padding");
+    }
   }
 
   setWidth(width) {

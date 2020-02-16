@@ -13,6 +13,10 @@ body {
   margin: 0;
 }
 
+main {
+  margin: 8px;
+}
+
 .theme {
   background-image: linear-gradient($bck-color-1, $bck-color-2);
   @include common;

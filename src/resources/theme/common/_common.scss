@@ -1,4 +1,53 @@
+$default-padding: 8px;
+$small-padding: 4px;
+
+@mixin has-padding($padding: $default-padding) {
+  padding: $padding;
+}
+
+@mixin has-padding-vertical($padding: $default-padding) {
+  padding: $padding 0;
+}
+
+@mixin has-padding-horizontal($padding: $default-padding) {
+  padding: 0 $padding;
+}
+
 @mixin common {
+  .has-padding {
+    @include has-padding();
+  }
+
+  .has-padding-vertical {
+    @include has-padding-vertical();
+  }
+  .has-padding-horizontal {
+    @include has-padding-horizontal();
+  }
+
+  .has-padding-small {
+    @include has-padding($small-padding);
+  }
+
+  .has-padding-vertical-small {
+    @include has-padding-vertical($small-padding);
+  }
+
+  .has-padding-horizontal-small {
+    @include has-padding-horizontal($small-padding);
+  }
+
+  .align-middle-center {
+    margin: auto;
+    width: 50%;
+  }
+
+  .has-spacing {
+    > div {
+      margin-bottom: 4px;
+    }
+  }
+
   .right {
     justify-self: end;
   }

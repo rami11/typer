@@ -5,6 +5,7 @@ export class TextBlock extends Div {
   constructor(presenter) {
     super();
     this.setId("text-block");
+    this.setPadding(true);
 
     this._textSpans = [];
     this._text = presenter.text;

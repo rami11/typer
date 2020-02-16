@@ -1,6 +1,4 @@
-import { Div } from "../ui/core/Div";
-import { Span } from "../ui/core/Span";
-import { TyperProgressIndicator } from "../ui/typer/TyperProgressIndicator";
+import { ConnectedClientsSection } from "../ui/typer/ConnectedClientsSection";
 
 export class SocketIO {
   constructor(socket) {
@@ -15,32 +13,25 @@ export class SocketIO {
     });
 
     this._socket.on("message", connected_sockets => {
-      let div = new Div();
-      div.addClassName("block");
-
-      for (let socketId in connected_sockets) {
-        let socketBlock = new Div();
-        socketBlock.addClassName("golden-block");
-        socketBlock.add(
-          new Span(socketId === this._socket.id ? "Me" : socketId)
-        );
-        let progressBar = new TyperProgressIndicator();
-        this._progressBarDict[socketId] = progressBar;
-        socketBlock.add(progressBar);
-
-        div.add(socketBlock);
-      }
+      this._connectedSocketsSection = new ConnectedClientsSection(
+        this._socket.id,
+        connected_sockets
+      );
+      this._connectedSocketsSection.setAlignment("middle-center");
       let ccSection = document.querySelector("#connected-sockets");
       ccSection.innerHTML = "";
-      ccSection.appendChild(div._self);
+      ccSection.appendChild(this._connectedSocketsSection._self);
     });
 
     this._socket.on("progress", obj => {
-      let progressBar = this._progressBarDict[obj.socketId];
+      let socketId = obj.socketId;
+      let completePercent = obj.progressValue.completePercent;
+      let isSuccess = obj.progressValue.isSuccess;
 
-      progressBar.setValue(
-        obj.progressValue.completePercent,
-        obj.progressValue.isSuccess
+      this._connectedSocketsSection.updateProgressFor(
+        socketId,
+        completePercent,
+        isSuccess
       );
     });
   }

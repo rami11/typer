@@ -17,15 +17,15 @@ class Main {
     this.service
       .exec()
       .then(text => {
-        this._showContent();
-        this._typer = new Typer(this._socket, text);
-
         let toolbar = this._buildToolBar();
         let header = document.querySelector("header");
         header.appendChild(toolbar._self);
-        let main = document.querySelector("main");
-        main.appendChild(this._typer._self);
 
+        this._typer = new Typer(this._socket, text);
+        let main = document.querySelector("main");
+        main.prepend(this._typer._self);
+
+        // this._showContent();
         this._typer.focus();
 
         // Footer

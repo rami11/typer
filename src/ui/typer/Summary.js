@@ -6,6 +6,7 @@ export class Summary extends Div {
   constructor(presenter) {
     super();
     this.setId("summary-block");
+    this.setPadding(true);
     this._presenter = presenter;
 
     this._init();
