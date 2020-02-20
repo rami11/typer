@@ -50,8 +50,8 @@ $char-color-failure: $red-500;
 
   .typer-progress-indicator {
     height: 9px;
-    background-color: #fff;
-    border: 0.5px solid #000;
+    background-color: darkcyan;
+    border: 0.5px solid #fff;
     border-radius: 2px;
 
     .progress {
@@ -64,11 +64,11 @@ $char-color-failure: $red-500;
     }
 
     .success {
-      background-color: olive;
+      background-color: $char-color-success;
     }
 
     .failure {
-      background-color: firebrick;
+      background-color: $char-color-failure;
     }
   }
 }
