@@ -9,19 +9,19 @@
 $bck-color-1: $blue-100;
 $bck-color-2: $blue-50;
 
-body {
-  margin: 0;
-}
-
-main {
-  margin: 8px;
-}
-
-.theme {
+html {
   background-image: linear-gradient($bck-color-1, $bck-color-2);
   @include common;
   @include typer;
   @include toolbar;
   @include header;
   @include footer;
+
+  body {
+    margin: 0;
+  }
+
+  main {
+    margin: 8px;
+  }
 }

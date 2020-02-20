@@ -3,6 +3,7 @@ import { LanguageChooser } from "./ui/locale/LanguageChooser";
 import { GenerateTextService } from "./service/GenerateTextService";
 import { SocketIO } from "./socketio/SocketIO";
 import { ToolBar } from "./ui/core/ToolBar";
+import "./resources/theme/styles.scss";
 
 class Main {
   constructor(socket) {
