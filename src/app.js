@@ -43,13 +43,6 @@ class Main {
     return toolbar;
   }
 
-  _showContent() {
-    this.spinner = document.querySelector("#spinner");
-    this.content = document.querySelector("#content");
-    this.spinner.setAttribute("hidden", true);
-    this.content.removeAttribute("hidden");
-  }
-
   _populateFooter() {
     let footer = document.querySelector("footer");
     let yearSpan = footer.querySelector("span");

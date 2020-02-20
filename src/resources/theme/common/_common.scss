@@ -38,8 +38,9 @@ $small-padding: 4px;
   }
 
   .align-middle-center {
-    margin: auto;
-    width: 50%;
+    > div {
+      margin: auto;
+    }
   }
 
   .has-spacing {
