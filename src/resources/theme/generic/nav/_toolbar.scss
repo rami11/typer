@@ -1,6 +1,7 @@
 @mixin toolbar {
   .toolbar {
-    background-color: white;
+    color: white;
+    background-color: black;
     border-bottom: 0.5px solid white;
     height: 20px;
     opacity: 0.75;
@@ -8,11 +9,17 @@
     display: flex;
     flex-direction: row;
 
+    a {
+      text-decoration: none;
+    }
+
     .left-side {
       width: 50%;
       text-align: left;
       margin: auto;
-      > div {
+      > div,
+      a,
+      span {
         display: inline;
         margin-right: 4px;
       }
@@ -21,7 +28,9 @@
       width: 50%;
       text-align: right;
       margin: auto;
-      > div {
+      > div,
+      a,
+      span {
         display: inline;
         margin-left: 4px;
       }
