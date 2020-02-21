@@ -1,9 +1,9 @@
-import { Div } from "./Div";
+import { Container } from "./Container";
 
-export class ProgressBar extends Div {
+export class ProgressBar extends Container {
   constructor() {
     super();
-    this._progress = new Div();
+    this._progress = new Container();
     this._init();
   }
 

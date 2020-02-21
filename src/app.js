@@ -4,6 +4,9 @@ import { GenerateTextService } from "./service/GenerateTextService";
 import { SocketIO } from "./socketio/SocketIO";
 import { ToolBar } from "./ui/core/ToolBar";
 import "./resources/theme/styles.scss";
+import { Span } from "./ui/core/Span";
+import { Container } from "./ui/core/Container";
+import { Button } from "./ui/core/Button";
 
 class Main {
   constructor(socket) {
@@ -39,7 +42,8 @@ class Main {
 
   _buildToolBar() {
     let toolbar = new ToolBar();
-    toolbar.add(new LanguageChooser());
+    toolbar.addLeftElement(new LanguageChooser());
+
     return toolbar;
   }
 

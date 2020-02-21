@@ -1,7 +1,7 @@
-import { Div } from "../core/Div";
+import { Container } from "../core/Container";
 import { Span } from "../core/Span";
 
-export class TextBlock extends Div {
+export class TextBlock extends Container {
   constructor(presenter) {
     super();
     this.setId("text-block");

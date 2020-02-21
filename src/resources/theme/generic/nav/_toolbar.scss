@@ -5,6 +5,26 @@
     height: 20px;
     opacity: 0.75;
     padding: 8px;
-    margin: 0;
+    display: flex;
+    flex-direction: row;
+
+    .left-side {
+      width: 50%;
+      text-align: left;
+      margin: auto;
+      > div {
+        display: inline;
+        margin-right: 4px;
+      }
+    }
+    .right-side {
+      width: 50%;
+      text-align: right;
+      margin: auto;
+      > div {
+        display: inline;
+        margin-left: 4px;
+      }
+    }
   }
 }

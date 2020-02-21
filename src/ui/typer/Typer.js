@@ -4,11 +4,11 @@ import { TyperPresenter } from "./TyperPresenter";
 import keyboardImg from "../../resources/img/keyboard.png";
 import { I18n } from "../../locale/I18n";
 
-import { Div } from "../core/Div";
+import { Container } from "../core/Container";
 import { Button } from "../core/Button";
 import { Image } from "../core/Image";
 
-export class Typer extends Div {
+export class Typer extends Container {
   constructor(socket, text) {
     super();
     this.setId("typer");
@@ -24,7 +24,7 @@ export class Typer extends Div {
   }
 
   _buildImageSection() {
-    let imageSection = new Div();
+    let imageSection = new Container();
     imageSection.setId("image-section");
     let image = new Image();
     image.setId("image");
@@ -34,7 +34,7 @@ export class Typer extends Div {
   }
 
   _buildBottomSection() {
-    let bottomSection = new Div();
+    let bottomSection = new Container();
     bottomSection.setId("bottom-section");
     this._resetButton = new Button();
     this._resetButton.setId("btn-reset");

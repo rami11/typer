@@ -1,8 +1,8 @@
-import { Div } from "../core/Div";
+import { Container } from "../core/Container";
 import { Span } from "../core/Span";
 import { TyperProgressIndicator } from "../typer/TyperProgressIndicator";
 
-export class ConnectedClientsSection extends Div {
+export class ConnectedClientsSection extends Container {
   constructor(socketId, connectedSockets) {
     super();
 
@@ -16,7 +16,7 @@ export class ConnectedClientsSection extends Div {
     this.setSpacing(true);
 
     for (let socketId in this._connectedSockets) {
-      let socketBlock = new Div();
+      let socketBlock = new Container();
       socketBlock.setPadding(true);
       socketBlock.addClassName("block");
       socketBlock.add(new Span(socketId === this._socketId ? "Me" : socketId));

@@ -1,8 +1,8 @@
 import { I18n } from "../../locale/I18n";
 import { Span } from "../core/Span";
-import { Div } from "../core/Div";
+import { Container } from "../core/Container";
 
-export class Summary extends Div {
+export class Summary extends Container {
   constructor(presenter) {
     super();
     this.setId("summary-block");
@@ -23,7 +23,7 @@ export class Summary extends Div {
   }
 
   _buildErrorBlock() {
-    let smallBlock = new Div();
+    let smallBlock = new Container();
     smallBlock.addClassName("small-block");
 
     let errorLabel = new Span();
@@ -40,7 +40,7 @@ export class Summary extends Div {
   }
 
   _buildAccuracyBlock() {
-    let smallblock = new Div();
+    let smallblock = new Container();
     smallblock.setId("accuracy");
     smallblock.addClassName("small-block");
 
@@ -60,7 +60,7 @@ export class Summary extends Div {
   }
 
   _buildSpeedBlock() {
-    let smallblock = new Div();
+    let smallblock = new Container();
     smallblock.setId("speed-block");
     smallblock.addClassName("small-block");
 

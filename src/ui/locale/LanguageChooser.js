@@ -1,8 +1,8 @@
 import { I18n } from "../../locale/I18n";
-import { Div } from "../core/Div";
+import { Container } from "../core/Container";
 import { Select } from "../core/Select";
 
-export class LanguageChooser extends Div {
+export class LanguageChooser extends Container {
   constructor() {
     super();
     this.setId("#language-chooser select");

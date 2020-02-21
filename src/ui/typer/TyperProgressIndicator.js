@@ -1,7 +1,7 @@
-import { Div } from "../core/Div";
+import { Container } from "../core/Container";
 import { Span } from "../core/Span";
 
-export class TyperProgressIndicator extends Div {
+export class TyperProgressIndicator extends Container {
   constructor() {
     super();
 
@@ -14,7 +14,7 @@ export class TyperProgressIndicator extends Div {
   }
 
   _buildProgressPercent(value, isSuccess) {
-    let progress = new Div();
+    let progress = new Container();
     progress.addClassName("progress");
     progress.addClassName(isSuccess ? "success" : "failure");
     progress.setWidth(`${value}%`);
