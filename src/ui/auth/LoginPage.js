@@ -1,5 +1,7 @@
 import { Container } from "../core/Container";
-import { Span } from "../core/Span";
+import { Button } from "../core/Button";
+import { TextField } from "../core/TextField";
+import { PasswordField } from "../core/PasswordField";
 
 export class LoginPage extends Container {
   constructor() {
@@ -8,8 +10,16 @@ export class LoginPage extends Container {
   }
 
   _init() {
-    const span = new Span();
-    span.setText("Login Page! Hooray!");
-    this.add(span);
+    const usernameField = new TextField();
+    usernameField.setCaption("Username");
+    const passwordField = new PasswordField();
+    passwordField.setCaption("Password");
+
+    const button = new Button();
+    button.setText("Login");
+
+    this.add(usernameField);
+    this.add(passwordField);
+    this.add(button);
   }
 }

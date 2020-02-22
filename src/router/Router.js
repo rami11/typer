@@ -10,7 +10,6 @@ export class Router {
     };
 
     window.onhashchange = () => {
-      console.log(location.hash);
       const view = this._hashToView[location.hash];
       this._navigate(view);
     };
