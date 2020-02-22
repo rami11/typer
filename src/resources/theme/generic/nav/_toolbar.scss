@@ -1,17 +1,12 @@
 @mixin toolbar {
   .toolbar {
     color: white;
-    background-color: black;
+    background-color: #212121;
     border-bottom: 0.5px solid white;
     height: 20px;
-    opacity: 0.75;
     padding: 8px;
     display: flex;
     flex-direction: row;
-
-    a {
-      text-decoration: none;
-    }
 
     .left-side {
       width: 50%;

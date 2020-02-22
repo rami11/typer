@@ -1,14 +1,17 @@
 import { Typer } from "./ui/typer/Typer";
-import { LanguageChooser } from "./ui/locale/LanguageChooser";
+import { LanguageChooser } from "./ui/toolbar/LanguageChooser";
 import { GenerateTextService } from "./service/GenerateTextService";
 import { SocketIO } from "./socketio/SocketIO";
-import { ToolBar } from "./ui/core/ToolBar";
+import { Toolbar } from "./ui/core/Toolbar";
 import "./resources/theme/styles.scss";
 import { Anchor } from "./ui/core/Anchor";
 import { Span } from "./ui/core/Span";
+import { AppToolbar } from "./ui/toolbar/AppToolbar";
+import { Router } from "./router/Router";
 
 class Main {
   constructor(socket) {
+    this._router = new Router();
     this.service = new GenerateTextService();
     this._typer;
     this._socket = socket;
@@ -20,7 +23,8 @@ class Main {
     this.service
       .exec()
       .then(text => {
-        let toolbar = this._buildToolBar();
+        // let toolbar = this._buildToolbar();
+        let toolbar = new AppToolbar();
         let header = document.querySelector("header");
         header.appendChild(toolbar._self);
 
@@ -37,33 +41,6 @@ class Main {
       .catch(error => {
         console.error(error);
       });
-  }
-
-  _buildToolBar() {
-    let toolbar = new ToolBar();
-    toolbar.addLeftElement(new LanguageChooser());
-
-    // login
-    const login = new Anchor();
-    login.addClassName("small-block");
-    login.setHref("#login");
-    login.setText("Login");
-
-    // spacer
-    const span = new Span();
-    span.setText("|");
-
-    // sign up
-    const signup = new Anchor();
-    signup.addClassName("small-block");
-    signup.setHref("#signup");
-    signup.setText("Sign Up");
-
-    toolbar.addRightElement(login);
-    // toolbar.addRightElement(span);
-    toolbar.addRightElement(signup);
-
-    return toolbar;
   }
 
   _populateFooter() {

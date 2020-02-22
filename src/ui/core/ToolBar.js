@@ -1,6 +1,6 @@
 import { Container } from "./Container";
 
-export class ToolBar extends Container {
+export class Toolbar extends Container {
   constructor() {
     super();
 
