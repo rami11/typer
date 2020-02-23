@@ -2,7 +2,6 @@ $bck-color: $grey-900;
 $font-size: 1.1em;
 
 @mixin block {
-  max-width: 600px;
   color: white;
   background-color: $bck-color;
   font-size: $font-size;

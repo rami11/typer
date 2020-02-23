@@ -7,18 +7,21 @@ import { I18n } from "../../locale/I18n";
 import { Container } from "../core/Container";
 import { Button } from "../core/Button";
 import { Image } from "../core/Image";
+import { SocketIO } from "../../socketio/SocketIO";
 
 export class Typer extends Container {
   constructor(socket, text) {
     super();
     this.setId("typer");
     this.setSpacing(true);
-    this.setAlignment("middle-center");
+    // this.setWidth("600px");
+    // this.setWidth("50%");
+    // this.setAlignment("middle-center");
     this._presenter = new TyperPresenter(socket, text, this);
 
     this._socket = socket;
-    this._textBlock = new TextBlock(this._presenter);
     this._summary = new Summary(this._presenter);
+    this._textBlock = new TextBlock(this._presenter);
 
     this._init();
   }
@@ -47,14 +50,16 @@ export class Typer extends Container {
   }
 
   _init() {
-    let imageSection = this._buildImageSection();
-    let bottomSection = this._buildBottomSection();
+    const imageSection = this._buildImageSection();
+    const bottomSection = this._buildBottomSection();
+    const socketio = new SocketIO(this._socket);
+    console.log(socketio);
 
     this.add(this._summary);
     this.add(imageSection);
-    // this.add(this._progressBar);
     this.add(this._textBlock);
     this.add(bottomSection);
+    this.add(socketio);
 
     this.addListener("click", () => {
       this._textBlock.focus();

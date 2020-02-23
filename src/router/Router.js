@@ -1,12 +1,12 @@
-import { LoginPage } from "../ui/auth/LoginPage";
-import { SignUpPage } from "../ui/auth/SignUpPage";
+import { LoginCard } from "../ui/auth/LoginCard";
+import { SignUpCard } from "../ui/auth/SignUpCard";
 
 export class Router {
   constructor() {
     this._hashToView = {
       "/": {},
-      "#login": new LoginPage(),
-      "#signup": new SignUpPage()
+      "#login": new LoginCard(),
+      "#signup": new SignUpCard()
     };
 
     window.onhashchange = () => {

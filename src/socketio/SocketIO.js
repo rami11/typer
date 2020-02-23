@@ -1,7 +1,9 @@
 import { ConnectedClientsSection } from "../ui/typer/ConnectedClientsSection";
+import { Container } from "../ui/core/Container";
 
-export class SocketIO {
+export class SocketIO extends Container {
   constructor(socket) {
+    super();
     this._socket = socket;
     this._progressBarDict = {};
     this._init();
@@ -18,15 +20,14 @@ export class SocketIO {
         connected_sockets
       );
       this._connectedSocketsSection.setAlignment("middle-center");
-      let ccSection = document.querySelector("#connected-sockets");
-      ccSection.innerHTML = "";
-      ccSection.appendChild(this._connectedSocketsSection._self);
+      this.clear();
+      this.add(this._connectedSocketsSection);
     });
 
     this._socket.on("progress", obj => {
-      let socketId = obj.socketId;
-      let completePercent = obj.progressValue.completePercent;
-      let isSuccess = obj.progressValue.isSuccess;
+      const socketId = obj.socketId;
+      const completePercent = obj.progressValue.completePercent;
+      const isSuccess = obj.progressValue.isSuccess;
 
       this._connectedSocketsSection.updateProgressFor(
         socketId,

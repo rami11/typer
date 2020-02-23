@@ -2,19 +2,17 @@ import "./resources/theme/styles.scss";
 
 import { GenerateTextService } from "./service/GenerateTextService";
 import { Router } from "./router/Router";
-import { SocketIO } from "./socketio/SocketIO";
 
 import { AppToolbar } from "./ui/toolbar/AppToolbar";
-import { LoginPage } from "./ui/auth/LoginPage";
-import { SignUpPage } from "./ui/auth/SignUpPage";
+import { LoginCard } from "./ui/auth/LoginCard";
+import { SignUpCard } from "./ui/auth/SignUpCard";
 import { Typer } from "./ui/typer/Typer";
 
 class Main {
-  constructor(socket) {
+  constructor() {
     this._router = new Router();
     this.service = new GenerateTextService();
     this._typer;
-    this._socket = socket;
 
     this._init();
   }
@@ -30,15 +28,17 @@ class Main {
         const hash = location.hash;
         switch (hash) {
           case "#login":
-            this._router._navigate(new LoginPage());
+            this._router._navigate(new LoginCard());
             break;
           case "#signup":
-            this._router._navigate(new SignUpPage());
+            this._router._navigate(new SignUpCard());
             break;
           default:
-            this._typer = new Typer(this._socket, text);
-            const main = document.querySelector("main");
-            main.prepend(this._typer._self);
+            const socket = io("http://localhost:5000");
+            this._typer = new Typer(socket, text);
+            // const main = document.querySelector("main");
+            // main.prepend(this._typer._self);
+            this._router._navigate(this._typer);
             this._typer.focus();
         }
 
@@ -55,10 +55,13 @@ class Main {
     let yearSpan = footer.querySelector("span");
     yearSpan.innerHTML = new Date().getFullYear();
   }
+
+  // window.onhashchange = () => {
+  //   const view = this._hashToView[location.hash];
+  //   this._navigate(view);
+  // };
 }
 
 window.onload = () => {
-  const socket = io("http://localhost:5000");
-  new Main(socket);
-  new SocketIO(socket);
+  new Main();
 };

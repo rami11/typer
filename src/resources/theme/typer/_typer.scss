@@ -1,17 +1,14 @@
 @import "../generic/var/colors";
 @import "../generic/button/button";
 @import "../generic/block/block";
+@import "../generic/block/card";
 
-$img-width: 31em;
 $char-color-success: lightgreen;
 $char-color-failure: $red-500;
 
 @mixin typer {
   #typer {
-    text-align: center;
-
     #image-section {
-      max-width: 39em;
       img {
         width: 100%;
       }
@@ -30,6 +27,7 @@ $char-color-failure: $red-500;
     }
 
     #text-block {
+      text-align: center;
       @include block;
 
       #quote {
@@ -55,7 +53,7 @@ $char-color-failure: $red-500;
     border-radius: 2px;
 
     .progress {
-      transition: 300ms linear;
+      // transition: 300ms linear;
       height: 8px;
       display: inline-block;
       position: relative;

@@ -1,5 +1,4 @@
 import { Container } from "../core/Container";
-import { Span } from "../core/Span";
 
 export class TyperProgressIndicator extends Container {
   constructor() {
