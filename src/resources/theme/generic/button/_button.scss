@@ -1,7 +1,9 @@
 @mixin button {
-  width: 10em;
-  font-size: 1em;
-  cursor: pointer;
-  border-radius: 2px;
-  font-family: Times;
+  .button {
+    width: 10em;
+    font-size: 0.8em;
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: Times;
+  }
 }

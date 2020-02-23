@@ -21,9 +21,6 @@ $char-color-failure: $red-500;
 
     #bottom-section {
       text-align: center;
-      #btn-reset {
-        @include button;
-      }
     }
 
     #text-block {

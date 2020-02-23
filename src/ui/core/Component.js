@@ -49,6 +49,14 @@ export class Component {
     this._self.style.height = height;
   }
 
+  setMaxWidth(width) {
+    this._self.style.maxWidth = width;
+  }
+
+  setMaxHeight(height) {
+    this._self.style.maxHeight = height;
+  }
+
   // margin, padding
 
   setPadding(isSet, isSmall = false) {
@@ -65,11 +73,22 @@ export class Component {
   setMargin(isSet, isSmall = false) {
     if (isSet) {
       isSmall
-        ? this.addClassName("has-small-margin")
+        ? this.addClassName("has-margin-small")
         : this.addClassName("has-margin");
     } else {
       this.removeClassName("has-margin");
-      this.removeClassName("has-small-margin");
+      this.removeClassName("has-margin-small");
+    }
+  }
+
+  setVerticalMargin(isSet, isSmall = false) {
+    if (isSet) {
+      isSmall
+        ? this.addClassName("has-vertical-margin-small")
+        : this.addClassName("has-vertical-margin");
+    } else {
+      this.removeClassName("has-vertical-margin");
+      this.removeClassName("has-vertical-margin-small");
     }
   }
 }

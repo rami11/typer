@@ -11,7 +11,7 @@ export class LoginCard extends Container {
     this.setPadding(true);
     this.setSpacing(true);
     this.setAlignment("middle-center");
-    this.setWidth("50%");
+    this.setWidth("400px");
 
     this._init();
   }
@@ -25,6 +25,7 @@ export class LoginCard extends Container {
     const button = new Button();
     button.setText("Login");
     button.setWidth("100%");
+    button.setVerticalMargin(true);
 
     this.add(usernameField);
     this.add(passwordField);

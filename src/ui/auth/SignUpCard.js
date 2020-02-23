@@ -11,7 +11,7 @@ export class SignUpCard extends Container {
     this.setPadding(true);
     this.setSpacing(true);
     this.setAlignment("middle-center");
-    this.setWidth("50%");
+    this.setMaxWidth("400px");
 
     this._init();
   }
@@ -29,6 +29,7 @@ export class SignUpCard extends Container {
     const button = new Button();
     button.setWidth("100%");
     button.setText("Sign Up");
+    button.setVerticalMargin(true);
 
     this.add(usernameField);
     this.add(passwordField);
