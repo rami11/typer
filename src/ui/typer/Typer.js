@@ -14,9 +14,8 @@ export class Typer extends Container {
     super();
     this.setId("typer");
     this.setSpacing(true);
-    // this.setWidth("600px");
-    // this.setWidth("50%");
-    // this.setAlignment("middle-center");
+    this.setWidth("50%");
+    this.setAlignment("middle-center");
     this._presenter = new TyperPresenter(socket, text, this);
 
     this._socket = socket;

@@ -36,8 +36,6 @@ class Main {
           default:
             const socket = io("http://localhost:5000");
             this._typer = new Typer(socket, text);
-            // const main = document.querySelector("main");
-            // main.prepend(this._typer._self);
             this._router._navigate(this._typer);
             this._typer.focus();
         }

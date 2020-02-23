@@ -17,11 +17,11 @@ export class Component {
   }
 
   setWidth(width) {
-    this._self.style.maxWidth = width;
+    this._self.style.width = width;
   }
 
   setHeight(height) {
-    this._self.style.maxHeight = height;
+    this._self.style.height = height;
   }
 
   addListener(type, event = () => {}) {
