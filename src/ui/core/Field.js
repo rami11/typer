@@ -4,6 +4,7 @@ export class Field extends Component {
   constructor(inputType) {
     super();
     this._init();
+    this.addClassName("field");
     this.inputType = inputType;
   }
 
@@ -20,8 +21,10 @@ export class Field extends Component {
     this._label = document.createElement("label");
     this._label.setAttribute("hiddent", true);
     this._input = document.createElement("input");
+    this._input.style.width = "100%";
 
     this._self.appendChild(this._label);
+    this._self.appendChild(document.createElement("br"));
     this._self.appendChild(this._input);
   }
 }

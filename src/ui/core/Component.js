@@ -8,26 +8,6 @@ export class Component {
     this._self.id = id;
   }
 
-  setPadding(isSet) {
-    if (isSet) {
-      this.addClassName("has-padding");
-    } else {
-      this.removeClassName("has-padding");
-    }
-  }
-
-  setWidth(width) {
-    this._self.style.width = width;
-  }
-
-  setHeight(height) {
-    this._self.style.height = height;
-  }
-
-  addListener(type, event = () => {}) {
-    this._self.addEventListener(type, event);
-  }
-
   addClassName(className) {
     this._self.classList.add(className);
   }
@@ -35,6 +15,12 @@ export class Component {
   removeClassName(className) {
     this._self.classList.remove(className);
   }
+
+  addListener(type, event = () => {}) {
+    this._self.addEventListener(type, event);
+  }
+
+  // visibility & focus
 
   focus() {
     this._self.setAttribute("tabindex", 0);
@@ -51,5 +37,39 @@ export class Component {
 
   setVisibleKeepSpace(isVisible) {
     this._self.style.visibility = isVisible ? "visible" : "hidden";
+  }
+
+  // width, height
+
+  setWidth(width) {
+    this._self.style.width = width;
+  }
+
+  setHeight(height) {
+    this._self.style.height = height;
+  }
+
+  // margin, padding
+
+  setPadding(isSet, isSmall = false) {
+    if (isSet) {
+      isSmall
+        ? this.addClassName("has-small-padding")
+        : this.addClassName("has-padding");
+    } else {
+      this.removeClassName("has-padding");
+      this.removeClassName("has-small-padding");
+    }
+  }
+
+  setMargin(isSet, isSmall = false) {
+    if (isSet) {
+      isSmall
+        ? this.addClassName("has-small-margin")
+        : this.addClassName("has-margin");
+    } else {
+      this.removeClassName("has-margin");
+      this.removeClassName("has-small-margin");
+    }
   }
 }

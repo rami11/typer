@@ -27,6 +27,7 @@ export class SignUpCard extends Container {
     confirmPasswordField.setCaption("Confirm Password");
 
     const button = new Button();
+    button.setWidth("100%");
     button.setText("Sign Up");
 
     this.add(usernameField);

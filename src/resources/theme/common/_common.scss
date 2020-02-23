@@ -1,41 +1,82 @@
-$default-padding: 8px;
-$small-padding: 4px;
+$default-gap: 8px;
+$small-gap: 4px;
 
-@mixin has-padding($padding: $default-padding) {
+@mixin has-padding($padding: $default-gap) {
   padding: $padding;
 }
 
-@mixin has-padding-vertical($padding: $default-padding) {
+@mixin has-vertical-padding($padding: $default-gap) {
   padding: $padding 0;
 }
 
-@mixin has-padding-horizontal($padding: $default-padding) {
+@mixin has-horizontal-padding($padding: $default-gap) {
   padding: 0 $padding;
 }
 
+@mixin has-margin($padding: $default-gap) {
+  padding: $padding;
+}
+
+@mixin has-vertical-margin($margin: $default-gap) {
+  margin: $margin 0;
+}
+
+@mixin has-horizontal-margin($margin: $default-gap) {
+  margin: 0 $margin;
+}
+
 @mixin common {
+  /* PADDING */
+
   .has-padding {
     @include has-padding();
   }
 
-  .has-padding-vertical {
-    @include has-padding-vertical();
+  .has-vertical-padding {
+    @include has-vertical-padding();
   }
-  .has-padding-horizontal {
-    @include has-padding-horizontal();
+  .has-horizontal-padding {
+    @include has-horizontal-padding();
   }
 
   .has-padding-small {
-    @include has-padding($small-padding);
+    @include has-padding($small-gap);
   }
 
-  .has-padding-vertical-small {
-    @include has-padding-vertical($small-padding);
+  .has-vertical-padding-small {
+    @include has-vertical-padding($small-gap);
   }
 
-  .has-padding-horizontal-small {
-    @include has-padding-horizontal($small-padding);
+  .has-horizontal-padding-small {
+    @include has-horizontal-padding($small-gap);
   }
+
+  /* MARGIN */
+
+  .has-margin {
+    @include has-padding();
+  }
+
+  .has-vertical-margin {
+    @include has-vertical-margin();
+  }
+  .has-horizontal-margin {
+    @include has-horizontal-margin();
+  }
+
+  .has-margin-small {
+    @include has-margin($small-gap);
+  }
+
+  .has-vertical-margin-small {
+    @include has-vertical-margin($small-gap);
+  }
+
+  .has-horizontal-margin-small {
+    @include has-horizontal-margin($small-gap);
+  }
+
+  //--------------------------------------------------
 
   .align-middle-center {
     margin: auto;
@@ -43,7 +84,7 @@ $small-padding: 4px;
 
   .has-spacing {
     > div {
-      margin-bottom: 4px;
+      margin-bottom: 8px;
     }
   }
 
