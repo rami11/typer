@@ -18,7 +18,7 @@ export class ConnectedClientsSection extends Container {
     for (let socketId in this._connectedSockets) {
       let socketBlock = new Container();
       socketBlock.setPadding(true);
-      socketBlock.addClassName("block");
+      socketBlock.addClassName("block-dark");
       socketBlock.add(new Span(socketId === this._socketId ? "Me" : socketId));
       let progressBar = new TyperProgressIndicator();
       this._progressBarDict[socketId] = progressBar;

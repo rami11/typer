@@ -7,7 +7,7 @@ export class SignUpBlock extends Container {
   constructor() {
     super();
 
-    this.addClassName("block");
+    this.addClassName("block-dark");
     this.setPadding(true);
     this.setSpacing(true);
     this.setAlignment("middle-center");

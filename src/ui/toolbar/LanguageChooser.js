@@ -5,7 +5,7 @@ import { Select } from "../core/Select";
 export class LanguageChooser extends Container {
   constructor() {
     super();
-    this.setId("#language-chooser select");
+    this.setId("#language-chooser");
 
     this._init();
   }

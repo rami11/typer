@@ -1,6 +1,7 @@
 import { Toolbar } from "../core/Toolbar";
 import { LanguageChooser } from "./LanguageChooser";
 import { Anchor } from "../core/Anchor";
+import { Button } from "../core/Button";
 import { I18n } from "../../locale/I18n";
 import { Icon } from "../core/Icon";
 
@@ -13,8 +14,9 @@ export class AppToolbar extends Toolbar {
     super._init();
 
     // left side
-    // const icon = new Icon("language");
-    // this.addLeftElement(icon);
+    const home = this._buildAnchor("<i class='fa fa-home'></i> Home", "");
+
+    this.addLeftElement(home);
     this.addLeftElement(new LanguageChooser());
 
     // right side
@@ -33,7 +35,7 @@ export class AppToolbar extends Toolbar {
 
   _buildAnchor(text, href) {
     const anchor = new Anchor();
-    anchor.addClassName("small-block");
+    anchor.addClassName("block-primary");
     anchor.setHref(href);
     anchor.setText(text);
 

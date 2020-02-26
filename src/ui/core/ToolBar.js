@@ -8,7 +8,7 @@ export class Toolbar extends Container {
   }
 
   _init() {
-    this.addClassName("toolbar");
+    this.addClassName("toolbar-dark");
 
     this._leftSide = new Container();
     this._leftSide.addClassName("left-side");

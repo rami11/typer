@@ -1,4 +1,3 @@
-@import "generic/var/colors";
 @import "generic/progress/progressbar";
 @import "generic/nav/toolbar";
 @import "generic/field/field";
@@ -8,15 +7,13 @@
 @import "common/footer";
 @import "typer/typer";
 
-$bck-color-1: $blue-100;
-$bck-color-2: $blue-50;
+$bck-color-1: lightgrey;
+$bck-color-2: lightblue;
 
 html {
   background-image: linear-gradient($bck-color-1, $bck-color-2);
   @include common;
   @include typer;
-  @include toolbar;
-  @include header;
   @include footer;
 
   body {

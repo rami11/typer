@@ -114,27 +114,10 @@ $small-gap: 4px;
     }
   }
 
-  .small-block {
-    color: white;
-    background-color: darkcyan;
-    margin: 0 2px;
-    border: 0.5px solid;
-    border-radius: 2px;
-    padding: 4px;
-  }
-
-  .cyan-block {
-    @include block;
-    background-color: darkcyan;
-    margin: 4px 2px;
-    padding: 3px;
-  }
-
-  .golden-block {
-    background-color: goldenrod;
-    margin: 4px 2px;
-    border: 0.5px solid;
-    border-radius: 2px;
-    padding: 3px;
+  .align-horizontal {
+    display: flex;
+    > div {
+      margin-right: 4px;
+    }
   }
 }

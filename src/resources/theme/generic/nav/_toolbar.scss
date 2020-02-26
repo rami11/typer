@@ -1,36 +1,50 @@
-@mixin toolbar {
-  .toolbar {
+@mixin toolbar($is-light) {
+  @if $is-light {
+    color: black;
+    background-color: white;
+  } @else {
     color: white;
     background-color: #212121;
-    // border-bottom: 0.5px solid white;
-    height: 20px;
-    padding: 8px;
-    display: flex;
-    flex-direction: row;
+  }
+  height: 24px;
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
 
-    .left-side {
-      display: flex;
-      width: 50%;
-      text-align: left;
-      margin: auto;
-      > div,
-      a,
-      i,
-      span {
-        display: inline;
-        margin-right: 4px;
-      }
-    }
-    .right-side {
-      width: 50%;
-      text-align: right;
-      margin: auto;
-      > div,
-      a,
-      span {
-        display: inline;
-        margin-left: 4px;
-      }
+  .left-side {
+    display: flex;
+    width: 50%;
+    text-align: left;
+    margin: auto;
+    > div,
+    a,
+    i,
+    span {
+      display: inline;
+      margin-right: 4px;
     }
   }
+  .right-side {
+    width: 50%;
+    text-align: right;
+    margin: auto;
+    > div,
+    a,
+    span {
+      display: inline;
+      margin-left: 4px;
+    }
+  }
+
+  div {
+    margin: auto 0;
+  }
+}
+
+.toolbar-dark {
+  @include toolbar(false);
+}
+
+.toolbar-light {
+  @include toolbar(true);
 }

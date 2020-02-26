@@ -15,10 +15,19 @@ $font-size: 1.1em;
   }
 }
 
-.block {
-  @include block;
+.block-dark {
+  @include block($default-bck-color);
 }
 
-.white-block {
+.block-light {
   @include block(lightgrey);
+}
+
+.block-primary {
+  @include block(darkcyan);
+  text-decoration: none;
+  color: white;
+  border: 1px solid lightgrey;
+  padding: 2px 2px;
+  // padding: 0 2px;
 }

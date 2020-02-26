@@ -5,6 +5,10 @@ export class Container extends Component {
     super(type);
   }
 
+  setHorizontal() {
+    this.addClassName("align-horizontal");
+  }
+
   setSpacing(isSet) {
     if (isSet) {
       this.addClassName("has-spacing");

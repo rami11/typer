@@ -1,5 +1,6 @@
 export const STRS = {
   en: {
+    home: "Home",
     errors: "Errors",
     accuracy: "Accuracy",
     speed: "Speed",
@@ -8,6 +9,7 @@ export const STRS = {
     signup: "Sign Up"
   },
   fr: {
+    home: "Accueil",
     errors: "Erreurs",
     accuracy: "Précision",
     speed: "Vitesse",

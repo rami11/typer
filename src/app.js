@@ -42,21 +42,25 @@ class Main {
         signUpCard.focus();
         break;
       default:
-        this.service
-          .exec()
-          .then(text => {
-            const socket = io("http://localhost:5000");
-            this._typer = new Typer(socket, text);
-            this._router._navigate(this._typer);
-            this._typer.focus();
-
-            // Footer
-            // this._populateFooter();
-          })
-          .catch(error => {
-            console.error(error);
-          });
+        this._initTyper();
     }
+  }
+
+  _initTyper() {
+    this.service
+      .exec()
+      .then(text => {
+        const socket = io("http://localhost:5000");
+        this._typer = new Typer(socket, text);
+        this._router._navigate(this._typer);
+        this._typer.focus();
+
+        // Footer
+        // this._populateFooter();
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 
   _populateFooter() {

@@ -7,6 +7,7 @@ export class Summary extends Container {
     super();
     this.setId("summary-block");
     this.setPadding(true);
+    this.setHorizontal();
     this._presenter = presenter;
 
     this._init();
@@ -24,7 +25,7 @@ export class Summary extends Container {
 
   _buildErrorBlock() {
     let smallBlock = new Container();
-    smallBlock.addClassName("small-block");
+    smallBlock.addClassName("block-primary");
 
     let errorLabel = new Span();
     errorLabel.setId("errors_label");
@@ -42,7 +43,7 @@ export class Summary extends Container {
   _buildAccuracyBlock() {
     let smallblock = new Container();
     smallblock.setId("accuracy");
-    smallblock.addClassName("small-block");
+    smallblock.addClassName("block-primary");
 
     let accuracyLabel = new Span();
     accuracyLabel.setId("accuracy-label");
@@ -62,7 +63,7 @@ export class Summary extends Container {
   _buildSpeedBlock() {
     let smallblock = new Container();
     smallblock.setId("speed-block");
-    smallblock.addClassName("small-block");
+    smallblock.addClassName("block-primary");
 
     let label = new Span();
     label.setId("speed-label");

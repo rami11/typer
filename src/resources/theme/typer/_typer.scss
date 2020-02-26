@@ -1,9 +1,8 @@
-@import "../generic/var/colors";
 @import "../generic/block/block";
 @import "../generic/block/card";
 
 $char-color-success: lightgreen;
-$char-color-failure: $red-500;
+$char-color-failure: red;
 
 @mixin typer {
   #typer {
