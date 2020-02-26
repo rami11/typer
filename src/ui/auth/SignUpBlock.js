@@ -2,6 +2,7 @@ import { Container } from "../core/Container";
 import { TextField } from "../core/TextField";
 import { PasswordField } from "../core/PasswordField";
 import { Button } from "../core/Button";
+import { I18n } from "../../locale/I18n";
 
 export class SignUpBlock extends Container {
   constructor() {
@@ -25,18 +26,18 @@ export class SignUpBlock extends Container {
     form.addEventListener("submit", this.onSignUp);
 
     this._usernameField = new TextField();
-    this._usernameField.setCaption("Username");
+    this._usernameField.setCaption(I18n.t("username"));
 
     const passwordField = new PasswordField();
-    passwordField.setCaption("Password");
+    passwordField.setCaption(I18n.t("password"));
 
     const confirmPasswordField = new PasswordField();
-    confirmPasswordField.setCaption("Confirm Password");
+    confirmPasswordField.setCaption(I18n.t("confirm_password"));
 
     const button = new Button();
     button.setType("submit");
     button.setWidth("100%");
-    button.setText("Sign Up");
+    button.setText(I18n.t("signup"));
     button.setVerticalMargin(true);
 
     form.appendChild(this._usernameField._self);

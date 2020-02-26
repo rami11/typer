@@ -1,4 +1,4 @@
-import { I18n } from "../../locale/I18n";
+import { Locale } from "../../locale/Locale";
 import { Container } from "../core/Container";
 import { Select } from "../core/Select";
 
@@ -6,6 +6,8 @@ export class LanguageChooser extends Container {
   constructor() {
     super();
     this.setId("#language-chooser");
+
+    this._languageCode = Locale.getInstance().languageCode;
 
     this._init();
   }
@@ -23,9 +25,7 @@ export class LanguageChooser extends Container {
 
     this._select.onChange(() => {
       let languageCode = event.target.selectedOptions[0].value;
-
-      I18n.getInstance().setLanguageCode(languageCode);
-      console.log(this._select.options);
+      this._languageCode = languageCode;
       this._form.submit();
     });
   }
@@ -41,7 +41,7 @@ export class LanguageChooser extends Container {
   }
 
   _updateComponent() {
-    let languageCode = I18n.getInstance().getLanguageCode();
+    const languageCode = this._languageCode;
     for (let option of this._select.options) {
       if (option.value === languageCode) {
         option.setAttribute("selected", true);

@@ -29,7 +29,7 @@ export class Summary extends Container {
 
     let errorLabel = new Span();
     errorLabel.setId("errors_label");
-    errorLabel.setText(`${I18n.getInstance().translate("errors")} `);
+    errorLabel.setText(`${I18n.t("errors")} `);
 
     this._errorSpan = new Span();
     this._errorSpan.setId("error-count");
@@ -47,7 +47,7 @@ export class Summary extends Container {
 
     let accuracyLabel = new Span();
     accuracyLabel.setId("accuracy-label");
-    accuracyLabel.setText(`${I18n.getInstance().translate("accuracy")} `);
+    accuracyLabel.setText(`${I18n.t("accuracy")} `);
 
     this._accuracySpan = new Span();
     this._accuracySpan.setId("accuracy-value");
@@ -67,7 +67,7 @@ export class Summary extends Container {
 
     let label = new Span();
     label.setId("speed-label");
-    label.setText(`${I18n.getInstance().translate("speed")} `);
+    label.setText(`${I18n.t("speed")} `);
 
     this._speedSpan = new Span();
     this._speedSpan.setId("speed");

@@ -1,9 +1,7 @@
 import { Toolbar } from "../core/Toolbar";
 import { LanguageChooser } from "./LanguageChooser";
 import { Anchor } from "../core/Anchor";
-import { Button } from "../core/Button";
 import { I18n } from "../../locale/I18n";
-import { Icon } from "../core/Icon";
 
 export class AppToolbar extends Toolbar {
   constructor() {
@@ -20,14 +18,8 @@ export class AppToolbar extends Toolbar {
     this.addLeftElement(new LanguageChooser());
 
     // right side
-    this._login = this._buildAnchor(
-      I18n.getInstance().translate("login"),
-      "#login"
-    );
-    this._signUp = this._buildAnchor(
-      I18n.getInstance().translate("signup"),
-      "#signup"
-    );
+    // this._login = this._buildAnchor(I18n.t("login"), "#login");
+    this._signUp = this._buildAnchor(I18n.t("signup"), "#signup");
 
     // this.addRightElement(this._login);
     this.addRightElement(this._signUp);
