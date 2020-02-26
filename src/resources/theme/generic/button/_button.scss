@@ -1,9 +1,14 @@
 @mixin button {
   .button {
-    width: 10em;
-    font-size: 0.8em;
     cursor: pointer;
+    font-size: 14px;
     border-radius: 4px;
     font-family: Times;
+    outline: none;
+
+    &:active {
+      color: white;
+      background-color: darkcyan;
+    }
   }
 }

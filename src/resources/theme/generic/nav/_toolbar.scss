@@ -9,11 +9,13 @@
     flex-direction: row;
 
     .left-side {
+      display: flex;
       width: 50%;
       text-align: left;
       margin: auto;
       > div,
       a,
+      i,
       span {
         display: inline;
         margin-right: 4px;

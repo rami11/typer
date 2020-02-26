@@ -6,6 +6,10 @@ export class Button extends Container {
     this.addClassName("button");
   }
 
+  setType(type) {
+    this._self.type = type;
+  }
+
   setText(text) {
     this._self.innerHTML = text;
   }

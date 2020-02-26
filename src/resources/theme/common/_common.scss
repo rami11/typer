@@ -88,6 +88,11 @@ $small-gap: 4px;
     > div {
       margin-bottom: 8px;
     }
+    form {
+      > div {
+        margin-bottom: 8px;
+      }
+    }
   }
 
   .right {

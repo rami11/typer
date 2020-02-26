@@ -3,16 +3,15 @@ import { SignUpCard } from "../ui/auth/SignUpCard";
 
 export class Router {
   constructor() {
-    this._hashToView = {
-      "/": {},
-      "#login": new LoginCard(),
-      "#signup": new SignUpCard()
-    };
-
-    window.onhashchange = () => {
-      const view = this._hashToView[location.hash];
-      this._navigate(view);
-    };
+    // this._hashToView = {
+    //   "/": {},
+    //   "#login": new LoginCard(),
+    //   "#signup": new SignUpCard()
+    // };
+    // window.onhashchange = () => {
+    //   const view = this._hashToView[location.hash];
+    //   this._navigate(view);
+    // };
   }
 
   _navigate(view) {

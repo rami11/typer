@@ -1,11 +1,12 @@
 @mixin field {
   .field {
     label {
-      font-size: 0.8em;
       position: relative;
+      font-size: 14px;
       bottom: 2px;
     }
     input {
+      outline: none;
       border-radius: 4px;
     }
   }

@@ -27,4 +27,8 @@ export class Field extends Component {
     this._self.appendChild(document.createElement("br"));
     this._self.appendChild(this._input);
   }
+
+  focus() {
+    this._input.focus();
+  }
 }

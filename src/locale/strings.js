@@ -3,12 +3,16 @@ export const STRS = {
     errors: "Errors",
     accuracy: "Accuracy",
     speed: "Speed",
-    reset: "Reset"
+    reset: "Reset",
+    login: "Login",
+    signup: "Sign Up"
   },
   fr: {
     errors: "Erreurs",
     accuracy: "Précision",
     speed: "Vitesse",
-    reset: "Réinitialiser"
+    reset: "Réinitialiser",
+    login: "S'identifier",
+    signup: "S'inscrire"
   }
 };

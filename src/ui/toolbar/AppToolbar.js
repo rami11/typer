@@ -2,6 +2,7 @@ import { Toolbar } from "../core/Toolbar";
 import { LanguageChooser } from "./LanguageChooser";
 import { Anchor } from "../core/Anchor";
 import { I18n } from "../../locale/I18n";
+import { Icon } from "../core/Icon";
 
 export class AppToolbar extends Toolbar {
   constructor() {
@@ -12,14 +13,22 @@ export class AppToolbar extends Toolbar {
     super._init();
 
     // left side
+    // const icon = new Icon("language");
+    // this.addLeftElement(icon);
     this.addLeftElement(new LanguageChooser());
 
     // right side
-    this._login = this._buildAnchor("Login", "#login");
-    this._signUp = this._buildAnchor("Sign Up", "#signup");
+    this._login = this._buildAnchor(
+      I18n.getInstance().translate("login"),
+      "#login"
+    );
+    this._signUp = this._buildAnchor(
+      I18n.getInstance().translate("signup"),
+      "#signup"
+    );
 
-    this.addRightElement(this._login);
-    this.addRightElement(this._signUp);
+    // this.addRightElement(this._login);
+    // this.addRightElement(this._signUp);
   }
 
   _buildAnchor(text, href) {

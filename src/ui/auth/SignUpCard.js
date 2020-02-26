@@ -17,8 +17,12 @@ export class SignUpCard extends Container {
   }
 
   _init() {
-    const usernameField = new TextField();
-    usernameField.setCaption("Username");
+    const form = document.createElement("form");
+    form.id = "form-signup";
+    form.addEventListener("submit", this.onSignUp);
+
+    this._usernameField = new TextField();
+    this._usernameField.setCaption("Username");
 
     const passwordField = new PasswordField();
     passwordField.setCaption("Password");
@@ -27,13 +31,37 @@ export class SignUpCard extends Container {
     confirmPasswordField.setCaption("Confirm Password");
 
     const button = new Button();
+    button.setType("submit");
     button.setWidth("100%");
     button.setText("Sign Up");
     button.setVerticalMargin(true);
 
-    this.add(usernameField);
-    this.add(passwordField);
-    this.add(confirmPasswordField);
-    this.add(button);
+    form.appendChild(this._usernameField._self);
+    form.appendChild(passwordField._self);
+    form.appendChild(confirmPasswordField._self);
+    form.appendChild(button._self);
+
+    this._self.appendChild(form);
+  }
+
+  onSignUp() {
+    event.preventDefault();
+    const options = {
+      method: "POST",
+      body: JSON.stringify({
+        username: "something",
+        password: "something else"
+      }),
+      headers: {
+        "Content-Type": "applicatoin/json"
+      }
+    };
+    console.log("About the fetch!");
+    fetch("http://localhost:5000/api", options);
+    console.log("Fetched!");
+  }
+
+  focus() {
+    this._usernameField.focus();
   }
 }
