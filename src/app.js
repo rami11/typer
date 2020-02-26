@@ -5,7 +5,7 @@ import { Router } from "./router/Router";
 
 import { AppToolbar } from "./ui/toolbar/AppToolbar";
 import { LoginCard } from "./ui/auth/LoginCard";
-import { SignUpCard } from "./ui/auth/SignUpCard";
+import { SignUpBlock } from "./ui/auth/SignUpBlock";
 import { Typer } from "./ui/typer/Typer";
 
 class Main {
@@ -37,7 +37,7 @@ class Main {
         this._router._navigate(new LoginCard());
         break;
       case "#signup":
-        const signUpCard = new SignUpCard();
+        const signUpCard = new SignUpBlock();
         this._router._navigate(signUpCard);
         signUpCard.focus();
         break;

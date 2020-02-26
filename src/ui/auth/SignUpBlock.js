@@ -3,7 +3,7 @@ import { TextField } from "../core/TextField";
 import { PasswordField } from "../core/PasswordField";
 import { Button } from "../core/Button";
 
-export class SignUpCard extends Container {
+export class SignUpBlock extends Container {
   constructor() {
     super();
 
@@ -13,6 +13,9 @@ export class SignUpCard extends Container {
     this.setAlignment("middle-center");
     this.setMaxWidth("400px");
 
+    fetch("http://localhost:5000/signup").then(response => {
+      console.log(response);
+    });
     this._init();
   }
 
@@ -47,7 +50,7 @@ export class SignUpCard extends Container {
   onSignUp() {
     event.preventDefault();
     const options = {
-      method: "POST",
+      method: "post",
       body: JSON.stringify({
         username: "something",
         password: "something else"
@@ -56,9 +59,12 @@ export class SignUpCard extends Container {
         "Content-Type": "applicatoin/json"
       }
     };
-    console.log("About the fetch!");
-    fetch("http://localhost:5000/api", options);
-    console.log("Fetched!");
+    fetch("http://localhost:5000/signup", options).then(response => {
+      console.log(response);
+    });
+    // fetch("http://localhost:5000/signup", { method: "post" }).then(response => {
+    //   console.log(response);
+    // });
   }
 
   focus() {

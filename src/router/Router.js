@@ -1,12 +1,12 @@
 import { LoginCard } from "../ui/auth/LoginCard";
-import { SignUpCard } from "../ui/auth/SignUpCard";
+import { SignUpBlock } from "../ui/auth/SignUpBlock";
 
 export class Router {
   constructor() {
     // this._hashToView = {
     //   "/": {},
     //   "#login": new LoginCard(),
-    //   "#signup": new SignUpCard()
+    //   "#signup": new SignUpBlock()
     // };
     // window.onhashchange = () => {
     //   const view = this._hashToView[location.hash];

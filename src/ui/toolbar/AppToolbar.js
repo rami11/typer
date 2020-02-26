@@ -28,7 +28,7 @@ export class AppToolbar extends Toolbar {
     );
 
     // this.addRightElement(this._login);
-    // this.addRightElement(this._signUp);
+    this.addRightElement(this._signUp);
   }
 
   _buildAnchor(text, href) {

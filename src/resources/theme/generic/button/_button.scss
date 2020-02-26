@@ -1,14 +1,19 @@
 @mixin button {
-  .button {
-    cursor: pointer;
-    font-size: 14px;
-    border-radius: 4px;
-    font-family: Times;
-    outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px;
+  border-radius: 4px;
+  font-family: Times;
+  outline: none;
+  border-color: darkgrey;
 
-    &:active {
-      color: white;
-      background-color: darkcyan;
-    }
+  &:active {
+    color: white;
+    background-color: darkcyan;
+    border-color: black;
   }
+}
+
+.button {
+  @include button;
 }

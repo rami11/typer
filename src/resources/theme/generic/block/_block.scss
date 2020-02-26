@@ -1,15 +1,24 @@
-$bck-color: $grey-900;
+$default-bck-color: #212121;
 $font-size: 1.1em;
 
-@mixin block {
-  color: white;
-  background-color: $bck-color;
+@mixin block($background-color: $default-bck-color) {
   font-size: $font-size;
-
+  background-color: $background-color;
   border-radius: 4px;
-  border: 1px solid;
+
+  @if $background-color == $default-bck-color {
+    color: white;
+    border-color: white;
+  } @else {
+    color: black;
+    border-color: grey;
+  }
 }
 
 .block {
   @include block;
+}
+
+.white-block {
+  @include block(lightgrey);
 }
