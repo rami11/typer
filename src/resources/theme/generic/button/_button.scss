@@ -12,6 +12,9 @@
     background-color: darkcyan;
     border-color: black;
   }
+  &:focus {
+    outline: auto;
+  }
 }
 
 .button {

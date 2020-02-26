@@ -43,6 +43,7 @@ export class Typer extends Container {
     this._resetButton.setText(
       `<i class="fa fa-refresh"></i> ${I18n.t("reset")}`
     );
+    this._resetButton.setVisibleKeepSpace(false);
     bottomSection.add(this._resetButton);
     return bottomSection;
   }
