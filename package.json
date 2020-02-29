@@ -1,7 +1,7 @@
 {
   "name": "typer",
   "version": "1.0.0",
-  "description": "A web app that helps practice touch typing.",
+  "description": "Web app to practice touch typing.",
   "private": true,
   "devDependencies": {
     "css-loader": "^3.4.2",
