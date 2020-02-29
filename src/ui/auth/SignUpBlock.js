@@ -14,9 +14,6 @@ export class SignUpBlock extends Container {
     this.setAlignment("middle-center");
     this.setMaxWidth("400px");
 
-    fetch("http://localhost:5000/signup").then(response => {
-      console.log(response);
-    });
     this._init();
   }
 
@@ -52,20 +49,14 @@ export class SignUpBlock extends Container {
     event.preventDefault();
     const options = {
       method: "post",
-      body: JSON.stringify({
-        username: "something",
-        password: "something else"
-      }),
+      body: "Hi, my friend!",
       headers: {
-        "Content-Type": "applicatoin/json"
+        "Content-Type": "application/json"
       }
     };
     fetch("http://localhost:5000/signup", options).then(response => {
       console.log(response);
     });
-    // fetch("http://localhost:5000/signup", { method: "post" }).then(response => {
-    //   console.log(response);
-    // });
   }
 
   focus() {

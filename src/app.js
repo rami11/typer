@@ -3,10 +3,11 @@ import "./resources/theme/styles.scss";
 import { GenerateTextService } from "./service/GenerateTextService";
 import { Router } from "./router/Router";
 
-import { AppToolbar } from "./ui/toolbar/AppToolbar";
+import { AppToolbar } from "./ui/header/AppToolbar";
 import { LoginCard } from "./ui/auth/LoginCard";
 import { SignUpBlock } from "./ui/auth/SignUpBlock";
 import { Typer } from "./ui/typer/Typer";
+import { Footer } from "./ui/footer/Footer";
 
 class Main {
   constructor() {
@@ -19,8 +20,8 @@ class Main {
 
   _init() {
     const toolbar = new AppToolbar();
-    const header = document.querySelector("header");
-    header.appendChild(toolbar._self);
+    const headerTag = document.querySelector("header");
+    headerTag.appendChild(toolbar._self);
 
     // Main
     this._navigateToView();
@@ -28,6 +29,10 @@ class Main {
     window.onhashchange = () => {
       this._navigateToView();
     };
+
+    const footer = new Footer();
+    const footerTab = document.querySelector("footer");
+    footerTab.appendChild(footer._self);
   }
 
   _navigateToView() {
@@ -46,21 +51,17 @@ class Main {
     }
   }
 
-  _initTyper() {
-    this.service
-      .exec()
-      .then(text => {
-        const socket = io("http://localhost:5000");
-        this._typer = new Typer(socket, text);
-        this._router._navigate(this._typer);
-        this._typer.focus();
+  async _initTyper() {
+    try {
+      const text = await this.service.exec();
+      const socket = io("http://localhost:5000");
 
-        // Footer
-        // this._populateFooter();
-      })
-      .catch(error => {
-        console.error(error);
-      });
+      this._typer = new Typer(socket, text);
+      this._router._navigate(this._typer);
+      this._typer.focus();
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   _populateFooter() {

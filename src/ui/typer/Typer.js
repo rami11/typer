@@ -52,7 +52,6 @@ export class Typer extends Container {
     const imageSection = this._buildImageSection();
     const bottomSection = this._buildBottomSection();
     const socketio = new SocketIO(this._socket);
-    console.log(socketio);
 
     this.add(this._summary);
     this.add(imageSection);
