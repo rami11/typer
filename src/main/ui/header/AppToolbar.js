@@ -15,7 +15,6 @@ export class AppToolbar extends Toolbar {
     const home = this._buildAnchor("<i class='fa fa-home'></i> Home", "");
 
     this.addLeftElement(home);
-    this.addLeftElement(new LanguageChooser());
 
     // right side
     // this._login = this._buildAnchor(I18n.t("login"), "#login");
@@ -23,6 +22,7 @@ export class AppToolbar extends Toolbar {
 
     // this.addRightElement(this._login);
     this.addRightElement(this._signUp);
+    this.addRightElement(new LanguageChooser());
   }
 
   _buildAnchor(text, href) {

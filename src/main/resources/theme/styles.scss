@@ -2,6 +2,7 @@
 @import "generic/nav/toolbar";
 @import "generic/field/field";
 @import "generic/button/button";
+@import "generic/block/banner";
 @import "common/common";
 @import "common/footer";
 @import "typer/typer";
@@ -25,5 +26,14 @@ html {
 
   form {
     margin: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
   }
 }

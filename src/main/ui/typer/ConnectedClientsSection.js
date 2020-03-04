@@ -1,6 +1,6 @@
 import { Container } from "../core/Container";
 import { Span } from "../core/Span";
-import { TyperProgressIndicator } from "../typer/TyperProgressIndicator";
+import { TyperProgressIndicator } from "./TyperProgressIndicator";
 
 export class ConnectedClientsSection extends Container {
   constructor(socketId, connectedSockets) {

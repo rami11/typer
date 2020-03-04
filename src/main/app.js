@@ -5,7 +5,7 @@ import { Router } from "./router/Router";
 
 import { AppToolbar } from "./ui/header/AppToolbar";
 import { LoginCard } from "./ui/auth/LoginCard";
-import { SignUpBlock } from "./ui/auth/SignUpBlock";
+import { SignUpBlock } from "./ui/auth/signup/SignUpBlock";
 import { Typer } from "./ui/typer/Typer";
 import { Footer } from "./ui/footer/Footer";
 
@@ -19,6 +19,7 @@ class Main {
   }
 
   _init() {
+    // Head
     const toolbar = new AppToolbar();
     const headerTag = document.querySelector("header");
     headerTag.appendChild(toolbar._self);
@@ -26,13 +27,14 @@ class Main {
     // Main
     this._navigateToView();
 
-    window.onhashchange = () => {
-      this._navigateToView();
-    };
-
+    // Footer
     const footer = new Footer();
     const footerTab = document.querySelector("footer");
     footerTab.appendChild(footer._self);
+
+    window.onhashchange = () => {
+      this._navigateToView();
+    };
   }
 
   _navigateToView() {
@@ -42,9 +44,9 @@ class Main {
         this._router._navigate(new LoginCard());
         break;
       case "#signup":
-        const signUpCard = new SignUpBlock();
-        this._router._navigate(signUpCard);
-        signUpCard.focus();
+        const signUpBlock = new SignUpBlock();
+        this._router._navigate(signUpBlock);
+        signUpBlock.focus();
         break;
       default:
         this._initTyper();

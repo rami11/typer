@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   mode: "development",
-  entry: "./src/app.js",
+  entry: "./src/main/app.js",
   devServer: {
     contentBase: "./dist"
   },
