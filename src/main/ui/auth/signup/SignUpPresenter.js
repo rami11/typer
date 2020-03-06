@@ -1,6 +1,7 @@
 export class SignUpPresenter {
-  constructor() {
-    console.log("init signup presenter!");
+  constructor(view) {
+    this._view = view;
+
     this._data = {
       username: "",
       password: "",
@@ -52,7 +53,6 @@ export class SignUpPresenter {
     }
     const regex = /(?=.*[0-9])/;
     if (!regex.test(password)) {
-      // throw "Password must contain at least one numeric character, one capital letter and one special character.";
       throw "Password must contain at least one numeric character.";
     }
   }

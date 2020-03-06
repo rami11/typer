@@ -4,7 +4,7 @@ import { GenerateTextService } from "./service/GenerateTextService";
 import { Router } from "./router/Router";
 
 import { AppToolbar } from "./ui/header/AppToolbar";
-import { LoginCard } from "./ui/auth/LoginCard";
+import { LoginBlock } from "./ui/auth/login/LoginBlock";
 import { SignUpBlock } from "./ui/auth/signup/SignUpBlock";
 import { Typer } from "./ui/typer/Typer";
 import { Footer } from "./ui/footer/Footer";
@@ -13,7 +13,6 @@ class Main {
   constructor() {
     this._router = new Router();
     this.service = new GenerateTextService();
-    this._typer;
 
     this._init();
   }
@@ -41,7 +40,9 @@ class Main {
     const hash = location.hash;
     switch (hash) {
       case "#login":
-        this._router._navigate(new LoginCard());
+        const loginBlock = new LoginBlock();
+        this._router._navigate(loginBlock);
+        loginBlock.focus();
         break;
       case "#signup":
         const signUpBlock = new SignUpBlock();

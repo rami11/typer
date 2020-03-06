@@ -1,4 +1,4 @@
-class GoogleSigninButton {
+class GoogleSignInButton {
   constructor() {}
 
   onSignIn(googleUser) {

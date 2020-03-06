@@ -1,22 +1,21 @@
-import { PasswordField } from "../../core/PasswordField";
-import { TextField } from "../../core/TextField";
-import { Button } from "../../core/Button";
 import { Container } from "../../core/Container";
+import { Button } from "../../core/Button";
+import { TextField } from "../../core/TextField";
+import { PasswordField } from "../../core/PasswordField";
 
 import { I18n } from "../../../locale/I18n";
-import { SignUpPresenter } from "./SignUpPresenter";
+import { LoginPresenter } from "./LoginPresenter";
 
-export class SignUpBlock extends Container {
+export class LoginBlock extends Container {
   constructor() {
     super();
-
-    this._presenter = new SignUpPresenter(this);
+    this._presenter = new LoginPresenter();
 
     this.addClassName("block-dark");
     this.setPadding(true);
     this.setSpacing(true);
     this.setAlignment("middle-center");
-    this.setMaxWidth("400px");
+    this.setWidth("400px");
 
     this._init();
   }
@@ -26,37 +25,30 @@ export class SignUpBlock extends Container {
 
     this._form = document.createElement("form");
     this._form.method = "post";
-    this._form.id = "form-signup";
+    this._form.id = "form-login";
     this._form.addEventListener("submit", () => {
-      this._onSignUp();
+      this._onLogin();
     });
 
     const title = document.createElement("h2");
-    title.innerHTML = I18n.t("signup");
+    title.innerHTML = I18n.t("login");
 
-    this._usernameField = new TextField("username");
-    this._usernameField.setCaption(I18n.t("username"));
+    this._usernameField = new TextField();
+    this._usernameField.setCaption("Username");
     this._usernameField.addListener("change", () => {
       this._presenter.setUsername(this._usernameField.value);
     });
 
-    const passwordField = new PasswordField("password");
-    passwordField.setCaption(I18n.t("password"));
+    const passwordField = new PasswordField();
+    passwordField._self.autocomplete = "current_password";
+    passwordField.setCaption("Password");
     passwordField.addListener("change", () => {
       this._presenter.setPassword(passwordField.value);
     });
 
-    const confirmPasswordField = new PasswordField("confirm-password");
-    confirmPasswordField.setCaption(I18n.t("confirm_password"));
-    confirmPasswordField.addListener("change", () => {
-      // this._data.confirmPassword = confirmPasswordField.value;
-      this._presenter.setConfirmPassword(confirmPasswordField.value);
-    });
-
     const button = new Button();
-    button.setType("submit");
+    button.setText("Login");
     button.setWidth("100%");
-    button.setText(I18n.t("signup"));
     button.setVerticalMargin(true);
 
     this._form.appendChild(title);
@@ -64,17 +56,14 @@ export class SignUpBlock extends Container {
     this._form.appendChild(this._successBanner);
     this._form.appendChild(this._usernameField._self);
     this._form.appendChild(passwordField._self);
-    this._form.appendChild(confirmPasswordField._self);
     this._form.appendChild(button._self);
 
     this._self.appendChild(this._form);
   }
 
-  async _onSignUp() {
+  async _onLogin() {
     try {
       event.preventDefault();
-
-      this._presenter.isDataValid();
 
       const options = {
         method: "post",
@@ -83,7 +72,7 @@ export class SignUpBlock extends Container {
           "Content-Type": "application/json"
         }
       };
-      const response = await fetch("http://localhost:5000/signup", options);
+      const response = await fetch("http://localhost:5000/login", options);
       const respData = await response.json();
       console.log(respData);
       if (respData.isSuccess) {
@@ -93,11 +82,9 @@ export class SignUpBlock extends Container {
 
         // redirect to home page
       } else {
-        throw "Username already exists.";
+        throw "Username or password is incorrect";
       }
     } catch (e) {
-      console.log(e);
-
       this._errorBanner.innerHTML = e;
       this._successBanner.setAttribute("hidden", true);
       this._errorBanner.removeAttribute("hidden");
