@@ -26,8 +26,18 @@ export class LoginBlock extends Container {
     this._form = document.createElement("form");
     this._form.method = "post";
     this._form.id = "form-login";
-    this._form.addEventListener("submit", () => {
-      this._onLogin();
+    this._form.addEventListener("submit", async () => {
+      try {
+        await this._presenter.onLogin();
+
+        this._successBanner.innerHTML = "Sccuess";
+        this._errorBanner.setAttribute("hidden", true);
+        this._successBanner.removeAttribute("hidden");
+      } catch (e) {
+        this._errorBanner.innerHTML = e;
+        this._successBanner.setAttribute("hidden", true);
+        this._errorBanner.removeAttribute("hidden");
+      }
     });
 
     const title = document.createElement("h2");
@@ -59,36 +69,6 @@ export class LoginBlock extends Container {
     this._form.appendChild(button._self);
 
     this._self.appendChild(this._form);
-  }
-
-  async _onLogin() {
-    try {
-      event.preventDefault();
-
-      const options = {
-        method: "post",
-        body: JSON.stringify(this._presenter.data),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      };
-      const response = await fetch("http://localhost:5000/login", options);
-      const respData = await response.json();
-      console.log(respData);
-      if (respData.isSuccess) {
-        this._successBanner.innerHTML = "Sccuess";
-        this._errorBanner.setAttribute("hidden", true);
-        this._successBanner.removeAttribute("hidden");
-
-        // redirect to home page
-      } else {
-        throw "Username or password is incorrect";
-      }
-    } catch (e) {
-      this._errorBanner.innerHTML = e;
-      this._successBanner.setAttribute("hidden", true);
-      this._errorBanner.removeAttribute("hidden");
-    }
   }
 
   _buildBanners() {
