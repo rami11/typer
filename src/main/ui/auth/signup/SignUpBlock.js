@@ -1,5 +1,6 @@
 import { PasswordField } from "../../core/PasswordField";
 import { TextField } from "../../core/TextField";
+import { EmailField } from "../../core/EmailField";
 import { Button } from "../../core/Button";
 import { Container } from "../../core/Container";
 
@@ -54,7 +55,7 @@ export class SignUpBlock extends Container {
       this._presenter.setUsername(this._usernameField.value);
     });
 
-    this._emailField = new TextField("email");
+    this._emailField = new EmailField("email");
     this._emailField.setCaption(I18n.t("email"));
     this._emailField.addListener("change", () => {
       this._presenter.setEmail(this._emailField.value);

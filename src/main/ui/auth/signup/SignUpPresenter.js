@@ -51,11 +51,12 @@ export class SignUpPresenter {
   }
 
   _isDataValid() {
-    this.isUsernameValid();
-    this.isValidPassword();
+    this._isUsernameValid();
+    this._isEmailValid();
+    this._isPasswordValid();
   }
 
-  isUsernameValid() {
+  _isUsernameValid() {
     const regex = /^[a-z]{3,}\w*$/;
     const username = this._data.username.trim();
 
@@ -67,7 +68,14 @@ export class SignUpPresenter {
     }
   }
 
-  isValidPassword() {
+  _isEmailValid() {
+    const email = this._data.email.trim();
+    if (email.length === 0) {
+      throw "Email is empty.";
+    }
+  }
+
+  _isPasswordValid() {
     const password = this._data.password;
     const confirmPassword = this._data.confirmPassword;
     if (password.length === 0) {
