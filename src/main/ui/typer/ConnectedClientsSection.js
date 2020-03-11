@@ -1,6 +1,7 @@
 import { Container } from "../core/Container";
 import { Span } from "../core/Span";
 import { TyperProgressIndicator } from "./TyperProgressIndicator";
+import { I18n } from "../../locale/I18n";
 
 export class ConnectedClientsSection extends Container {
   constructor(socketId, connectedSockets) {
@@ -19,7 +20,9 @@ export class ConnectedClientsSection extends Container {
       let socketBlock = new Container();
       socketBlock.setPadding(true);
       socketBlock.addClassName("block-dark");
-      socketBlock.add(new Span(socketId === this._socketId ? "Me" : socketId));
+      socketBlock.add(
+        new Span(socketId === this._socketId ? I18n.t("me") : socketId)
+      );
       let progressBar = new TyperProgressIndicator();
       this._progressBarDict[socketId] = progressBar;
       socketBlock.add(progressBar);

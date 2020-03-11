@@ -44,20 +44,20 @@ export class LoginBlock extends Container {
     title.innerHTML = I18n.t("login");
 
     this._usernameField = new TextField();
-    this._usernameField.setCaption("Username");
+    this._usernameField.setCaption(I18n.t("username"));
     this._usernameField.addListener("change", () => {
       this._presenter.setUsername(this._usernameField.value);
     });
 
     const passwordField = new PasswordField();
     passwordField._self.autocomplete = "current_password";
-    passwordField.setCaption("Password");
+    passwordField.setCaption(I18n.t("password"));
     passwordField.addListener("change", () => {
       this._presenter.setPassword(passwordField.value);
     });
 
     const button = new Button();
-    button.setText("Login");
+    button.setText(I18n.t("login"));
     button.setWidth("100%");
     button.setVerticalMargin(true);
 

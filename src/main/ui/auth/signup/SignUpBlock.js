@@ -27,8 +27,22 @@ export class SignUpBlock extends Container {
     this._form = document.createElement("form");
     this._form.method = "post";
     this._form.id = "form-signup";
-    this._form.addEventListener("submit", () => {
-      this._onSignUp();
+    this._form.addEventListener("submit", async () => {
+      try {
+        await this._presenter.onSignUp();
+
+        console.log("enter here for success!");
+        this._successBanner.innerHTML = "Sccuess";
+        this._errorBanner.setAttribute("hidden", true);
+        this._successBanner.removeAttribute("hidden");
+
+        // redirect to home page
+      } catch (e) {
+        console.log(e);
+        this._errorBanner.innerHTML = e;
+        this._successBanner.setAttribute("hidden", true);
+        this._errorBanner.removeAttribute("hidden");
+      }
     });
 
     const title = document.createElement("h2");
@@ -40,6 +54,12 @@ export class SignUpBlock extends Container {
       this._presenter.setUsername(this._usernameField.value);
     });
 
+    this._emailField = new TextField("email");
+    this._emailField.setCaption(I18n.t("email"));
+    this._emailField.addListener("change", () => {
+      this._presenter.setEmail(this._emailField.value);
+    });
+
     const passwordField = new PasswordField("password");
     passwordField.setCaption(I18n.t("password"));
     passwordField.addListener("change", () => {
@@ -49,7 +69,6 @@ export class SignUpBlock extends Container {
     const confirmPasswordField = new PasswordField("confirm-password");
     confirmPasswordField.setCaption(I18n.t("confirm_password"));
     confirmPasswordField.addListener("change", () => {
-      // this._data.confirmPassword = confirmPasswordField.value;
       this._presenter.setConfirmPassword(confirmPasswordField.value);
     });
 
@@ -63,45 +82,12 @@ export class SignUpBlock extends Container {
     this._form.appendChild(this._errorBanner);
     this._form.appendChild(this._successBanner);
     this._form.appendChild(this._usernameField._self);
+    this._form.appendChild(this._emailField._self);
     this._form.appendChild(passwordField._self);
     this._form.appendChild(confirmPasswordField._self);
     this._form.appendChild(button._self);
 
     this._self.appendChild(this._form);
-  }
-
-  async _onSignUp() {
-    try {
-      event.preventDefault();
-
-      this._presenter.isDataValid();
-
-      const options = {
-        method: "post",
-        body: JSON.stringify(this._presenter.data),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      };
-      const response = await fetch("http://localhost:5000/signup", options);
-      const respData = await response.json();
-      console.log(respData);
-      if (respData.isSuccess) {
-        this._successBanner.innerHTML = "Sccuess";
-        this._errorBanner.setAttribute("hidden", true);
-        this._successBanner.removeAttribute("hidden");
-
-        // redirect to home page
-      } else {
-        throw "Username already exists.";
-      }
-    } catch (e) {
-      console.log(e);
-
-      this._errorBanner.innerHTML = e;
-      this._successBanner.setAttribute("hidden", true);
-      this._errorBanner.removeAttribute("hidden");
-    }
   }
 
   _buildBanners() {

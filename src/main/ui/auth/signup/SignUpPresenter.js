@@ -4,6 +4,7 @@ export class SignUpPresenter {
 
     this._data = {
       username: "",
+      email: "",
       password: "",
       confirmPassword: ""
     };
@@ -17,6 +18,10 @@ export class SignUpPresenter {
     this._data.username = username;
   }
 
+  setEmail(email) {
+    this._data.email = email;
+  }
+
   setPassword(password) {
     this._data.password = password;
   }
@@ -25,7 +30,27 @@ export class SignUpPresenter {
     this._data.confirmPassword = confirmPassword;
   }
 
-  isDataValid() {
+  async onSignUp() {
+    event.preventDefault();
+
+    this._isDataValid();
+
+    const options = {
+      method: "post",
+      body: JSON.stringify(this._data),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+    const response = await fetch("http://localhost:5000/signup", options);
+    const respData = await response.json();
+    console.log(respData);
+    if (!respData.isSuccess) {
+      throw "Username or Email already exist.";
+    }
+  }
+
+  _isDataValid() {
     this.isUsernameValid();
     this.isValidPassword();
   }

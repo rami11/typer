@@ -30,12 +30,10 @@ export class LoginPresenter {
         "Content-Type": "application/json"
       }
     };
-    console.log(this._data);
     const response = await fetch("http://localhost:5000/login", options);
     const respData = await response.json();
-    console.log(respData);
     if (!respData.isSuccess) {
-      throw "Username or password is incorrect";
+      throw "Username or password is incorrect.";
     }
   }
 }
