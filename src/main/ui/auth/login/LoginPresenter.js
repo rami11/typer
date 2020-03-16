@@ -20,6 +20,10 @@ export class LoginPresenter {
     this._data.password = password;
   }
 
+  redirectoHome() {
+    location.href = "http://localhost:8080";
+  }
+
   async onLogin() {
     event.preventDefault();
 
@@ -31,8 +35,9 @@ export class LoginPresenter {
       }
     };
     const response = await fetch("http://localhost:5000/login", options);
-    const respData = await response.json();
-    if (!respData.isSuccess) {
+    if (response.ok) {
+      const respData = await response.json();
+    } else {
       throw "Username or password is incorrect.";
     }
   }
