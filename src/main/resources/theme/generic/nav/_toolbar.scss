@@ -8,6 +8,9 @@
     display: inline-block;
     margin-right: 4px;
   }
+  [hidden] {
+    display: none;
+  }
 }
 
 @mixin toolbar($is-light) {
