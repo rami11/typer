@@ -38,7 +38,7 @@ export class LoginPresenter {
     const response = await fetch("http://localhost:5000/login", options);
     if (response.ok) {
       const respData = await response.json();
-      console.log("resp data:", respData);
+      document.cookie = `token=${respData.token}`;
     } else {
       throw "Username or password is incorrect.";
     }
