@@ -11,7 +11,7 @@ $bck-color-1: lightgrey;
 $bck-color-2: lightblue;
 
 html {
-  background-image: linear-gradient($bck-color-1, $bck-color-2);
+  background-image: linear-gradient($bck-color-2, $bck-color-1);
   @include common;
   @include typer;
   @include footer;
