@@ -32,14 +32,10 @@ export class SignUpBlock extends Container {
       try {
         await this._presenter.onSignUp();
 
-        console.log("enter here for success!");
-        this._successBanner.innerHTML = "Sccuess";
+        this._successBanner.innerHTML = "Sccuess.";
         this._errorBanner.setAttribute("hidden", true);
         this._successBanner.removeAttribute("hidden");
-
-        // redirect to home page
       } catch (e) {
-        console.log(e);
         this._errorBanner.innerHTML = e;
         this._successBanner.setAttribute("hidden", true);
         this._errorBanner.removeAttribute("hidden");

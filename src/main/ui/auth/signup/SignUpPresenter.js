@@ -30,6 +30,10 @@ export class SignUpPresenter {
     this._data.confirmPassword = confirmPassword;
   }
 
+  _redirectoHome() {
+    location.href = "http://localhost:8080";
+  }
+
   async onSignUp() {
     event.preventDefault();
 
@@ -43,10 +47,12 @@ export class SignUpPresenter {
       }
     };
     const response = await fetch("http://localhost:5000/signup", options);
-    const respData = await response.json();
-    console.log(respData);
-    if (!respData.isSuccess) {
-      throw "Username or Email already exist.";
+    if (response.ok) {
+      const respData = await response.json();
+      document.cookie = `token=${respData.token}`;
+      this._redirectoHome();
+    } else {
+      throw "Username or email already exists.";
     }
   }
 

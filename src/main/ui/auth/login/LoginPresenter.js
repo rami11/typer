@@ -20,7 +20,7 @@ export class LoginPresenter {
     this._data.password = password;
   }
 
-  redirectoHome() {
+  _redirectoHome() {
     location.href = "http://localhost:8080";
   }
 
@@ -39,6 +39,7 @@ export class LoginPresenter {
     if (response.ok) {
       const respData = await response.json();
       document.cookie = `token=${respData.token}`;
+      this._redirectoHome();
     } else {
       throw "Username or password is incorrect.";
     }
