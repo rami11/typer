@@ -1,9 +1,10 @@
 import { Container } from "./Container";
 
 export class Button extends Container {
-  constructor() {
+  constructor(text) {
     super("button");
     this.addClassName("button");
+    this.setText(text);
   }
 
   setType(type) {
@@ -12,5 +13,9 @@ export class Button extends Container {
 
   setText(text) {
     this._self.innerHTML = text;
+  }
+
+  onClick(clickEvent = () => {}) {
+    this.addListener("click", clickEvent);
   }
 }
