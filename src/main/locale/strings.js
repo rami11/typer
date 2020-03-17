@@ -2,6 +2,7 @@ export const STRS = {
   en: {
     me: "Me",
     email: "Email",
+    logout: "Logout",
     login: "Login",
     signup: "Sign Up",
     username: "Username",
@@ -17,6 +18,7 @@ export const STRS = {
   fr: {
     me: "Moi",
     email: "Courriel",
+    logout: "Se déconnecter",
     login: "S'identifier",
     signup: "S'inscrire",
     username: "Nom d'utilisateur",
