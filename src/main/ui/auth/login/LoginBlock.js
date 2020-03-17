@@ -34,7 +34,7 @@ export class LoginBlock extends Container {
         this._errorBanner.setAttribute("hidden", true);
         this._successBanner.removeAttribute("hidden");
 
-        this._presenter.redirectoHome();
+        // this._presenter.redirectoHome();
       } catch (e) {
         this._errorBanner.innerHTML = e;
         this._successBanner.setAttribute("hidden", true);

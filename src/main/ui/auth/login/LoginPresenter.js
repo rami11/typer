@@ -29,14 +29,16 @@ export class LoginPresenter {
 
     const options = {
       method: "post",
-      body: JSON.stringify(this._data),
-      headers: {
-        "Content-Type": "application/json"
-      }
+      headers: new Headers({
+        Authorization:
+          "Basic " + btoa(`${this._data.username}:${this._data.password}`),
+        "Content-Type": "application/x-www-form-urlencoded"
+      })
     };
     const response = await fetch("http://localhost:5000/login", options);
     if (response.ok) {
       const respData = await response.json();
+      console.log("resp data:", respData);
     } else {
       throw "Username or password is incorrect.";
     }
