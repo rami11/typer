@@ -1,12 +1,18 @@
 @mixin footer {
   footer {
-    @media (max-height: 700px) {
-      display: none;
-    }
+    // @media (max-height: 700px) {
+    //   display: none;
+    // }
+    display: flex;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.7em;
     position: absolute;
     bottom: 8px;
     left: 8px;
+    div,
+    span {
+      display: inline-block;
+      margin-right: 8px;
+    }
   }
 }

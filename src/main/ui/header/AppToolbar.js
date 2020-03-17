@@ -1,8 +1,8 @@
 import { Toolbar } from "../core/Toolbar";
-import { LanguageChooser } from "./LanguageChooser";
 import { Anchor } from "../core/Anchor";
 import { Container } from "../core/Container";
 import { Span } from "../core/Span";
+
 import { I18n } from "../../locale/I18n";
 
 export class AppToolbar extends Toolbar {
@@ -30,6 +30,12 @@ export class AppToolbar extends Toolbar {
   // RIGHT SIDE
 
   _buildRightSide() {
+    const token = document.cookie.token;
+    console.log("token:", document.cookie);
+    const usernameSpan = new Span("guest");
+    usernameSpan.addClassName("block-secondary");
+    usernameSpan.setVisible(document.cookie);
+
     // logout
     this._logout = this._buildAnchor(I18n.t("logout"));
     this._logout.setVisible(document.cookie);
@@ -45,10 +51,10 @@ export class AppToolbar extends Toolbar {
     this._signUp = this._buildAnchor(I18n.t("signup"), "#signup");
     this._signUp.setVisible(!document.cookie);
 
+    this.addRightElement(usernameSpan);
     this.addRightElement(this._logout);
     this.addRightElement(this._login);
     this.addRightElement(this._signUp);
-    this.addRightElement(new LanguageChooser());
   }
 
   _buildAnchor(text, href = "") {
