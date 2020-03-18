@@ -43,7 +43,7 @@ export class LoginPresenter {
       document.cookie = `token=${respData.token}`;
       this._redirectoHome();
     } else {
-      throw "Incorrect username or password";
+      throw "Incorrect username or password.";
     }
   }
 }
