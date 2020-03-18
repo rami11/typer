@@ -31,25 +31,24 @@ export class AppToolbar extends Toolbar {
 
   _buildRightSide() {
     const token = document.cookie.token;
-    console.log("token:", document.cookie);
     const usernameSpan = new Span("guest");
     usernameSpan.addClassName("block-secondary");
-    usernameSpan.setVisible(document.cookie);
+    usernameSpan.setVisible(false);
 
     // logout
     this._logout = this._buildAnchor(I18n.t("logout"));
-    this._logout.setVisible(document.cookie);
+    this._logout.setVisible(false);
     this._logout.addListener("click", () => {
       document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
     });
 
     // login
     this._login = this._buildAnchor(I18n.t("login"), "#login");
-    this._login.setVisible(!document.cookie);
+    this._login.setVisible(false);
 
     // sign up
     this._signUp = this._buildAnchor(I18n.t("signup"), "#signup");
-    this._signUp.setVisible(!document.cookie);
+    this._signUp.setVisible(false);
 
     this.addRightElement(usernameSpan);
     this.addRightElement(this._logout);
