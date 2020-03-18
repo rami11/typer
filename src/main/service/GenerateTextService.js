@@ -1,6 +1,7 @@
+import { apiUrl } from "../../../conf";
+
 export class GenerateTextService {
   constructor() {
-    this._baseUrl = "http://localhost:5000";
     this._languageCode = "en";
 
     let urlParams = new URLSearchParams(window.location.search);
@@ -11,7 +12,7 @@ export class GenerateTextService {
   }
 
   async exec() {
-    const url = `${this._baseUrl}/text/random/${this._languageCode}`;
+    const url = `${apiUrl}/text/random/${this._languageCode}`;
     let response = await fetch(url);
 
     if (response.ok) {

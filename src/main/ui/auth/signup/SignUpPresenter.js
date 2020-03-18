@@ -1,3 +1,5 @@
+import { apiUrl, homeUrl } from "../../../../../conf";
+
 export class SignUpPresenter {
   constructor(view) {
     this._view = view;
@@ -31,7 +33,7 @@ export class SignUpPresenter {
   }
 
   _redirectoHome() {
-    location.href = "http://localhost:8080";
+    location.href = homeUrl;
   }
 
   async onSignUp() {
@@ -46,7 +48,7 @@ export class SignUpPresenter {
         "Content-Type": "application/json"
       }
     };
-    const response = await fetch("http://localhost:5000/signup", options);
+    const response = await fetch(`${apiUrl}/signup`, options);
     if (response.ok) {
       const respData = await response.json();
       document.cookie = `token=${respData.token}`;

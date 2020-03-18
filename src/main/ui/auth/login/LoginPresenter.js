@@ -1,3 +1,5 @@
+import { apiUrl, homeUrl } from "../../../../../conf";
+
 export class LoginPresenter {
   constructor(view) {
     this._view = view;
@@ -21,7 +23,7 @@ export class LoginPresenter {
   }
 
   _redirectoHome() {
-    location.href = "http://localhost:8080";
+    location.href = homeUrl;
   }
 
   async onLogin() {
@@ -35,7 +37,7 @@ export class LoginPresenter {
         "Content-Type": "application/x-www-form-urlencoded"
       })
     };
-    const response = await fetch("http://localhost:5000/login", options);
+    const response = await fetch(`${apiUrl}/login`, options);
     if (response.ok) {
       const respData = await response.json();
       document.cookie = `token=${respData.token}`;

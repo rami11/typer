@@ -15,7 +15,7 @@ export class Footer extends Container {
 
     const languageChooser = new LanguageChooser();
 
-    this.add(languageChooser);
     this.add(span);
+    this.add(languageChooser);
   }
 }

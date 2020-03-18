@@ -9,6 +9,8 @@ import { SignUpBlock } from "./ui/auth/signup/SignUpBlock";
 import { Typer } from "./ui/typer/Typer";
 import { Footer } from "./ui/footer/Footer";
 
+import { apiUrl } from "../../conf";
+
 class Main {
   constructor() {
     this._router = new Router();
@@ -57,7 +59,7 @@ class Main {
   async _initTyper() {
     try {
       const text = await this.service.exec();
-      const socket = io("http://localhost:5000");
+      const socket = io(apiUrl);
 
       this._typer = new Typer(socket, text);
       this._router._navigate(this._typer);
