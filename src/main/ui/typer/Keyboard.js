@@ -4,7 +4,7 @@ import { Span } from "../../ui/core/Span";
 export class Keyboard extends Container {
   constructor() {
     super();
-    this.addClassName("keyboard");
+    this.addClassNames("keyboard");
 
     this._btnDict = {
       // row 1
@@ -75,6 +75,8 @@ export class Keyboard extends Container {
       ControlRight: this._buildButton("ctl", "&nbsp;", "btn-ctl"),
       AltRight: this._buildButton("alt", "&nbsp;", "btn-ctl")
     };
+
+    this._btnDict.Tab.setVisibleKeepSpace(false);
 
     this._init();
   }
@@ -162,20 +164,16 @@ export class Keyboard extends Container {
     this.add(row1, row2, row3, row4, row5);
   }
 
-  // args: btns of row
-  _buildRow() {
+  _buildRow(...btns) {
     const row = new Container();
-    row.addClassName("row");
-    row.addClassName("align-center");
-    for (const btn of arguments) {
-      row.add(btn);
-    }
+    row.addClassNames("row", "align-center");
+    btns.forEach(btn => row.add(btn));
     return row;
   }
 
   _buildButton(char1, char2 = "&nbsp;", className = "btn") {
     const btn = new Container();
-    btn.addClassName(className);
+    btn.addClassNames(className);
     btn.add(new Span(char1));
     btn.add(new Span(char2));
     return btn;
