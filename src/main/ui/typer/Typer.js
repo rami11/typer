@@ -59,11 +59,14 @@ export class Typer extends Container {
     });
 
     this._textBlock.addListener("keydown", () => {
-      console.log("key down:", event);
+      this._keyboard._btnDict[event.code].addClassName("btn-pressed");
+    });
+
+    this._textBlock.addListener("keyup", () => {
+      this._keyboard._btnDict[event.code].removeClassName("btn-pressed");
     });
 
     this._textBlock.addKeyPressListener(() => {
-      console.log(event);
       let keyPressed = event.key;
       let currentChar = this._textBlock.getCurrentChar();
 

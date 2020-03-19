@@ -23,6 +23,7 @@ $width-btn-ctl: 24px;
 .keyboard {
   width: 475px;
   margin: auto;
+
   .row {
     width: 100%;
     margin-bottom: 4px;
@@ -49,5 +50,10 @@ $width-btn-ctl: 24px;
 
   .align-center {
     text-align: center;
+  }
+
+  .btn-pressed {
+    background-color: grey;
+    color: white;
   }
 }
