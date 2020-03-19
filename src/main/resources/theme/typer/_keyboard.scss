@@ -15,7 +15,7 @@ $width-btn-ctl: 24px;
   text-align: $direction;
   background-color: white;
   margin-right: 4px;
-  span {
+  > span {
     display: block;
   }
 }
