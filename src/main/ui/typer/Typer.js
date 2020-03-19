@@ -59,11 +59,17 @@ export class Typer extends Container {
     });
 
     this._textBlock.addListener("keydown", () => {
-      this._keyboard._btnDict[event.code].addClassName("btn-pressed");
+      const btn = this._keyboard.btnDict[event.code];
+      if (btn) {
+        btn.addClassName("btn-pressed");
+      }
     });
 
     this._textBlock.addListener("keyup", () => {
-      this._keyboard._btnDict[event.code].removeClassName("btn-pressed");
+      const btn = this._keyboard.btnDict[event.code];
+      if (btn) {
+        btn.removeClassName("btn-pressed");
+      }
     });
 
     this._textBlock.addKeyPressListener(() => {

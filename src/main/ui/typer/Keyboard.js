@@ -79,6 +79,10 @@ export class Keyboard extends Container {
     this._init();
   }
 
+  get btnDict() {
+    return this._btnDict;
+  }
+
   _init() {
     const row1 = this._buildRow(
       this._btnDict.Backquote,
