@@ -54,8 +54,10 @@ export class TextBlock extends Container {
 
   _colorCurrentChar(isSuccess) {
     let charSpan = this._getCurrentCharSpan();
-    charSpan.addClassName(isSuccess ? "success" : "failure");
-    charSpan.removeClassName("underline");
+    if (charSpan) {
+      charSpan.addClassName(isSuccess ? "success" : "failure");
+      charSpan.removeClassName("underline");
+    }
   }
 
   addKeyPressListener(keyPressEvent = () => {}) {

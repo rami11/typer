@@ -70,6 +70,11 @@ export class Typer extends Container {
       if (btn) {
         btn.removeClassName("btn-pressed");
       }
+      if (this._textBlock.isTextEndReached()) {
+        this._textBlock.disable();
+        this._resetButton.setVisibleKeepSpace(true);
+        this._resetButton.focus();
+      }
     });
 
     this._textBlock.addKeyPressListener(() => {
@@ -90,11 +95,6 @@ export class Typer extends Container {
 
     if (this._textBlock.isWordEndReached()) {
       this._presenter.updateSpeed();
-    }
-    if (this._textBlock.isTextEndReached()) {
-      this._textBlock.disable();
-      this._resetButton.setVisibleKeepSpace(true);
-      this._resetButton.focus();
     }
   }
 
