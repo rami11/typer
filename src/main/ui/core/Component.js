@@ -16,6 +16,14 @@ export class Component {
     this._self.classList.remove(className);
   }
 
+  addClassNames(...classNames) {
+    classNames.forEach(className => this._self.classList.add(className));
+  }
+
+  removeClassNames(...classNames) {
+    classNames.forEach(className => this._self.classList.remove(className));
+  }
+
   addListener(type, event = () => {}) {
     this._self.addEventListener(type, event);
   }
