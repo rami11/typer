@@ -1,12 +1,12 @@
 import { TextBlock } from "./TextBlock";
 import { Summary } from "./Summary";
+import { Keyboard } from "./Keyboard";
 import { TyperPresenter } from "./TyperPresenter";
 import keyboardImg from "../../resources/img/keyboard.png";
 import { I18n } from "../../locale/I18n";
 
 import { Container } from "../core/Container";
 import { Button } from "../core/Button";
-import { Image } from "../core/Image";
 import { SocketIO } from "../../socketio/SocketIO";
 
 export class Typer extends Container {
@@ -21,18 +21,9 @@ export class Typer extends Container {
     this._socket = socket;
     this._summary = new Summary(this._presenter);
     this._textBlock = new TextBlock(this._presenter);
+    this._keyboard = new Keyboard();
 
     this._init();
-  }
-
-  _buildImageSection() {
-    let imageSection = new Container();
-    imageSection.setId("image-section");
-    let image = new Image();
-    image.setId("image");
-    image.setSrc(keyboardImg);
-    imageSection.add(image);
-    return imageSection;
   }
 
   _buildBottomSection() {
@@ -44,30 +35,35 @@ export class Typer extends Container {
       `<i class="fa fa-refresh"></i> ${I18n.t("reset")}`
     );
     this._resetButton.setVisibleKeepSpace(false);
+    this._resetButton.addListener("click", () => {
+      location.reload();
+    });
     bottomSection.add(this._resetButton);
     return bottomSection;
   }
 
   _init() {
-    const imageSection = this._buildImageSection();
     const bottomSection = this._buildBottomSection();
     const socketio = new SocketIO(this._socket);
 
-    this.add(this._summary);
-    this.add(imageSection);
-    this.add(this._textBlock);
-    this.add(bottomSection);
-    this.add(socketio);
+    this.add(
+      this._summary,
+      this._keyboard,
+      this._textBlock,
+      bottomSection,
+      socketio
+    );
 
     this.addListener("click", () => {
       this._textBlock.focus();
     });
 
-    this._resetButton.addListener("click", () => {
-      location.reload();
+    this._textBlock.addListener("keydown", () => {
+      console.log("key down:", event);
     });
 
     this._textBlock.addKeyPressListener(() => {
+      console.log(event);
       let keyPressed = event.key;
       let currentChar = this._textBlock.getCurrentChar();
 

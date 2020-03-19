@@ -1,0 +1,53 @@
+$width-btn: 14px;
+$width-btn-tab: 40px;
+$width-btn-enter: 43px;
+$width-btn-shift: 59px;
+$width-btn-space: 182px;
+$width-btn-ctl: 24px;
+
+@mixin btn($width, $direction: left) {
+  width: $width;
+  display: inline-block;
+  border: 1px solid grey;
+  padding: 0 6px;
+  border-radius: 2px;
+  font-size: 0.7em;
+  text-align: $direction;
+  background-color: white;
+  margin-right: 4px;
+  span {
+    display: block;
+  }
+}
+
+.keyboard {
+  width: 475px;
+  margin: auto;
+  .row {
+    width: 100%;
+    margin-bottom: 4px;
+  }
+
+  .btn {
+    @include btn($width-btn);
+  }
+  .btn-tab {
+    @include btn($width-btn-tab);
+  }
+  .btn-enter {
+    @include btn($width-btn-enter);
+  }
+  .btn-shift {
+    @include btn($width-btn-shift);
+  }
+  .btn-space {
+    @include btn($width-btn-space);
+  }
+  .btn-ctl {
+    @include btn($width-btn-ctl);
+  }
+
+  .align-center {
+    text-align: center;
+  }
+}
