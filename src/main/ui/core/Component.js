@@ -35,6 +35,10 @@ export class Component {
     this._self.focus();
   }
 
+  disable() {
+    this._self.removeAttribute("tabindex");
+  }
+
   setVisible(isVisible) {
     if (isVisible) {
       this._self.removeAttribute("hidden");
