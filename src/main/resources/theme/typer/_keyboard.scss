@@ -5,15 +5,18 @@ $width-btn-shift: 59px;
 $width-btn-space: 182px;
 $width-btn-ctl: 24px;
 
-@mixin btn($width, $direction: left) {
-  width: $width;
+$keyboard-width: 475px;
+$keyboard-bg-color: #f5f5f5;
+
+@mixin btn($width) {
   display: inline-block;
+  width: $width;
+  background-color: white;
   border: 1px solid grey;
-  padding: 0 6px;
   border-radius: 2px;
   font-size: 0.7em;
-  text-align: $direction;
-  background-color: white;
+  text-align: left;
+  padding: 0 6px;
   margin: 0 2px;
   > span {
     display: block;
@@ -21,39 +24,48 @@ $width-btn-ctl: 24px;
 }
 
 .keyboard {
-  width: 475px;
+  width: $keyboard-width;
   margin: auto;
+  background-color: $keyboard-bg-color;
+  border: 1px solid grey;
+  border-radius: 2px;
+  padding: 4px;
 
   .row {
     width: 100%;
-    margin-bottom: 4px;
+    margin: 2px 0;
   }
 
   .btn {
     @include btn($width-btn);
   }
+
   .btn-tab {
     @include btn($width-btn-tab);
   }
+
   .btn-enter {
     @include btn($width-btn-enter);
   }
+
   .btn-shift {
     @include btn($width-btn-shift);
   }
+
   .btn-space {
     @include btn($width-btn-space);
   }
+
   .btn-ctl {
     @include btn($width-btn-ctl);
-  }
-
-  .align-center {
-    text-align: center;
   }
 
   .btn-pressed {
     background-color: darkkhaki;
     color: white;
+  }
+
+  .align-center {
+    text-align: center;
   }
 }
