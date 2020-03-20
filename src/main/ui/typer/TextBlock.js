@@ -59,10 +59,6 @@ export class TextBlock extends Container {
     }
   }
 
-  addKeyPressListener(keyPressEvent = () => {}) {
-    this.addListener("keypress", keyPressEvent);
-  }
-
   nextChar(isSuccess) {
     this._colorCurrentChar(isSuccess);
     this._charIndex++;

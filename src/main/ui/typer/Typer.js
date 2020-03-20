@@ -48,8 +48,8 @@ export class Typer extends Container {
 
     this.add(
       this._summary,
-      this._keyboard,
       this._textBlock,
+      this._keyboard,
       bottomSection,
       socketio
     );
