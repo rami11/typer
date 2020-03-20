@@ -55,29 +55,33 @@ export class Typer extends Container {
     );
 
     this.addListener("click", () => {
-      this._textBlock.focus();
+      if (this._keyboard._self.hasAttribute("tabIndex")) {
+        this._keyboard.focus();
+      }
     });
 
-    this._textBlock.addListener("keydown", () => {
+    this._keyboard.addListener("keydown", () => {
       const btn = this._keyboard.btnDict[event.code];
       if (btn) {
         btn.addClassName("btn-pressed");
       }
     });
 
-    this._textBlock.addListener("keyup", () => {
+    this._keyboard.addListener("keyup", () => {
       const btn = this._keyboard.btnDict[event.code];
       if (btn) {
         btn.removeClassName("btn-pressed");
       }
       if (this._textBlock.isTextEndReached()) {
-        this._textBlock.disable();
-        this._resetButton.setVisibleKeepSpace(true);
-        this._resetButton.focus();
+        setTimeout(() => {
+          this._keyboard.disable();
+          this._resetButton.setVisibleKeepSpace(true);
+          this._resetButton.focus();
+        }, 100);
       }
     });
 
-    this._textBlock.addKeyPressListener(() => {
+    this._keyboard.addListener("keypress", () => {
       let keyPressed = event.key;
       let currentChar = this._textBlock.getCurrentChar();
 
@@ -111,7 +115,7 @@ export class Typer extends Container {
   }
 
   focus() {
-    this._textBlock.focus();
+    this._keyboard.focus();
   }
 
   broadcast(progressValue) {
