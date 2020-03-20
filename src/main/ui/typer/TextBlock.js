@@ -17,7 +17,6 @@ export class TextBlock extends Container {
   _init() {
     this._populateContent(this._text);
     this._underlineCurrentChar();
-    this.focus();
   }
 
   _populateContent(text) {
@@ -80,9 +79,5 @@ export class TextBlock extends Container {
 
   getCurrentChar() {
     return this._text.quote[this._charIndex];
-  }
-
-  disable() {
-    this._self.removeAttribute("tabindex");
   }
 }
