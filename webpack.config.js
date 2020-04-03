@@ -4,9 +4,12 @@ module.exports = {
   mode: "development",
   entry: "./src/main/app.js",
   devServer: {
+    port: 8080,
+    host: "0.0.0.0",
+    open: true,
     contentBase: "./dist"
   },
-  devtool: "inline-source-map",
+  devtool: "source-map",
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist")
