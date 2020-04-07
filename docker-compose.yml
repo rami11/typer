@@ -1,17 +1,17 @@
-version: "3"
-networks:
-  typer:
+version: "3.7"
+
 services:
   typer_client:
-    image: rsn11/typer_client
-    volumes:
-      - ./dist:/var/www/html:rw
-    networks:
-      - typer
+    container_name: typer_client
+    image: rsn11/typer_client:latest
+    build:
+      context: .
+      labels:
+        com.rsn.description: "Client for typer app"
+        com.rsn.maintainer: "Rami Serapian"
     ports:
-      - "82:80"
-  # typer_server:
-  #   container_name: typer_server
-  #   image: python:3
-  #   ports:
-  #     - "5000:5000"
+      - "8888:8080"
+    volumes:
+      - type: bind
+        source: $PWD
+        target: /var/www
