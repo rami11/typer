@@ -1,0 +1,13 @@
+FROM node:12.16.1 as build
+RUN apt-get update && \
+    apt-get install vim -y
+WORKDIR /var/www
+COPY package.json .
+RUN npm install
+COPY . .
+ENTRYPOINT ["npm"]
+CMD ["build.prod"]
+
+FROM nginx:alpine
+COPY --from=build /var/www/dist/ /usr/share/nginx/html/
+EXPOSE 80
