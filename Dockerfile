@@ -1,8 +1,9 @@
 FROM node:12.16.1
 
 LABEL maintainer="Rami Serapian"
-ENV NODE_ENV=production
-ENV PORT=8080
+
+ENV NODE_ENV=production \
+    PORT=8080
 
 RUN apt-get update && \
     apt-get install vim -y
