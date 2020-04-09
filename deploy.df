@@ -1,6 +1,6 @@
 FROM node:12.16.1 as build
 RUN apt-get update && \
-    apt-get install vim -y \
+    apt-get install vim -y && \
     rm -rf /var/lib/apt/lists/*
 WORKDIR /var/www
 COPY package.json .
