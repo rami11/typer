@@ -73,7 +73,7 @@ export class Keyboard extends Container {
       AltLeft: this._buildButton("alt", "&nbsp;", "btn-ctl"),
       Space: this._buildButton("&nbsp;", "&nbsp;", "btn-space"),
       ControlRight: this._buildButton("ctl", "&nbsp;", "btn-ctl"),
-      AltRight: this._buildButton("alt", "&nbsp;", "btn-ctl")
+      AltRight: this._buildButton("alt", "&nbsp;", "btn-ctl"),
     };
 
     this._btnDict.Tab.setVisibleKeepSpace(false);
@@ -167,7 +167,7 @@ export class Keyboard extends Container {
   _buildRow(...btns) {
     const row = new Container();
     row.addClassNames("row", "align-center");
-    btns.forEach(btn => row.add(btn));
+    btns.forEach((btn) => row.add(btn));
     return row;
   }
 
