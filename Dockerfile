@@ -16,6 +16,7 @@ RUN npm install
 
 COPY . .
 
+VOLUME ["/var/www"]
 EXPOSE $PORT
 
 ENTRYPOINT ["npm"]
